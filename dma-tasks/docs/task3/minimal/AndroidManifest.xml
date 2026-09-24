@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T1.5: the smallest manifest aapt2 links into an APK. Only the root element, the
+     android namespace and the package name are mandatory. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.university.mobileapp">
+
+    <!-- Optional for aapt2, but without it the app counts as targetSdk 1 and silently
+         gains the legacy implied permissions WRITE_EXTERNAL_STORAGE and READ_PHONE_STATE.
+         In a Gradle build these values come from build.gradle instead. -->
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="35" />
+
+    <application />
+
+</manifest>

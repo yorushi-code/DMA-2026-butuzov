@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- No action bar: with targetSdk 35 the window is edge-to-edge, and each
+         layout root pads itself for the system bars via fitsSystemWindows. -->
+    <style name="Theme.Dma" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand</item>
+        <item name="colorPrimaryContainer">@color/brand_dark</item>
+        <!-- Dark system-bar icons on the light variant, light ones in night mode. -->
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">?attr/isLightTheme</item>
+    </style>
+
+    <!-- P03: Theme.SplashScreen backports the Android 12 splash screen API. -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.Dma</item>
+    </style>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  T2.2: network security configuration. All traffic is HTTPS, trusts only the
+  system CAs, and the API host is pinned to two SPKI hashes (current key plus a
+  backup, so a key rotation does not lock users out). The pin set expires, after
+  which Android falls back to normal CA validation instead of bricking the app.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">api.bank.example</domain>
+        <pin-set expiration="2027-06-30">
+            <pin digest="SHA-256">7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=</pin>
+            <pin digest="SHA-256">fwza0LRMXouZHRC8Ei+4PyuldPDcf3UKgO/04cDM1oE=</pin>
+        </pin-set>
+    </domain-config>
+
+    <!-- P12: plain HTTP is allowed for the local development server only;
+         every other host stays HTTPS-only through base-config. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">192.168.1.50</domain>
+    </domain-config>
+</network-security-config>

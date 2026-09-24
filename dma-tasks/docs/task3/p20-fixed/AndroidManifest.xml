@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- P20: the same fragment after the audit. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bank">
+
+    <permission
+        android:name="com.example.bank.permission.ACCOUNTS"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.example.bank.permission.TRANSFER"
+        android:protectionLevel="signature" />
+
+    <application android:label="Bank">
+
+        <!-- V1: signature permissions for both directions; temporary grants only for
+             the export folder, never for the whole table. -->
+        <provider
+            android:name=".data.AccountsProvider"
+            android:authorities="com.example.bank.accounts"
+            android:exported="true"
+            android:readPermission="com.example.bank.permission.ACCOUNTS"
+            android:writePermission="com.example.bank.permission.ACCOUNTS">
+            <grant-uri-permission android:pathPrefix="/statements/" />
+        </provider>
+
+        <!-- V2: only apps signed with the bank key may send the broadcast. -->
+        <receiver
+            android:name=".payments.TransferReceiver"
+            android:exported="true"
+            android:permission="com.example.bank.permission.TRANSFER">
+            <intent-filter>
+                <action android:name="com.example.bank.action.TRANSFER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- V3: internal screen, started only by the app after authentication. -->
+        <activity
+            android:name=".settings.ChangePinActivity"
+            android:exported="false" />
+
+    </application>
+</manifest>

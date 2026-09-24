@@ -1,7 +1,32 @@
 [versions]
+agp = "8.7.3"
 junit5 = "5.11.4"
+appcompat = "1.7.0"
+material = "1.12.0"
+core = "1.15.0"
+splashscreen = "1.0.1"
+work = "2.10.0"
+startup = "1.2.0"
+emoji2 = "1.5.0"
+androidxTestRunner = "1.6.2"
+androidxTestCore = "1.6.1"
+androidxTestJunit = "1.2.1"
 
 [libraries]
 junit5-bom = { module = "org.junit:junit-bom", version.ref = "junit5" }
 junit5-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit5-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-core = { module = "androidx.core:core", version.ref = "core" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
+androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "work" }
+androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
+androidx-emoji2 = { module = "androidx.emoji2:emoji2", version.ref = "emoji2" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }
+androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestJunit" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- P24: static shortcuts; Google Assistant App Actions build on this file. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut"
+        android:shortcutId="scan_card"
+        android:shortcutLongLabel="@string/shortcut_scan_long"
+        android:shortcutShortLabel="@string/shortcut_scan_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="dev.yorushi.dma.task3.activity.NfcReaderActivity"
+            android:targetPackage="dev.yorushi.dma" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut"
+        android:shortcutId="search"
+        android:shortcutLongLabel="@string/shortcut_search_long"
+        android:shortcutShortLabel="@string/shortcut_search_short">
+        <intent
+            android:action="android.intent.action.SEARCH"
+            android:targetClass="dev.yorushi.dma.task3.activity.SearchActivity"
+            android:targetPackage="dev.yorushi.dma" />
+    </shortcut>
+</shortcuts>

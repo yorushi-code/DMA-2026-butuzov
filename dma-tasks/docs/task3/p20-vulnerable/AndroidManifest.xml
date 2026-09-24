@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- P20: the audited fragment. It compiles cleanly; every problem is a security one. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bank">
+
+    <application android:label="Bank">
+
+        <!-- V1: any installed app can query or modify every account row. -->
+        <provider
+            android:name=".data.AccountsProvider"
+            android:authorities="com.example.bank.accounts"
+            android:exported="true"
+            android:grantUriPermissions="true" />
+
+        <!-- V2: any app can send a forged broadcast and start a transfer. -->
+        <receiver
+            android:name=".payments.TransferReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.bank.action.TRANSFER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- V3: an internal screen reachable directly, skipping the login screen. -->
+        <activity
+            android:name=".settings.ChangePinActivity"
+            android:exported="true" />
+
+    </application>
+</manifest>

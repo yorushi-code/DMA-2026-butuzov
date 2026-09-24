@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Overlay merged into release builds only. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- P15: a release APK must never be debuggable. The build type already sets
+         it; tools:replace makes the manifest merger force "false" over any
+         value coming from another source, so a stray library or source-set
+         manifest cannot reintroduce the vulnerability. -->
+    <application
+        android:debuggable="false"
+        tools:ignore="HardcodedDebugMode"
+        tools:replace="android:debuggable" />
+</manifest>

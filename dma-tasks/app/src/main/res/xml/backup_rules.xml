@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- P18: Android 6-11 Auto Backup rules (android:fullBackupContent). Session
+     tokens and the encrypted wallet database are never backed up. -->
+<full-backup-content>
+    <include domain="sharedpref" path="." />
+    <exclude domain="sharedpref" path="session.xml" />
+    <exclude domain="database" path="wallet.db" />
+    <exclude domain="file" path="camera_photos/" />
+</full-backup-content>
