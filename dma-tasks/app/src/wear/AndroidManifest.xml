@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Overlay merged into the main manifest for the "wear" flavor only. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- P42: a Wear OS build. With this feature Google Play lists the APK for
+         watches only, which is why it lives in its own flavor. -->
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application>
+        <!-- The watch app works without a paired phone app. -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+    </application>
+</manifest>

@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Practical work 3 — AndroidManifest.xml.
+
+  Every assignment item is marked with its id: T<theme>.<n> for the closing
+  exercises of themes 1-7, P<nn> for the 50 practical items. P50 asks for a
+  complete production manifest of a secured fintech app: this whole file is that
+  manifest (splash entry point, FileProvider, dangerous permissions, App Links,
+  strict network security config).
+
+  The package attribute from the theme-1 example is gone: since AGP 8 the
+  application namespace is set by `namespace` in build.gradle.kts instead.
+-->
+<!--
+  T1.1: xmlns:tools enables the merge directives used below (node, replace,
+        overrideLibrary) against manifests coming from libraries.
+  T1.4: android:sharedUserId is deprecated since API 29. sharedUserMaxSdkVersion
+        (API 33) makes new installs on Android 13+ ignore it, so the shared UID
+        only exists for devices up to API 32 that already relied on it.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:sharedUserId="dev.yorushi.shared"
+    android:sharedUserMaxSdkVersion="32"
+    tools:targetApi="33">
+
+    <!-- P01: a library declaring minSdk 24 may be merged into this minSdk-21-era
+         code base; overrideLibrary accepts it and makes the app responsible for
+         guarding the newer API calls. -->
+    <uses-sdk tools:overrideLibrary="com.example.legacy.analytics" />
+
+    <!-- T1.2: an analytics SDK used to inject READ_PHONE_STATE; the merged
+         manifest must never request it. -->
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="remove" />
+
+    <!-- ================= Permissions ================= -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- T5.1: continuous background tracking needs all three location levels;
+         BACKGROUND must be requested separately, after the foreground grant. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- T5.2: POST_NOTIFICATIONS exists from API 33. Older systems ignore the
+         unknown permission and grant notifications implicitly, so the runtime
+         request in code is guarded by Build.VERSION.SDK_INT >= 33. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- T5.4: scoped storage makes this permission meaningless from API 29;
+         it is only requested where it still has an effect. -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <!-- T5.5: SCHEDULE_EXACT_ALARM. Google Play only accepts it for apps whose
+         core function is an alarm clock, a calendar or timer; everything else is
+         rejected at review and must use inexact alarms or WorkManager. From
+         Android 14 it is denied by default and the user grants it in settings. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!-- Dangerous permissions of the fintech app (P50): location above plus
+         camera for document scans, microphone for voice notes, gallery access. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <!-- Foreground services of block 4; since Android 14 every type needs its own
+         permission next to the generic one. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+
+    <!-- P36: required for the BootReceiver declared below. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- P37: REQUEST_IGNORE_BATTERY_OPTIMIZATIONS lets the app show the system
+         dialog that exempts it from Doze. Google Play restricts it to a short list
+         of use cases (e.g. companion devices, VoIP); an app outside that list is
+         removed from the store. Prefer FCM high-priority messages or WorkManager. -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- P19: lets the transaction screen hide every non-system overlay
+         (Window.setHideOverlayWindows, API 31). -->
+    <uses-permission android:name="android.permission.HIDE_OVERLAY_WINDOWS" />
+
+    <!-- P47: sensor rates above 200 Hz are capped from Android 12 unless this
+         normal permission is declared (precise gyroscope of a racing game). -->
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+
+    <!-- T5.3: signature-level permission guarding the protected API service; only
+         apps signed with the same key can bind to it. ${applicationId} keeps the
+         name unique per build variant, so the wear build does not collide. -->
+    <permission
+        android:name="${applicationId}.permission.BIND_PROTECTED_API"
+        android:label="@string/perm_protected_api"
+        android:protectionLevel="signature" />
+
+    <!-- P13: separate read and write permissions for the notes provider. -->
+    <permission
+        android:name="${applicationId}.permission.READ_NOTES"
+        android:label="@string/perm_read_notes"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="${applicationId}.permission.WRITE_NOTES"
+        android:label="@string/perm_write_notes"
+        android:protectionLevel="signature" />
+
+    <!-- P16: only same-signature senders may broadcast to SecureSyncReceiver. -->
+    <permission
+        android:name="${applicationId}.permission.SYNC_BROADCAST"
+        android:label="@string/perm_sync_broadcast"
+        android:protectionLevel="signature" />
+
+    <!-- ================= Hardware and screens ================= -->
+
+    <!-- T6.1: fingerprint login is optional; devices without biometrics still
+         install the app and fall back to the PIN. -->
+    <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="false" />
+
+    <!-- T6.2: contactless payments are the product, so an NFC chip is mandatory;
+         Google Play hides the app from devices without one. -->
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <!-- T6.4: tablets without a SIM card must still see the app. -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <!-- T6.5: gamepad support for the Android TV version, optional on phones. -->
+    <uses-feature
+        android:name="android.hardware.gamepad"
+        android:required="false" />
+
+    <!-- P44: TV has no touchscreen; leanback marks the app as TV-capable without
+         excluding phones. -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
+    <!-- P45: there is no uses-feature for a stylus. The closest filter is
+         "jazzhand" multitouch (5+ tracked points, the class of screens used for
+         pen input); it is optional so plain touchscreens are not excluded. -->
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch.jazzhand"
+        android:required="false" />
+
+    <!-- P48: the flashlight toggle only appears when a flash exists. -->
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
+    <!-- The CAMERA, RECORD_AUDIO and location permissions would otherwise imply
+         required hardware; each is declared optional explicitly. -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.live_wallpaper"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
+
+    <!-- P46: small (ldpi-era) screens are excluded. supports-screens filters by
+         size only; filtering by density would need <compatible-screens>, which
+         Google Play discourages because it also blocks future densities. -->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="false"
+        android:xlargeScreens="true" />
+
+    <!-- T6.3: package visibility (Android 11+) for navigation handoff to Yandex
+         Maps or 2GIS, plus any app able to show a geo: link or open the web. -->
+    <queries>
+        <package android:name="ru.yandex.yandexmaps" />
+        <package android:name="ru.dublgis.dgismobile" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <!-- ================= Application ================= -->
+
+    <!--
+      T1.3: tools:replace forces this allowBackup value over any library's.
+      T2.1: allowBackup=false disables cloud backup and `adb backup` extraction of
+            the financial data.
+      P18:  the backup rules are still bound: fullBackupContent covers Android
+            6-11, dataExtractionRules Android 12+ (cloud and device transfer).
+      T2.2: networkSecurityConfig with certificate pinning; P12 lives in the same
+            file (cleartext only for the local dev server).
+      T2.3: MainApplication initialises dependencies and analytics.
+      T2.4: the label is a string resource, translated through values-ru.
+      T7.2: localeConfig lists the languages offered in the system per-app
+            language picker (Android 13+).
+      T2.5: largeHeap asks for a bigger Dalvik heap for the image editor. It is
+            not free: the larger heap makes GC pauses longer and makes the app a
+            preferred kill target, and on low-RAM devices it may grant nothing.
+            It hides leaks instead of fixing them, so it is a last resort.
+    -->
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:localeConfig="@xml/locales_config"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Dma"
+        android:usesCleartextTraffic="false"
+        tools:replace="android:allowBackup"
+        tools:targetApi="33">
+
+        <!-- T7.1: MapKit key, injected from build.gradle.kts through a placeholder
+             so the real key never sits in version control. MapKit takes the key in
+             code, so MainApplication reads this entry and passes it on. -->
+        <meta-data
+            android:name="dev.yorushi.dma.YANDEX_MAPKIT_KEY"
+            android:value="${yandexMapKitKey}" />
+
+        <!-- T7.5: Android has no manifest switch for 120 Hz; a window requests it
+             through preferredDisplayModeId. This entry is read by the app and
+             applied to every window it creates. -->
+        <meta-data
+            android:name="dev.yorushi.dma.PREFERRED_REFRESH_RATE"
+            android:value="120" />
+
+        <!-- P43: Android Auto descriptor; the media service below is what the car
+             head unit actually connects to. -->
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+
+        <!-- T7.2: stores the per-app language on Android 12 and older, where the
+             system picker does not exist. -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+
+        <!-- androidx.startup runs library initializers from this provider before
+             Application.onCreate. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <!-- P35: WorkManager is initialised on demand through
+                 Configuration.Provider in MainApplication instead. -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+            <!-- T7.4: EmojiCompat is initialised manually with
+                 AppInitializer, off the cold-start path. -->
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
+        <!-- ================= Activities ================= -->
+
+        <!-- T3.1: the single launcher entry point.
+             P03: Theme.App.Starting extends Theme.SplashScreen from
+             androidx.core:core-splashscreen, so Android 12's system splash and
+             the backport look the same; postSplashScreenTheme restores the app
+             theme afterwards. -->
+        <activity
+            android:name=".task3.activity.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- P24: static shortcuts, the entry point for App Actions. -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <!-- P04: seasonal icon. The alias is disabled by default; the app swaps it
+             with the default entry through PackageManager.setComponentEnabledSetting,
+             so exactly one launcher entry is enabled at any time. -->
+        <activity-alias
+            android:name=".NewYearLauncher"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_new_year"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_new_year"
+            android:targetActivity=".task3.activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- P06: in multi-window and freeform mode the window cannot be shrunk
+             below 300x450 dp. -->
+        <activity
+            android:name=".task3.activity.InspectorActivity"
+            android:exported="false"
+            android:resizeableActivity="true">
+            <layout
+                android:defaultHeight="640dp"
+                android:defaultWidth="400dp"
+                android:gravity="center"
+                android:minHeight="450dp"
+                android:minWidth="300dp" />
+        </activity>
+
+        <!-- P02: reachable from partner apps through its own action, but without
+             MAIN/LAUNCHER it never appears in the app drawer. -->
+        <activity
+            android:name=".task3.activity.HiddenEntryActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="dev.yorushi.dma.action.OPEN_FROM_PARTNER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- P05: Picture-in-Picture. Resizing between full screen and the PiP
+             window must not recreate the player, hence the configChanges. -->
+        <activity
+            android:name=".task3.activity.PipPlayerActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true" />
+
+        <!-- P08: the master password screen never shows up in Recents.
+             P09: see MasterPasswordActivity: excludeFromRecents removes the task
+             from Recents entirely, while FLAG_SECURE (set in code) keeps the task
+             listed but blanks its thumbnail and blocks screenshots and casting. -->
+        <activity
+            android:name=".task3.activity.MasterPasswordActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:noHistory="true" />
+
+        <!-- T3.3: rotation and keyboard changes are handled by the game itself
+             instead of destroying the running level. -->
+        <activity
+            android:name=".task3.activity.GameActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false" />
+
+        <!-- T3.4: the incoming call screen lives alone in its own task and shows
+             over the lock screen. -->
+        <activity
+            android:name=".task3.activity.IncomingCallActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true" />
+
+        <!-- P17: only callers holding BIND_ACCESSIBILITY_SERVICE (a signature
+             permission of the platform) may start this screen from outside. -->
+        <activity
+            android:name=".task3.activity.AccessibilityGatedActivity"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+
+        <!-- P19: transaction confirmation. The layout sets
+             filterTouchesWhenObscured, and the activity hides overlay windows. -->
+        <activity
+            android:name=".task3.activity.TransactionConfirmActivity"
+            android:exported="false" />
+
+        <!-- T4.1: share target for images of any format. -->
+        <activity
+            android:name=".task3.activity.ShareTargetActivity"
+            android:exported="true"
+            android:label="@string/share_target_label">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- T4.2: tel: links from browsers and other apps. -->
+        <activity
+            android:name=".task3.activity.DialerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tel" />
+            </intent-filter>
+        </activity>
+
+        <!-- T4.3: PDF documents only. pathPattern is matched per segment without
+             backtracking, so ".*\\.pdf" alone misses paths with an earlier dot
+             (report.v2.pdf); the extra patterns cover one and two such dots. The
+             mime type filter catches content:// URIs that have no extension. -->
+        <activity
+            android:name=".task3.activity.PdfViewerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\.pdf" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/pdf" />
+            </intent-filter>
+        </activity>
+
+        <!-- T4.4: one filter accepting two MIME types. -->
+        <activity
+            android:name=".task3.activity.TextViewerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="text/html" />
+            </intent-filter>
+        </activity>
+
+        <!-- T4.5: the theme example. The custom scheme opens without checks; the
+             https App Link has autoVerify, so at install time Android fetches
+             https://store.university.ru/.well-known/assetlinks.json and, if it
+             lists this package and signing certificate, opens such links here
+             directly instead of showing the "open with" chooser. -->
+        <activity
+            android:name=".task3.activity.ProductDetailsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="products"
+                    android:scheme="myapp" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="store.university.ru"
+                    android:pathPrefix="/item/"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <!-- P21: Mifare smart cards; the tech list lives in @xml/nfc_tech_filter. -->
+        <activity
+            android:name=".task3.activity.NfcReaderActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+        </activity>
+
+        <!-- P22: geo:0,0?q=... requests from other apps. -->
+        <activity
+            android:name=".task3.activity.MapLinkActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="geo" />
+            </intent-filter>
+        </activity>
+
+        <!-- P23: .docx and .xlsx attachments. Mail apps usually send the exact
+             OOXML MIME types; file managers send application/* with a path. -->
+        <activity
+            android:name=".task3.activity.OfficeDocumentActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:mimeType="application/*" />
+                <data android:pathPattern=".*\\.docx" />
+                <data android:pathPattern=".*\\.xlsx" />
+            </intent-filter>
+        </activity>
+
+        <!-- P25: https://marketplace.com/catalog/shoes?brand=nike, verified
+             through the marketplace's assetlinks.json (autoVerify). Query
+             parameters are not part of matching and reach the activity intact. -->
+        <activity
+            android:name=".task3.activity.MarketplaceActivity"
+            android:exported="true">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="marketplace.com"
+                    android:pathPrefix="/catalog/"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <!-- P27: handles ACTION_SEARCH.
+             T7.3: the searchable configuration is bound to this activity only. -->
+        <activity
+            android:name=".task3.activity.SearchActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <!-- P28: "send SMS to" links. -->
+        <activity
+            android:name=".task3.activity.ComposeSmsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="smsto" />
+                <data android:scheme="sms" />
+            </intent-filter>
+        </activity>
+
+        <!-- P29: OAuth redirect org.example.app://oauth-callback from a Custom Tab.
+             singleTask returns to the existing task instead of stacking a copy. -->
+        <activity
+            android:name=".task3.activity.OAuthCallbackActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="oauth-callback"
+                    android:scheme="org.example.app" />
+            </intent-filter>
+        </activity>
+
+        <!-- P30: .mycfg files. A manifest can only offer the app as a handler;
+             becoming the default is the user's choice in the chooser. -->
+        <activity
+            android:name=".task3.activity.ConfigFileActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.mycfg" />
+                <data android:pathPattern=".*\\..*\\.mycfg" />
+            </intent-filter>
+        </activity>
+
+        <!-- P41: aspect-ratio limits only apply to activities that are not freely
+             resizable, so this one opts out of resizing and letterboxes between
+             4:3 and 2.4:1 on folds and tall phones alike. -->
+        <activity
+            android:name=".task3.activity.FoldableActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="false"
+            android:maxAspectRatio="2.4"
+            android:minAspectRatio="1.33"
+            android:resizeableActivity="false" />
+
+        <!-- P44: Android TV home screen entry; TV launchers require a banner. -->
+        <activity
+            android:name=".task3.activity.TvHomeActivity"
+            android:banner="@drawable/tv_banner"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- P49: starts automatically when a matching USB device is attached. -->
+        <activity
+            android:name=".task3.activity.UsbDeviceActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+
+        <!-- ================= Services ================= -->
+
+        <!-- T3.2: database sync, callable only from inside the app. -->
+        <service
+            android:name=".task3.service.DatabaseSyncService"
+            android:exported="false" />
+
+        <!-- T5.3: bound API guarded by the signature permission declared above. -->
+        <service
+            android:name=".task3.service.ProtectedApiService"
+            android:exported="true"
+            android:permission="${applicationId}.permission.BIND_PROTECTED_API" />
+
+        <!-- P07: audio playback in its own OS process, so a crash of the player
+             does not take the UI down (and vice versa). Also the theme-3
+             mediaPlayback foreground service. -->
+        <service
+            android:name=".task3.service.PlaybackService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback"
+            android:process=":playback_process" />
+
+        <!-- P11: runs in an isolated process with no permissions and no access to
+             the app's data, so even code loaded dynamically inside it cannot
+             reach the rest of the app. -->
+        <service
+            android:name=".task3.service.IsolatedRendererService"
+            android:exported="false"
+            android:isolatedProcess="true" />
+
+        <!-- P31: voice notes. -->
+        <service
+            android:name=".task3.service.VoiceNoteService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <!-- P32: courier tracking; background location is requested above. -->
+        <service
+            android:name=".task3.service.CourierLocationService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <!-- P33: large uploads. dataSync has no manifest timeout attribute: from
+             Android 15 the system limits it to 6 hours per 24 and calls
+             Service.onTimeout, which UploadService implements to stop cleanly. -->
+        <service
+            android:name=".task3.service.UploadService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- P34: casting the screen to a TV. -->
+        <service
+            android:name=".task3.service.ScreenCastService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+
+        <!-- P38: accessibility service; only the system (holder of the bind
+             permission) can connect to it. -->
+        <service
+            android:name=".task3.service.DmaAccessibilityService"
+            android:exported="true"
+            android:label="@string/accessibility_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- P39: account sync. The sync adapter needs an account type, which the
+             authenticator service provides. -->
+        <service
+            android:name=".task3.service.SyncAdapterService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+        <service
+            android:name=".task3.service.AuthenticatorService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <!-- P40: live wallpaper; BIND_WALLPAPER ensures only the system binds. -->
+        <service
+            android:name=".task3.service.NightSkyWallpaperService"
+            android:exported="true"
+            android:label="@string/wallpaper_label"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
+        </service>
+
+        <!-- P43: media browser the Android Auto head unit connects to. -->
+        <service
+            android:name=".task3.service.AutoMediaService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+
+        <!-- ================= Receivers ================= -->
+
+        <!-- P36: after a reboot the receiver enqueues sync work. BOOT_COMPLETED is
+             sent by the system, which may reach non-exported receivers. -->
+        <receiver
+            android:name=".task3.receiver.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- P26: headset button presses. -->
+        <receiver
+            android:name=".task3.receiver.MediaButtonReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- P16: not exported, and even an in-app sender must hold the signature
+             permission, so a spoofed broadcast cannot trigger a sync. -->
+        <receiver
+            android:name=".task3.receiver.SecureSyncReceiver"
+            android:exported="false"
+            android:permission="${applicationId}.permission.SYNC_BROADCAST" />
+
+        <!-- ================= Providers ================= -->
+
+        <!-- T3.5: temporary, per-URI access for the camera app to write the photo.
+             Not exported; grantUriPermissions allows the per-intent grant. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- P13: reading and writing require different signature permissions.
+             P14: no blanket URI grants; only /shared_docs/ can be granted
+             temporarily to another app. -->
+        <provider
+            android:name=".task3.provider.NotesProvider"
+            android:authorities="${applicationId}.notes"
+            android:exported="true"
+            android:grantUriPermissions="false"
+            android:readPermission="${applicationId}.permission.READ_NOTES"
+            android:writePermission="${applicationId}.permission.WRITE_NOTES">
+            <grant-uri-permission android:pathPrefix="/shared_docs/" />
+        </provider>
+
+    </application>
+
+</manifest>

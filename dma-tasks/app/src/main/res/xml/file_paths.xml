@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T3.5: the only directory FileProvider may expose: photos taken by the
+     camera app into internal storage. -->
+<paths>
+    <files-path name="camera_photos" path="camera_photos/" />
+</paths>

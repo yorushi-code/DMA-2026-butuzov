@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- P10: custom instrumentation runner for the UI and manifest tests. The
+         build fills in targetPackage for each variant being tested. -->
+    <instrumentation
+        android:name="dev.yorushi.dma.CustomTestRunner"
+        android:label="DMA manifest tests" />
+</manifest>

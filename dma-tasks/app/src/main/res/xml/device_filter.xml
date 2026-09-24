@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- P49: USB devices that start the app automatically (vendor/product ids in
+     decimal): an FTDI serial adapter and any USB printer class device. -->
+<resources>
+    <usb-device product-id="24577" vendor-id="1027" />
+    <usb-device class="7" />
+</resources>

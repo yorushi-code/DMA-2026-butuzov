@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand">#1565C0</color>
+    <color name="brand_dark">#0D47A1</color>
+    <color name="new_year">#2E7D32</color>
+    <color name="gold">#FFD54F</color>
+    <color name="splash_background">#0D47A1</color>
+    <color name="danger">#C62828</color>
+</resources>
