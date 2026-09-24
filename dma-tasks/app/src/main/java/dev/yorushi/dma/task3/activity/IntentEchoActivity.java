@@ -54,7 +54,7 @@ public abstract class IntentEchoActivity extends AppCompatActivity {
             StringBuilder values = new StringBuilder();
             Set<String> keys = new TreeSet<>(extras.keySet());
             for (String key : keys) {
-                values.append("\n  ").append(key).append(" = ").append(extras.get(key));
+                values.append("\n  ").append(key).append(" = ").append(rawValue(extras, key));
             }
             line(text, R.string.echo_extras, values.toString());
         } else {
@@ -62,6 +62,12 @@ public abstract class IntentEchoActivity extends AppCompatActivity {
         }
         text.append(extraDetails());
         ((TextView) findViewById(R.id.details)).setText(text.toString().trim());
+    }
+
+    /** Extras come from arbitrary callers, so their type is unknown and no typed getter applies. */
+    @SuppressWarnings("deprecation")
+    private static Object rawValue(Bundle extras, String key) {
+        return extras.get(key);
     }
 
     /** Screen-specific facts appended below the intent, empty by default. */

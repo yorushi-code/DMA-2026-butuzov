@@ -29,6 +29,7 @@ import android.os.PatternMatcher;
 import android.security.NetworkSecurityPolicy;
 import android.util.Rational;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import androidx.core.content.FileProvider;
 import androidx.emoji2.text.EmojiCompat;
 import androidx.test.core.app.ActivityScenario;
@@ -92,6 +93,12 @@ public class ManifestTest {
                 PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
         pm.setComponentEnabledSetting(newYearAlias(),
                 PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
+        // Granted up front: the inspector would otherwise open the system
+        // permission dialog on top of the screens the tests launch.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            InstrumentationRegistry.getInstrumentation().getUiAutomation().grantRuntimePermission(
+                    context.getPackageName(), "android.permission.POST_NOTIFICATIONS");
+        }
         info = ManifestReport.packageInfo(context);
     }
 
@@ -231,8 +238,7 @@ public class ManifestTest {
     @Test
     public void T5_3_signaturePermissionGuardsProtectedService() {
         String name = context.getPackageName() + ".permission.BIND_PROTECTED_API";
-        assertEquals(PermissionInfo.PROTECTION_SIGNATURE, declared(name).protectionLevel
-                & PermissionInfo.PROTECTION_MASK_BASE);
+        assertEquals(PermissionInfo.PROTECTION_SIGNATURE, protection(declared(name)));
         assertEquals(name, service(ProtectedApiService.class).permission);
     }
 
@@ -289,9 +295,9 @@ public class ManifestTest {
 
     @Test
     public void T7_3_searchableBoundToSearchActivityOnly() {
-        assertNotNull(activity(SearchActivity.class).metaData.get("android.app.searchable"));
+        assertTrue(activity(SearchActivity.class).metaData.containsKey("android.app.searchable"));
         ActivityInfo other = activity(InspectorActivity.class);
-        assertTrue(other.metaData == null || other.metaData.get("android.app.searchable") == null);
+        assertTrue(other.metaData == null || !other.metaData.containsKey("android.app.searchable"));
     }
 
     @Test
@@ -310,6 +316,11 @@ public class ManifestTest {
     }
 
     // ------------------------------------------------------- block 1: launch
+
+    @Test
+    public void P01_libraryMinSdkOverridden() {
+        assertEquals(26, info.applicationInfo.minSdkVersion);
+    }
 
     @Test
     public void P02_partnerActionReachesHiddenScreen() {
@@ -356,6 +367,15 @@ public class ManifestTest {
     @Test
     public void P08_masterPasswordExcludedFromRecents() {
         assertTrue((activity(MasterPasswordActivity.class).flags & ActivityInfo.FLAG_EXCLUDE_FROM_RECENTS) != 0);
+    }
+
+    @Test
+    public void P09_masterPasswordWindowIsSecure() {
+        try (ActivityScenario<MasterPasswordActivity> scenario =
+                     ActivityScenario.launch(MasterPasswordActivity.class)) {
+            scenario.onActivity(a -> assertTrue(
+                    (a.getWindow().getAttributes().flags & WindowManager.LayoutParams.FLAG_SECURE) != 0));
+        }
     }
 
     @Test
@@ -406,7 +426,7 @@ public class ManifestTest {
         String permission = context.getPackageName() + ".permission.SYNC_BROADCAST";
         assertEquals(permission, receiver.permission);
         assertEquals(PermissionInfo.PROTECTION_SIGNATURE,
-                declared(permission).protectionLevel & PermissionInfo.PROTECTION_MASK_BASE);
+                protection(declared(permission)));
     }
 
     @Test
@@ -446,7 +466,7 @@ public class ManifestTest {
 
     @Test
     public void P24_shortcutsDeclaredOnLauncherActivity() {
-        assertNotNull(activity(SplashActivity.class).metaData.get("android.app.shortcuts"));
+        assertTrue(activity(SplashActivity.class).metaData.containsKey("android.app.shortcuts"));
     }
 
     @Test
@@ -520,13 +540,13 @@ public class ManifestTest {
     public void P38_accessibilityServiceDeclared() {
         ServiceInfo service = service(DmaAccessibilityService.class);
         assertEquals("android.permission.BIND_ACCESSIBILITY_SERVICE", service.permission);
-        assertNotNull(service.metaData.get("android.accessibilityservice"));
+        assertTrue(service.metaData.containsKey("android.accessibilityservice"));
     }
 
     @Test
     public void P39_syncAdapterAndAuthenticatorDeclared() {
         assertServiceRoutes("android.content.SyncAdapter", SyncAdapterService.class);
-        assertNotNull(service(SyncAdapterService.class).metaData.get("android.content.SyncAdapter"));
+        assertTrue(service(SyncAdapterService.class).metaData.containsKey("android.content.SyncAdapter"));
     }
 
     @Test
@@ -539,7 +559,7 @@ public class ManifestTest {
 
     @Test
     public void P43_androidAutoDescriptorAndMediaService() {
-        assertNotNull(info.applicationInfo.metaData.get("com.google.android.gms.car.application"));
+        assertTrue(info.applicationInfo.metaData.containsKey("com.google.android.gms.car.application"));
         assertServiceRoutes("android.media.browse.MediaBrowserService", AutoMediaService.class);
     }
 
@@ -584,7 +604,7 @@ public class ManifestTest {
         for (String name : info.requestedPermissions) {
             try {
                 PermissionInfo p = pm.getPermissionInfo(name, 0);
-                if ((p.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE) == PermissionInfo.PROTECTION_DANGEROUS) {
+                if (protection(p) == PermissionInfo.PROTECTION_DANGEROUS) {
                     dangerous++;
                 }
             } catch (PackageManager.NameNotFoundException unknownOnThisApiLevel) {
@@ -664,6 +684,12 @@ public class ManifestTest {
             }
         }
         throw new AssertionError("permission not declared: " + name);
+    }
+
+    @SuppressWarnings("deprecation") // getProtection() exists only from API 28
+    private static int protection(PermissionInfo p) {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                ? p.getProtection() : p.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
     }
 
     private static boolean featureRequired(String name) {

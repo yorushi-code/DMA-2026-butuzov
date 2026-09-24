@@ -76,11 +76,16 @@ public final class MainApplication extends Application implements Configuration.
             this.targetHz = targetHz;
         }
 
-        @Override
-        public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-            Display display = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+        @SuppressWarnings("deprecation") // Activity.getDisplay() exists only from API 30
+        private static Display displayOf(Activity activity) {
+            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
                     ? activity.getDisplay()
                     : activity.getWindowManager().getDefaultDisplay();
+        }
+
+        @Override
+        public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+            Display display = displayOf(activity);
             if (display == null) {
                 return;
             }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Removed by the app (T1.2). -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- Both overridden by the app: allowBackup by tools:replace (T1.3),
+         debuggable by the release overlay (P15). -->
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        tools:ignore="HardcodedDebugMode" />
+</manifest>

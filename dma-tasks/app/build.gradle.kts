@@ -67,7 +67,13 @@ android {
     }
 }
 
+tasks.withType<JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
+    options.compilerArgs.addAll(listOf("-Xlint:all", "-Xlint:-serial"))
+}
+
 dependencies {
+    implementation(project(":legacy-analytics"))
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.splashscreen)

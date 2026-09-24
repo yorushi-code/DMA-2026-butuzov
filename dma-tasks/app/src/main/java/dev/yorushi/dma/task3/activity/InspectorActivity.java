@@ -1,12 +1,16 @@
 package dev.yorushi.dma.task3.activity;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import dev.yorushi.dma.MainApplication;
@@ -34,6 +38,9 @@ public final class InspectorActivity extends AppCompatActivity {
             new Object[] {"P19", TransactionConfirmActivity.class},
             new Object[] {"P41", FoldableActivity.class});
 
+    private final ActivityResultLauncher<String> notificationPermission =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> { });
+
     private ComponentName defaultLauncher;
     private ComponentName newYearLauncher;
 
@@ -51,6 +58,18 @@ public final class InspectorActivity extends AppCompatActivity {
         addProbeButtons();
         addInternalScreenButtons();
         ((TextView) findViewById(R.id.report)).setText(ManifestReport.build(this));
+        if (savedInstanceState == null) {
+            requestNotificationsIfNeeded();
+        }
+    }
+
+    /** T5.2: a runtime permission only from API 33; older systems allow notifications at install. */
+    private void requestNotificationsIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+            notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS);
+        }
     }
 
     /** One button per intent filter; it shows the component Android resolved and opens it. */

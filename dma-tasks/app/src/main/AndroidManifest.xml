@@ -24,13 +24,14 @@
     android:sharedUserMaxSdkVersion="32"
     tools:targetApi="33">
 
-    <!-- P01: a library declaring minSdk 24 may be merged into this minSdk-21-era
-         code base; overrideLibrary accepts it and makes the app responsible for
-         guarding the newer API calls. -->
+    <!-- P01: :legacy-analytics declares minSdk 28 while the app supports 26 (the
+         assignment's 24 vs 21). Without overrideLibrary the merge fails; with it
+         the app keeps minSdk 26 and becomes responsible for not calling the
+         library below API 28. -->
     <uses-sdk tools:overrideLibrary="com.example.legacy.analytics" />
 
-    <!-- T1.2: an analytics SDK used to inject READ_PHONE_STATE; the merged
-         manifest must never request it. -->
+    <!-- T1.2: :legacy-analytics requests READ_PHONE_STATE; the merged manifest
+         must never request it. -->
     <uses-permission
         android:name="android.permission.READ_PHONE_STATE"
         tools:node="remove" />
@@ -48,7 +49,7 @@
 
     <!-- T5.2: POST_NOTIFICATIONS exists from API 33. Older systems ignore the
          unknown permission and grant notifications implicitly, so the runtime
-         request in code is guarded by Build.VERSION.SDK_INT >= 33. -->
+         request in InspectorActivity is guarded by Build.VERSION.SDK_INT >= 33. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <!-- T5.4: scoped storage makes this permission meaningless from API 29;

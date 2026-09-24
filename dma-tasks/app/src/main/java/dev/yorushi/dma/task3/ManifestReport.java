@@ -90,9 +90,7 @@ public final class ManifestReport {
         PermissionInfo[] declared = info.permissions == null ? new PermissionInfo[0] : info.permissions;
         section(context, out, R.string.section_declared, declared.length);
         for (PermissionInfo p : declared) {
-            boolean signature = (p.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE)
-                    == PermissionInfo.PROTECTION_SIGNATURE;
-            out.append(shortName(p.name)).append(signature ? " level=signature" : "").append('\n');
+            out.append(shortName(p.name)).append(isSignature(p) ? " level=signature" : "").append('\n');
         }
 
         FeatureInfo[] features = info.reqFeatures == null ? new FeatureInfo[0] : info.reqFeatures;
@@ -105,6 +103,13 @@ public final class ManifestReport {
             out.append(required ? "[required] " : "[optional] ").append(f.name).append('\n');
         }
         return out.toString().trim();
+    }
+
+    @SuppressWarnings("deprecation") // getProtection() exists only from API 28
+    private static boolean isSignature(PermissionInfo p) {
+        int base = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                ? p.getProtection() : p.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
+        return base == PermissionInfo.PROTECTION_SIGNATURE;
     }
 
     private static void application(StringBuilder out, PackageInfo info) {
@@ -136,8 +141,11 @@ public final class ManifestReport {
         if (a.permission != null) {
             s.append(" permission=").append(shortName(a.permission));
         }
-        if (a.configChanges != 0) {
-            s.append(" configChanges=").append(configChanges(a.configChanges));
+        // The platform also sets internal bits (window configuration, asset paths)
+        // on every activity, so only the flags a manifest can declare are listed.
+        String declared = configChanges(a.configChanges);
+        if (!declared.isEmpty()) {
+            s.append(" configChanges=").append(declared);
         }
         if (a.windowLayout != null && a.windowLayout.minWidth > 0) {
             float density = android.content.res.Resources.getSystem().getDisplayMetrics().density;
