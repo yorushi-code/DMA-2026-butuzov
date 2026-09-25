@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <EditText android:id="@+id/etText" style="@style/Task4.Field" android:hint="@string/p07_hint" android:inputType="textMultiLine" android:importantForAutofill="no" android:minLines="3"/>
+        <TextView android:id="@+id/tvCount" style="@style/Task4.Result" />
+    </LinearLayout>
+</ScrollView>

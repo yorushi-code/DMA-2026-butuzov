@@ -9,6 +9,7 @@ index that links every assignment item to its code and its test.
 |---|---|---|---|---|
 | 2 | Java for Android | `:task2` (plain JVM) | 95 / 95 | [docs/task2](docs/task2/README.md) |
 | 3 | Configuring `AndroidManifest.xml` | `:app`, `:legacy-analytics` | 85 / 85 | [docs/task3](docs/task3/README.md) |
+| 4 | First Android apps in Java | `:task4` | 53 / 53 | [docs/task4](docs/task4/README.md) |
 
 ## Building
 
@@ -20,6 +21,8 @@ cd dma-tasks
 ./gradlew :task2:build                                   # task 2: compile, test, package
 ./gradlew assembleMobileDebug assembleMobileRelease assembleWearDebug   # task 3 APKs
 ./gradlew connectedMobileDebugAndroidTest                # task 3 tests, needs a device or emulator
+./gradlew :task4:assembleDebug :task4:testDebugUnitTest  # task 4 app and unit tests
+./gradlew :task4:connectedDebugAndroidTest               # task 4 tests on a device
 docs/task3/verify.sh                                     # task 3 merged-manifest checks
 ```
 
@@ -31,5 +34,6 @@ dma-tasks/
 ├── task2/                         practical work 2: Java exercises, JUnit 5 tests
 ├── app/                           practical work 3: the Android app built around its manifest
 ├── legacy-analytics/              stub library whose manifest the app has to override (task 3)
-└── docs/task2, docs/task3/        write-ups, screenshots, standalone manifests and scripts
+├── task4/                         practical work 4: the app with the 53 items
+└── docs/task2…task4/              write-ups, screenshots, standalone manifests and scripts
 ```

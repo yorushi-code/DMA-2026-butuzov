@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <EditText android:id="@+id/etA" style="@style/Task4.Field" android:hint="@string/p14_hint_a" android:inputType="numberDecimal|numberSigned" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etB" style="@style/Task4.Field" android:hint="@string/p14_hint_b" android:inputType="numberDecimal|numberSigned" android:importantForAutofill="no" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button android:id="@+id/btnPlus" style="@style/Task4.OpButton" android:text="@string/p14_plus" />
+            <Button android:id="@+id/btnMinus" style="@style/Task4.OpButton" android:text="@string/p14_minus" />
+            <Button android:id="@+id/btnTimes" style="@style/Task4.OpButton" android:text="@string/p14_times" />
+            <Button android:id="@+id/btnDivide" style="@style/Task4.OpButton" android:text="@string/p14_divide" />
+        </LinearLayout>
+        <TextView android:id="@+id/tvResult" style="@style/Task4.Result" />
+    </LinearLayout>
+</ScrollView>

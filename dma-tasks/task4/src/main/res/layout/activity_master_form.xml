@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <EditText android:id="@+id/etName" style="@style/Task4.Field" android:hint="@string/pr3_hint_name" android:inputType="text" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etJob" style="@style/Task4.Field" android:hint="@string/p24_hint_job" android:inputType="text" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etPhone" style="@style/Task4.Field" android:hint="@string/p24_hint_phone" android:inputType="phone" android:importantForAutofill="no" />
+        <Button android:id="@+id/btnCreate" style="@style/Task4.Button" android:text="@string/pr3_generate" />
+    </LinearLayout>
+</ScrollView>

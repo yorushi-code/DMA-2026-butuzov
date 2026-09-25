@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <TextView style="@style/Task4.Title" android:text="@string/p23_q1" />
+        <RadioGroup
+            android:id="@+id/rgOptions"
+            style="@style/Task4.Field">
+
+            <RadioButton android:id="@+id/rbOption0" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="@string/p23_q1_o0" />
+            <RadioButton android:id="@+id/rbOption1" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="@string/p23_q1_o1" />
+            <RadioButton android:id="@+id/rbOption2" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="@string/p23_q1_o2" />
+        </RadioGroup>
+        <Button android:id="@+id/btnNext" style="@style/Task4.Button" android:text="@string/next" />
+        <TextView android:id="@+id/tvResult" style="@style/Task4.Result" />
+    </LinearLayout>
+</ScrollView>
