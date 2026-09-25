@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <TextView android:id="@+id/tvHeader" style="@style/Task4.Title" android:text="@string/t3_header" android:textColor="#1976D2"/>
+        <EditText android:id="@+id/etName" style="@style/Task4.Field" android:hint="@string/t3_hint_name" android:inputType="text" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etAge" style="@style/Task4.Field" android:hint="@string/t3_hint_age" android:inputType="number" android:importantForAutofill="no" />
+        <LinearLayout
+            android:id="@+id/buttonRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <Button android:id="@+id/btnSave" style="@style/Task4.RowButton" android:text="@string/t3_save" />
+            <Button android:id="@+id/btnClear" style="@style/Task4.RowButton.Outlined" android:text="@string/t3_clear" android:textColor="#D32F2F" />
+        </LinearLayout>
+        <Button android:id="@+id/btnOrientation" style="@style/Task4.Button" android:text="@string/t3_toggle" android:layout_marginTop="20dp"/>
+        <TextView android:id="@+id/tvOrientation" style="@style/Task4.Result" android:layout_marginTop="20dp"/>
+    </LinearLayout>
+</ScrollView>
