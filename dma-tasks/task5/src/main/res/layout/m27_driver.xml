@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 27: photo with the yellow rating badge hanging off its bottom edge (constrained
+     to the photo's bottom and moved down by half its height); the car and the plate in
+     large type beside it; call and emergency buttons in a row at the bottom. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/gap"
+    android:background="@drawable/bg_card"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/driver_eta"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m27_eta"
+        android:textColor="@color/ok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/driver_photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/gap"
+        android:background="@color/photo_2"
+        android:contentDescription="@string/cd_avatar"
+        android:padding="12dp"
+        android:src="@drawable/ic_person"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/driver_eta"
+        app:shapeAppearance="@style/T5.Shape.Circle"
+        app:tint="@color/on_dark" />
+
+    <TextView
+        android:id="@+id/driver_rating"
+        style="@style/T5.Badge"
+        android:backgroundTint="@color/taxi_yellow"
+        android:drawablePadding="2dp"
+        android:gravity="center_vertical"
+        android:text="@string/m27_rating"
+        android:textColor="@color/text_primary"
+        android:translationY="10dp"
+        app:drawableStartCompat="@drawable/ic_star_small"
+        app:drawableTint="@color/text_primary"
+        app:layout_constraintBottom_toBottomOf="@id/driver_photo"
+        app:layout_constraintEnd_toEndOf="@id/driver_photo"
+        app:layout_constraintStart_toStartOf="@id/driver_photo" />
+
+    <TextView
+        android:id="@+id/driver_name"
+        style="@style/T5.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:text="@string/m27_name"
+        app:layout_constraintBottom_toTopOf="@id/driver_car"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/driver_photo"
+        app:layout_constraintTop_toTopOf="@id/driver_photo"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/driver_car"
+        style="@style/T5.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m27_car"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/driver_plate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/driver_name"
+        app:layout_constraintTop_toBottomOf="@id/driver_name" />
+
+    <TextView
+        android:id="@+id/driver_plate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_tiny"
+        android:background="@drawable/bg_field_box"
+        android:fontFamily="monospace"
+        android:paddingStart="10dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="2dp"
+        android:text="@string/m27_plate"
+        android:textColor="@color/text_primary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/driver_photo"
+        app:layout_constraintStart_toStartOf="@id/driver_name"
+        app:layout_constraintTop_toBottomOf="@id/driver_car" />
+
+    <TextView
+        android:id="@+id/driver_trips"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:text="@string/m27_trips"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/driver_rating" />
+
+    <Button
+        android:id="@+id/driver_call"
+        style="@style/T5.Button.Tonal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_marginEnd="@dimen/gap_small"
+        android:text="@string/m27_call"
+        app:icon="@drawable/ic_phone"
+        app:layout_constraintEnd_toStartOf="@id/driver_sos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/driver_trips" />
+
+    <Button
+        android:id="@+id/driver_sos"
+        style="@style/T5.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/error"
+        android:text="@string/m27_sos"
+        app:icon="@drawable/ic_sos"
+        app:layout_constraintBaseline_toBaselineOf="@id/driver_call"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/driver_call" />
+</androidx.constraintlayout.widget.ConstraintLayout>

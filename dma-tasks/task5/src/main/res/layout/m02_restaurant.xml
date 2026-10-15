@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 2: flat ConstraintLayout card. Logo at the start, a vertical packed chain of
+     name / cuisine / time+rating in the middle, the heart in the top-end corner. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/gap"
+    android:background="@drawable/bg_card"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/rest_logo"
+        style="@style/T5.Photo"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="@color/accent"
+        android:src="@drawable/ic_restaurant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rest_name"
+        style="@style/T5.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/m02_name"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/rest_cuisine"
+        app:layout_constraintEnd_toStartOf="@id/rest_favorite"
+        app:layout_constraintStart_toEndOf="@id/rest_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/rest_cuisine"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m02_cuisine"
+        app:layout_constraintBottom_toTopOf="@id/rest_time"
+        app:layout_constraintEnd_toStartOf="@id/rest_favorite"
+        app:layout_constraintStart_toStartOf="@id/rest_name"
+        app:layout_constraintTop_toBottomOf="@id/rest_name" />
+
+    <TextView
+        android:id="@+id/rest_time"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        android:text="@string/m02_time"
+        app:drawableStartCompat="@drawable/ic_clock"
+        app:drawableTint="@color/text_secondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/rest_name"
+        app:layout_constraintTop_toBottomOf="@id/rest_cuisine" />
+
+    <RatingBar
+        android:id="@+id/rest_stars"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressTint="@color/warning"
+        android:rating="4.8"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="@id/rest_time"
+        app:layout_constraintStart_toEndOf="@id/rest_time"
+        app:layout_constraintTop_toTopOf="@id/rest_time" />
+
+    <TextView
+        android:id="@+id/rest_rating"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/m02_rating"
+        android:textColor="@color/text_primary"
+        app:layout_constraintBaseline_toBaselineOf="@id/rest_time"
+        app:layout_constraintStart_toEndOf="@id/rest_stars" />
+
+    <ImageButton
+        android:id="@+id/rest_favorite"
+        style="@style/T5.IconButton"
+        android:contentDescription="@string/cd_favorite"
+        android:src="@drawable/ic_heart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/error" />
+</androidx.constraintlayout.widget.ConstraintLayout>

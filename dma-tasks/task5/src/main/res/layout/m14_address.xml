@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 14: city and street take the full width; house, entrance, floor and flat share
+     one row 1:1:1:1 (width 0dp, weight 1 each). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/gap">
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/T5.Field"
+        android:hint="@string/m14_city">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addr_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/T5.Field"
+        android:layout_marginTop="12dp"
+        android:hint="@string/m14_street">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addr_street"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/addr_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addr_house_layout"
+            style="@style/T5.Field"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="@string/m14_house">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addr_house"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addr_entrance_layout"
+            style="@style/T5.Field"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/gap_small"
+            android:hint="@string/m14_entrance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addr_entrance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addr_floor_layout"
+            style="@style/T5.Field"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/gap_small"
+            android:hint="@string/m14_floor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addr_floor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addr_flat_layout"
+            style="@style/T5.Field"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/gap_small"
+            android:hint="@string/m14_flat">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addr_flat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/T5.Field"
+        android:layout_marginTop="12dp"
+        android:hint="@string/m14_comment">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addr_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        style="@style/T5.Button"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/m14_save" />
+</LinearLayout>

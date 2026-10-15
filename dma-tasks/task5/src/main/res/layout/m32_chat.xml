@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 32: in a vertical LinearLayout an outgoing bubble is pushed to the end edge by
+     layout_gravity="end" (green, start margin); an incoming one is a row of avatar +
+     bubble on the start side (white-grey, end margin). The input bar stays at the bottom. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/chat_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_small"
+                android:layout_marginEnd="64dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@color/photo_4"
+                    android:contentDescription="@string/cd_avatar"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_person"
+                    app:shapeAppearance="@style/T5.Shape.Circle"
+                    app:tint="@color/on_dark" />
+
+                <TextView
+                    android:id="@+id/chat_in_1"
+                    style="@style/T5.Bubble"
+                    android:layout_marginStart="@dimen/gap_small"
+                    android:background="@drawable/bg_bubble_in"
+                    android:text="@string/m32_in_1" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="@string/m32_time_1" />
+
+            <TextView
+                android:id="@+id/chat_out_1"
+                style="@style/T5.Bubble"
+                android:layout_gravity="end"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="@dimen/gap_small"
+                android:background="@drawable/bg_bubble_out"
+                android:text="@string/m32_out_1" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/m32_time_2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_small"
+                android:layout_marginEnd="64dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@color/photo_4"
+                    android:contentDescription="@string/cd_avatar"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_person"
+                    app:shapeAppearance="@style/T5.Shape.Circle"
+                    app:tint="@color/on_dark" />
+
+                <TextView
+                    android:id="@+id/chat_in_2"
+                    style="@style/T5.Bubble"
+                    android:layout_marginStart="@dimen/gap_small"
+                    android:background="@drawable/bg_bubble_in"
+                    android:text="@string/m32_in_2" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="@string/m32_time_3" />
+
+            <TextView
+                android:id="@+id/chat_out_2"
+                style="@style/T5.Bubble"
+                android:layout_gravity="end"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="@dimen/gap_small"
+                android:background="@drawable/bg_bubble_out"
+                android:text="@string/m32_out_2" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/m32_time_4" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_bar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/gap_small">
+
+        <EditText
+            android:id="@+id/chat_input"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/surface_dim"
+            android:hint="@string/m32_hint"
+            android:importantForAutofill="no"
+            android:inputType="textCapSentences"
+            android:paddingStart="@dimen/gap"
+            android:paddingEnd="@dimen/gap" />
+
+        <ImageButton
+            android:id="@+id/chat_send"
+            style="@style/T5.IconButton"
+            android:contentDescription="@string/cd_send"
+            android:src="@drawable/ic_send"
+            app:tint="@color/brand" />
+    </LinearLayout>
+</LinearLayout>

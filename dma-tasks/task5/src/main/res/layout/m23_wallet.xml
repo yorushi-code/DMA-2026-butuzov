@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 23: balance and eye button form a packed horizontal chain centred in the card;
+     the four round actions are a spread chain under it, each with its label pinned below.
+     Behaviors.walletBalance swaps the amount for dots and the eye icon. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/gap">
+
+    <View
+        android:id="@+id/wallet_card"
+        android:layout_width="0dp"
+        android:layout_height="168dp"
+        android:background="@drawable/bg_gradient_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/wallet_label"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m23_label"
+        android:textColor="@color/on_dark_soft"
+        app:layout_constraintBottom_toTopOf="@id/wallet_balance"
+        app:layout_constraintEnd_toEndOf="@id/wallet_card"
+        app:layout_constraintStart_toStartOf="@id/wallet_card"
+        app:layout_constraintTop_toTopOf="@id/wallet_card"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/wallet_balance"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m23_balance"
+        android:textColor="@color/on_dark"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@id/wallet_card_number"
+        app:layout_constraintEnd_toStartOf="@id/wallet_eye"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/wallet_card"
+        app:layout_constraintTop_toBottomOf="@id/wallet_label" />
+
+    <ImageButton
+        android:id="@+id/wallet_eye"
+        style="@style/T5.IconButton.Light"
+        android:contentDescription="@string/cd_toggle_balance"
+        android:src="@drawable/ic_eye"
+        app:layout_constraintBottom_toBottomOf="@id/wallet_balance"
+        app:layout_constraintEnd_toEndOf="@id/wallet_card"
+        app:layout_constraintStart_toEndOf="@id/wallet_balance"
+        app:layout_constraintTop_toTopOf="@id/wallet_balance" />
+
+    <TextView
+        android:id="@+id/wallet_card_number"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m23_card"
+        android:textColor="@color/on_dark_soft"
+        app:layout_constraintBottom_toBottomOf="@id/wallet_card"
+        app:layout_constraintEnd_toEndOf="@id/wallet_card"
+        app:layout_constraintStart_toStartOf="@id/wallet_card"
+        app:layout_constraintTop_toBottomOf="@id/wallet_balance" />
+
+    <ImageButton
+        android:id="@+id/act_top_up"
+        style="@style/T5.WalletAction"
+        android:contentDescription="@string/m23_top_up"
+        android:src="@drawable/ic_add"
+        app:layout_constraintEnd_toStartOf="@id/act_transfer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wallet_card" />
+
+    <TextView
+        android:id="@+id/act_top_up_label"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/m23_top_up"
+        android:textColor="@color/text_primary"
+        app:layout_constraintEnd_toEndOf="@id/act_top_up"
+        app:layout_constraintStart_toStartOf="@id/act_top_up"
+        app:layout_constraintTop_toBottomOf="@id/act_top_up" />
+
+    <ImageButton
+        android:id="@+id/act_transfer"
+        style="@style/T5.WalletAction"
+        android:contentDescription="@string/m23_transfer"
+        android:src="@drawable/ic_send"
+        app:layout_constraintEnd_toStartOf="@id/act_pay"
+        app:layout_constraintStart_toEndOf="@id/act_top_up"
+        app:layout_constraintTop_toBottomOf="@id/wallet_card" />
+
+    <TextView
+        android:id="@+id/act_transfer_label"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/m23_transfer"
+        android:textColor="@color/text_primary"
+        app:layout_constraintEnd_toEndOf="@id/act_transfer"
+        app:layout_constraintStart_toStartOf="@id/act_transfer"
+        app:layout_constraintTop_toBottomOf="@id/act_transfer" />
+
+    <ImageButton
+        android:id="@+id/act_pay"
+        style="@style/T5.WalletAction"
+        android:contentDescription="@string/m23_pay"
+        android:src="@drawable/ic_card"
+        app:layout_constraintEnd_toStartOf="@id/act_more"
+        app:layout_constraintStart_toEndOf="@id/act_transfer"
+        app:layout_constraintTop_toBottomOf="@id/wallet_card" />
+
+    <TextView
+        android:id="@+id/act_pay_label"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/m23_pay"
+        android:textColor="@color/text_primary"
+        app:layout_constraintEnd_toEndOf="@id/act_pay"
+        app:layout_constraintStart_toStartOf="@id/act_pay"
+        app:layout_constraintTop_toBottomOf="@id/act_pay" />
+
+    <ImageButton
+        android:id="@+id/act_more"
+        style="@style/T5.WalletAction"
+        android:contentDescription="@string/m23_more"
+        android:src="@drawable/ic_more_horiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/act_pay"
+        app:layout_constraintTop_toBottomOf="@id/wallet_card" />
+
+    <TextView
+        android:id="@+id/act_more_label"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/m23_more"
+        android:textColor="@color/text_primary"
+        app:layout_constraintEnd_toEndOf="@id/act_more"
+        app:layout_constraintStart_toStartOf="@id/act_more"
+        app:layout_constraintTop_toBottomOf="@id/act_more" />
+
+    <TextView
+        android:id="@+id/wallet_history"
+        style="@style/T5.Section"
+        android:layout_width="0dp"
+        android:text="@string/m23_history"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/act_top_up_label" />
+
+    <TextView
+        android:id="@+id/wallet_op_1"
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m23_op_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wallet_history" />
+
+    <TextView
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m23_op_1_sum"
+        app:layout_constraintBaseline_toBaselineOf="@id/wallet_op_1"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/wallet_op_2"
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/m23_op_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wallet_op_1" />
+
+    <TextView
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m23_op_2_sum"
+        android:textColor="@color/ok"
+        app:layout_constraintBaseline_toBaselineOf="@id/wallet_op_2"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

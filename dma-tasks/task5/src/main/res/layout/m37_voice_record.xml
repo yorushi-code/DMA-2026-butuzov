@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 37: the timer and the animated waveform in the middle; at the bottom a bar with
+     the trash can, the swipe hint and the microphone. Dragging the microphone to the
+     left past the hint cancels the recording (Behaviors.voiceRecord). -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/voice_status"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        android:text="@string/m37_recording"
+        android:textColor="@color/error"
+        app:drawableStartCompat="@drawable/bg_dot"
+        app:drawableTint="@color/error"
+        app:layout_constraintBottom_toTopOf="@id/voice_timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/voice_timer"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="@string/m37_timer"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@id/voice_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/voice_status" />
+
+    <dev.yorushi.dma.task5.widget.WaveformView
+        android:id="@+id/voice_wave"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="@dimen/gap_large"
+        android:paddingStart="@dimen/gap_large"
+        android:paddingEnd="@dimen/gap_large"
+        app:layout_constraintBottom_toTopOf="@id/voice_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/voice_timer" />
+
+    <View
+        android:id="@+id/voice_bar"
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        android:background="@drawable/bg_bottom_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/voice_trash"
+        android:layout_width="@dimen/touch"
+        android:layout_height="@dimen/touch"
+        android:layout_marginStart="@dimen/gap"
+        android:contentDescription="@string/cd_trash"
+        android:padding="12dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="@id/voice_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/voice_bar"
+        app:tint="@color/text_muted" />
+
+    <TextView
+        android:id="@+id/voice_hint"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m37_hint"
+        app:layout_constraintBottom_toBottomOf="@id/voice_bar"
+        app:layout_constraintEnd_toStartOf="@id/voice_mic"
+        app:layout_constraintStart_toEndOf="@id/voice_trash"
+        app:layout_constraintTop_toTopOf="@id/voice_bar" />
+
+    <ImageButton
+        android:id="@+id/voice_mic"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="@dimen/gap"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="@color/error"
+        android:contentDescription="@string/cd_record"
+        android:padding="18dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_mic"
+        app:layout_constraintBottom_toBottomOf="@id/voice_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/voice_bar"
+        app:tint="@color/on_dark" />
+</androidx.constraintlayout.widget.ConstraintLayout>

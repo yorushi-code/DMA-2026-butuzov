@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 44: three layers: the camera preview (a stand-in here: no camera permission is
+     needed for a layout exercise), ScannerOverlayView darkening everything but the
+     centred square window and drawing its glowing frame, and the controls on top. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="Overdraw"
+    android:background="@color/media_dark">
+
+    <ImageView
+        android:id="@+id/qr_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_call"
+        android:importantForAccessibility="no"
+        android:scaleType="center"
+        android:src="@drawable/art_qr"
+        app:tint="@color/on_dark" />
+
+    <dev.yorushi.dma.task5.widget.ScannerOverlayView
+        android:id="@+id/qr_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/qr_close"
+        style="@style/T5.IconButton.Light"
+        android:layout_margin="@dimen/gap_small"
+        android:contentDescription="@string/cd_close"
+        android:src="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/qr_hint"
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/bg_pill"
+        android:backgroundTint="@color/scrim"
+        android:paddingStart="@dimen/gap"
+        android:paddingTop="@dimen/gap_small"
+        android:paddingEnd="@dimen/gap"
+        android:paddingBottom="@dimen/gap_small"
+        android:text="@string/m44_hint"
+        android:textColor="@color/on_dark" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/qr_flash"
+            style="@style/T5.ReelAction"
+            android:layout_width="96dp"
+            android:text="@string/m44_flash"
+            app:drawableTopCompat="@drawable/ic_flash" />
+
+        <TextView
+            android:id="@+id/qr_gallery"
+            style="@style/T5.ReelAction"
+            android:layout_width="96dp"
+            android:text="@string/m44_gallery"
+            app:drawableTopCompat="@drawable/ic_image" />
+    </LinearLayout>
+</FrameLayout>

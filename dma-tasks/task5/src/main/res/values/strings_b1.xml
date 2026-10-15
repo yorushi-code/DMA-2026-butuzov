@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m01_discount">−35%</string>
+    <string name="m01_name">Смарт-часы Pulse 4 с AMOLED-экраном, GPS и пульсометром</string>
+    <string name="m01_price">5 190 ₽</string>
+    <string name="m01_old_price"><strike>7 990 ₽</strike></string>
+
+    <string name="m02_name">Пиццерия «Тесто»</string>
+    <string name="m02_cuisine">Пицца · Паста · Салаты</string>
+    <string name="m02_time">25–35 мин</string>
+    <string name="m02_rating">4,8</string>
+
+    <string name="m03_title">Скидка 50% на первый заказ</string>
+    <string name="m03_text">По промокоду HELLO до конца недели</string>
+    <string name="m03_action">Забрать</string>
+
+    <string name="m04_bank">ЯрБанк</string>
+    <string name="m04_number">5536  9137  4820  1147</string>
+    <string name="m04_holder">SEMYON BUTUZOV</string>
+    <string name="m04_expiry">09/29</string>
+    <string name="m04_note">Ширина карты — 0dp между краями, высота из layout_constraintDimensionRatio=\"85:54\", как у настоящей пластиковой карты (85,6 × 54 мм).</string>
+
+    <string name="m05_title">Kia K5, 2022</string>
+    <string name="m05_mileage_label">Пробег</string>
+    <string name="m05_mileage">48 000 км</string>
+    <string name="m05_engine_label">Двигатель</string>
+    <string name="m05_engine">2,5 л · 194 л. с.</string>
+    <string name="m05_gearbox_label">Коробка</string>
+    <string name="m05_gearbox">Автомат</string>
+    <string name="m05_drive_label">Привод</string>
+    <string name="m05_drive">Передний</string>
+    <string name="m05_note">Таблица собрана на одном ConstraintLayout: колонки разделяет Guideline на 50%, строки — связи сверху вниз. Вложенных LinearLayout нет.</string>
+
+    <string name="m06_from_city">Москва</string>
+    <string name="m06_to_city">Санкт-Петербург</string>
+    <string name="m06_from_code">SVO</string>
+    <string name="m06_to_code">LED</string>
+    <string name="m06_departure">08:40</string>
+    <string name="m06_arrival">10:05</string>
+    <string name="m06_duration">1 ч 25 мин</string>
+    <string name="m06_date">12 окт, вс</string>
+    <string name="m06_price">4 560 ₽</string>
+    <string name="cd_flight">Рейс</string>
+
+    <string name="m07_title">Северное сияние</string>
+    <string name="m07_artist">Аурора Бэнд</string>
+    <string name="m07_explicit">E</string>
+    <string name="m07_duration">3:47</string>
+
+    <string name="m08_name">Тариф «Свободный»</string>
+    <string name="m08_minutes_label">Минуты</string>
+    <string name="m08_gb_label">Интернет</string>
+    <string name="m08_minutes">%1$d мин</string>
+    <string name="m08_gb">%1$d ГБ</string>
+    <string name="m08_price">%1$d ₽/мес</string>
+    <string name="m08_roaming">Безлимит в мессенджерах</string>
+
+    <string name="m09_hit">ХИТ ПРОДАЖ</string>
+    <string name="m09_title">Премиум на год</string>
+    <string name="m09_price">1 990 ₽</string>
+    <string name="m09_old_price"><strike>3 588 ₽</strike></string>
+    <string name="m09_per_month">166 ₽ в месяц</string>
+    <string name="m09_feature">Без рекламы · офлайн-режим · 6 устройств</string>
+    <string name="m09_action">Оформить</string>
+
+    <string name="m10_name">Гранд Отель Нева</string>
+    <string name="m10_address">Невский пр., 57 · 300 м до метро</string>
+    <string name="m10_rating">4,7</string>
+    <string name="m10_reviews">2 315 отзывов</string>
+    <string name="m10_price">от 8 400 ₽ за ночь</string>
+    <string name="m10_book">Забронировать</string>
+</resources>

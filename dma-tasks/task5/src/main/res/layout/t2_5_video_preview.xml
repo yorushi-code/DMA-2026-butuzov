@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T2.5: the play icon is the top layer of the preview's FrameLayout, centred by gravity. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/gap">
+
+    <FrameLayout
+        android:id="@+id/video_frame"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            style="@style/T5.Photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_gradient_video" />
+
+        <ImageView
+            android:id="@+id/video_play"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:alpha="0.85"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/scrim"
+            android:contentDescription="@string/cd_play"
+            android:padding="16dp"
+            android:src="@drawable/ic_play"
+            app:tint="@color/on_dark" />
+    </FrameLayout>
+
+    <TextView
+        style="@style/T5.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_small"
+        android:text="@string/t2_5_title" />
+</LinearLayout>

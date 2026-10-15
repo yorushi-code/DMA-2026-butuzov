@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T3.5: 28sp and 14sp text share one baseline (layout_alignBaseline), so the small
+     unit sits on the same line as the digits instead of at their top or centre. -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/gap"
+    android:background="@drawable/bg_card"
+    android:padding="@dimen/gap">
+
+    <TextView
+        android:id="@+id/tariff_caption"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/t3_5_caption" />
+
+    <TextView
+        android:id="@+id/price_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tariff_caption"
+        android:layout_marginTop="@dimen/gap_small"
+        android:text="@string/t3_5_price"
+        android:textColor="@color/text_primary"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/price_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/price_big"
+        android:layout_marginStart="@dimen/gap_tiny"
+        android:layout_toEndOf="@id/price_big"
+        android:text="@string/t3_5_unit"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
+</RelativeLayout>

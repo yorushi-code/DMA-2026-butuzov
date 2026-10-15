@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m31_title">Северное сияние над спящим городом · расширенная версия (Live at Moscow 2026)</string>
+    <string name="m31_artist">Аурора Бэнд</string>
+    <string name="m31_elapsed">1:24</string>
+    <string name="m31_total">4:51</string>
+    <string name="cd_shuffle">Перемешать</string>
+    <string name="cd_prev">Предыдущий трек</string>
+    <string name="cd_next">Следующий трек</string>
+    <string name="cd_repeat">Повтор</string>
+    <string name="cd_seek">Перемотка</string>
+
+    <string name="m32_in_1">Привет! Ты уже посмотрел макеты?</string>
+    <string name="m32_out_1">Да, всё отлично 👍 Пара мелочей по отступам.</string>
+    <string name="m32_in_2">Скинешь списком? Поправлю сегодня вечером.</string>
+    <string name="m32_out_2">Конечно, через полчаса пришлю.</string>
+    <string name="m32_time_1">14:30</string>
+    <string name="m32_time_2">14:31</string>
+    <string name="m32_time_3">14:33</string>
+    <string name="m32_time_4">14:34</string>
+    <string name="m32_hint">Сообщение</string>
+    <string name="cd_send">Отправить</string>
+
+    <string name="m33_header">Reels</string>
+    <string name="m33_author">\@night.walks</string>
+    <string name="m33_caption">Огни ночного города за одну минуту 🌃 #москва #ночь</string>
+    <string name="m33_likes">12,4 тыс.</string>
+    <string name="m33_comments">318</string>
+    <string name="m33_reposts">1 052</string>
+    <string name="m33_sound">Звук</string>
+    <string name="cd_like">Нравится</string>
+    <string name="cd_comments">Комментарии</string>
+    <string name="cd_repost">Поделиться</string>
+    <string name="cd_sound">Звук</string>
+
+    <string name="m34_status">Вызов…</string>
+    <string name="m34_name">Мама</string>
+    <string name="m34_number">+7 912 345-67-89</string>
+    <string name="cd_decline">Сбросить</string>
+    <string name="cd_accept">Ответить</string>
+    <string name="m34_decline">Сбросить</string>
+    <string name="m34_accept">Ответить</string>
+
+    <string name="m35_title">Комментарии · 4</string>
+    <string name="m35_user_1">Ольга</string>
+    <string name="m35_user_2">Дмитрий</string>
+    <string name="m35_user_3">Ольга</string>
+    <string name="m35_user_4">Ирина</string>
+    <string name="m35_time_1">2 ч</string>
+    <string name="m35_time_2">1 ч</string>
+    <string name="m35_time_3">45 мин</string>
+    <string name="m35_time_4">20 мин</string>
+    <string name="m35_text_1">Отличная статья! А есть такой же разбор для ConstraintLayout?</string>
+    <string name="m35_text_2">Есть, во второй части. Там и про Barrier, и про цепочки.</string>
+    <string name="m35_text_3">Спасибо, нашла 🙌</string>
+    <string name="m35_text_4">Про overdraw особенно полезно, у нас как раз был красный экран.</string>
+    <string name="m35_reply">Ответить</string>
+
+    <string name="m36_quality">HD</string>
+    <string name="m36_time">12:08 / 24:37</string>
+    <string name="m36_title">Лекция 5 · Разметки Android</string>
+    <string name="m36_hint">Нажмите на видео, чтобы показать или скрыть элементы управления.</string>
+    <string name="cd_fullscreen">Во весь экран</string>
+    <string name="cd_quality">Качество</string>
+
+    <string name="m37_timer">0:00</string>
+    <string name="m37_hint">‹ Смахните влево, чтобы отменить</string>
+    <string name="m37_cancelled">Запись удалена</string>
+    <string name="m37_recording">Идёт запись</string>
+    <string name="cd_record">Удерживайте для записи</string>
+    <string name="cd_trash">Корзина</string>
+
+    <string name="m38_selected">Выбрано: %1$d</string>
+    <string name="m38_send">Отправить</string>
+    <string name="cd_photo">Фото %1$d</string>
+
+    <string name="m39_author">night.walks</string>
+    <string name="m39_time">3 ч</string>
+    <string name="m39_reply">Ответить…</string>
+
+    <string name="m40_feed">Новое в подписках</string>
+    <string name="m40_show">Разговоры о коде</string>
+    <string name="m40_episode">Выпуск 42 · Как устроен рендеринг в Android</string>
+    <string name="m40_duration">48 мин</string>
+    <string name="m40_show_2">Сетевой час</string>
+    <string name="m40_episode_2">Выпуск 17 · UDP, QUIC и задержки</string>
+    <string name="m40_duration_2">1 ч 12 мин</string>
+</resources>

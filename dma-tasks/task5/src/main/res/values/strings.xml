@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DMA Task 5</string>
+    <string name="main_subtitle">Практическая работа 5 · разметки и их комбинирование · 80 пунктов</string>
+    <string name="menu_entry">%1$s · %2$s</string>
+    <string name="screen_title">%1$s · %2$s</string>
+
+    <string name="section_t1">Тема 1 · LinearLayout</string>
+    <string name="section_t2">Тема 2 · FrameLayout</string>
+    <string name="section_t3">Тема 3 · RelativeLayout</string>
+    <string name="section_t4">Тема 4 · ConstraintLayout</string>
+    <string name="section_t5">Тема 5 · ScrollView</string>
+    <string name="section_t6">Тема 6 · include, merge, ViewStub</string>
+    <string name="section_b1">Блок 1 · карточки (1–10)</string>
+    <string name="section_b2">Блок 2 · формы и настройки (11–20)</string>
+    <string name="section_b3">Блок 3 · профили и дашборды (21–30)</string>
+    <string name="section_b4">Блок 4 · медиа и чаты (31–40)</string>
+    <string name="section_b5">Блок 5 · составные экраны (41–50)</string>
+
+    <!-- Shared words. -->
+    <string name="back">Назад</string>
+    <string name="next">Далее</string>
+    <string name="cd_back">Назад</string>
+    <string name="cd_settings">Настройки</string>
+    <string name="cd_search">Поиск</string>
+    <string name="cd_favorite">В избранное</string>
+    <string name="cd_more">Ещё</string>
+    <string name="cd_share">Поделиться</string>
+    <string name="cd_cart">Корзина</string>
+    <string name="cd_play">Воспроизвести</string>
+    <string name="cd_pause">Пауза</string>
+    <string name="cd_close">Закрыть</string>
+    <string name="cd_avatar">Аватар</string>
+    <string name="cd_camera">Сменить фото</string>
+    <string name="cd_add">Добавить</string>
+    <string name="hint_email">Электронная почта</string>
+    <string name="hint_password">Пароль</string>
+    <string name="sign_in">Войти</string>
+    <string name="rub">руб.</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 43: a flat illustration, a phone with a parcel and a check mark. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <path android:fillColor="#C5CAFF" android:pathData="M100,100m-90,0a90,90 0,1 1,180 0a90,90 0,1 1,-180 0" />
+    <path android:fillColor="#1A237E" android:pathData="M64,28h72a10,10 0,0 1,10 10v124a10,10 0,0 1,-10 10h-72a10,10 0,0 1,-10 -10v-124a10,10 0,0 1,10 -10z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M62,44h76v108h-76z" />
+    <path android:fillColor="#FFB74D" android:pathData="M76,78h48v44h-48z" />
+    <path android:fillColor="#FF8A00" android:pathData="M96,78h8v44h-8z M76,92h48v6h-48z" />
+    <path android:fillColor="#00C853" android:pathData="M148,52m-22,0a22,22 0,1 1,44 0a22,22 0,1 1,-44 0" />
+    <path android:fillColor="#FFFFFF" android:pathData="M139,52l6,6 13,-13 3,3 -16,16 -9,-9z" />
+    <path android:fillColor="#3D5AFE" android:pathData="M74,132h52v8h-52z" />
+</vector>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 24: the chart on top, under it a horizontal scroll of metric cards. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/gap"
+    android:paddingBottom="@dimen/gap">
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:text="@string/m24_title" />
+
+    <TextView
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:text="@string/m24_total" />
+
+    <TextView
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:text="@string/m24_growth"
+        android:textColor="@color/ok" />
+
+    <dev.yorushi.dma.task5.widget.BarChartView
+        android:id="@+id/sales_chart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/gap"
+        android:contentDescription="@string/cd_chart"
+        android:paddingStart="@dimen/gap"
+        android:paddingEnd="@dimen/gap" />
+
+    <HorizontalScrollView
+        android:id="@+id/metrics_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:clipToPadding="false"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout style="@style/T5.MetricCard">
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_ctr" />
+
+                <TextView
+                    style="@style/T5.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gap_tiny"
+                    android:text="@string/m24_ctr_value"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_ctr_delta"
+                    android:textColor="@color/ok" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/T5.MetricCard">
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_conv" />
+
+                <TextView
+                    style="@style/T5.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gap_tiny"
+                    android:text="@string/m24_conv_value"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_conv_delta"
+                    android:textColor="@color/error" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/T5.MetricCard">
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_check" />
+
+                <TextView
+                    style="@style/T5.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gap_tiny"
+                    android:text="@string/m24_check_value"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_check_delta"
+                    android:textColor="@color/ok" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/T5.MetricCard">
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_orders" />
+
+                <TextView
+                    style="@style/T5.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gap_tiny"
+                    android:text="@string/m24_orders_value"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m24_orders_delta"
+                    android:textColor="@color/ok" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

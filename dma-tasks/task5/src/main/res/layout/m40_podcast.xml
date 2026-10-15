@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 40: a feed banner with the play button right in it: cover, a packed chain of
+     show / episode / duration, and the round button at the end. Tapping it starts
+     playback in place (icon to pause, a progress bar appears) without leaving the feed. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/gap_small">
+
+    <TextView
+        style="@style/T5.Section"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap_small"
+        android:text="@string/m40_feed" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/podcast_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap_small"
+        android:layout_marginEnd="@dimen/gap"
+        android:background="@drawable/bg_card"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/podcast_cover_1"
+            style="@style/T5.Photo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_3"
+            android:src="@drawable/ic_mic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/podcast_show_1"
+            style="@style/T5.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="@dimen/gap_small"
+            android:text="@string/m40_show"
+            app:layout_constraintBottom_toTopOf="@id/podcast_episode_1"
+            app:layout_constraintEnd_toStartOf="@id/podcast_play_1"
+            app:layout_constraintStart_toEndOf="@id/podcast_cover_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/podcast_episode_1"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/m40_episode"
+            app:layout_constraintBottom_toTopOf="@id/podcast_duration_1"
+            app:layout_constraintEnd_toEndOf="@id/podcast_show_1"
+            app:layout_constraintStart_toStartOf="@id/podcast_show_1"
+            app:layout_constraintTop_toBottomOf="@id/podcast_show_1" />
+
+        <TextView
+            android:id="@+id/podcast_duration_1"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="@string/m40_duration"
+            app:drawableStartCompat="@drawable/ic_clock"
+            app:drawableTint="@color/text_muted"
+            app:layout_constraintBottom_toTopOf="@id/podcast_progress_1"
+            app:layout_constraintStart_toStartOf="@id/podcast_show_1"
+            app:layout_constraintTop_toBottomOf="@id/podcast_episode_1" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/podcast_progress_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:indeterminate="false"
+            android:progress="0"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/podcast_show_1"
+            app:layout_constraintStart_toStartOf="@id/podcast_show_1"
+            app:layout_constraintTop_toBottomOf="@id/podcast_duration_1"
+            app:trackCornerRadius="2dp" />
+
+        <ImageButton
+            android:id="@+id/podcast_play_1"
+            android:layout_width="@dimen/touch"
+            android:layout_height="@dimen/touch"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/brand"
+            android:contentDescription="@string/cd_play"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/on_dark" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/podcast_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap_small"
+        android:layout_marginEnd="@dimen/gap"
+        android:background="@drawable/bg_card"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/podcast_cover_2"
+            style="@style/T5.Photo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_2"
+            android:src="@drawable/ic_mic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/podcast_show_2"
+            style="@style/T5.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="@dimen/gap_small"
+            android:text="@string/m40_show_2"
+            app:layout_constraintBottom_toTopOf="@id/podcast_episode_2"
+            app:layout_constraintEnd_toStartOf="@id/podcast_play_2"
+            app:layout_constraintStart_toEndOf="@id/podcast_cover_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/podcast_episode_2"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/m40_episode_2"
+            app:layout_constraintBottom_toTopOf="@id/podcast_duration_2"
+            app:layout_constraintEnd_toEndOf="@id/podcast_show_2"
+            app:layout_constraintStart_toStartOf="@id/podcast_show_2"
+            app:layout_constraintTop_toBottomOf="@id/podcast_show_2" />
+
+        <TextView
+            android:id="@+id/podcast_duration_2"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="@string/m40_duration_2"
+            app:drawableStartCompat="@drawable/ic_clock"
+            app:drawableTint="@color/text_muted"
+            app:layout_constraintBottom_toTopOf="@id/podcast_progress_2"
+            app:layout_constraintStart_toStartOf="@id/podcast_show_2"
+            app:layout_constraintTop_toBottomOf="@id/podcast_episode_2" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/podcast_progress_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:indeterminate="false"
+            android:progress="0"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/podcast_show_2"
+            app:layout_constraintStart_toStartOf="@id/podcast_show_2"
+            app:layout_constraintTop_toBottomOf="@id/podcast_duration_2"
+            app:trackCornerRadius="2dp" />
+
+        <ImageButton
+            android:id="@+id/podcast_play_2"
+            android:layout_width="@dimen/touch"
+            android:layout_height="@dimen/touch"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/brand"
+            android:contentDescription="@string/cd_play"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/on_dark" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -4,6 +4,7 @@ junit5 = "5.11.4"
 appcompat = "1.7.0"
 material = "1.12.0"
 core = "1.15.0"
+constraintlayout = "2.2.0"
 splashscreen = "1.0.1"
 work = "2.10.0"
 startup = "1.2.0"
@@ -25,6 +26,7 @@ androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", versi
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "work" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
 androidx-emoji2 = { module = "androidx.emoji2:emoji2", version.ref = "emoji2" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }

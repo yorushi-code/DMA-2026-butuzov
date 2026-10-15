@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Item 12: the price range the filter starts with and resets to. -->
+    <array name="m12_default_range">
+        <item>5000</item>
+        <item>30000</item>
+    </array>
+
+    <string-array name="week_days">
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+        <item>Вс</item>
+    </string-array>
+</resources>

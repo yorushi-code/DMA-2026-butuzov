@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 49: three bands of a vertical LinearLayout: the step indicator (fixed height),
+     the form (a ScrollView with height 0dp + weight 1, the only part that scrolls) and
+     the Back / Next row (two equal weights). Behaviors.insuranceSteps moves the steps. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ins_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brand_soft"
+        android:orientation="vertical"
+        android:padding="@dimen/gap">
+
+        <TextView
+            android:id="@+id/ins_step"
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/brand" />
+
+        <TextView
+            android:id="@+id/ins_step_title"
+            style="@style/T5.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/ins_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:max="4"
+            app:trackCornerRadius="3dp"
+            app:trackThickness="6dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/ins_form_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/gap">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/T5.Field"
+                android:layout_marginTop="12dp"
+                android:hint="@string/m49_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ins_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/T5.Field"
+                android:layout_marginTop="12dp"
+                android:hint="@string/m49_birth">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ins_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/T5.Field"
+                android:layout_marginTop="12dp"
+                android:hint="@string/m49_passport">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ins_passport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/T5.Field"
+                android:layout_marginTop="12dp"
+                android:hint="@string/m49_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ins_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/T5.Field"
+                android:layout_marginTop="12dp"
+                android:hint="@string/m49_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ins_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/T5.Field"
+                android:layout_marginTop="12dp"
+                android:hint="@string/m49_address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ins_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap"
+                android:text="@string/m49_agree" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ins_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_bar"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/ins_back"
+            style="@style/T5.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="@dimen/gap_small"
+            android:layout_weight="1"
+            android:text="@string/back" />
+
+        <Button
+            android:id="@+id/ins_next"
+            style="@style/T5.Button"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="@string/next" />
+    </LinearLayout>
+</LinearLayout>

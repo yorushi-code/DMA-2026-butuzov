@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 1: one product card; m01_marketplace.xml includes it twice. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card"
+    android:orientation="vertical"
+    android:padding="@dimen/gap_small">
+
+    <!-- The photo and the discount badge are two layers of one FrameLayout; the
+         square frame keeps the photo 1:1 at any card width. -->
+    <dev.yorushi.dma.task5.widget.SquareFrameLayout
+        android:id="@+id/market_photo_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/market_photo"
+            style="@style/T5.Photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_card_flat"
+            android:backgroundTint="@color/photo_5" />
+
+        <TextView
+            android:id="@+id/market_badge"
+            style="@style/T5.Badge"
+            android:layout_gravity="top|start"
+            android:layout_margin="@dimen/gap_small"
+            android:text="@string/m01_discount" />
+    </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+    <TextView
+        android:id="@+id/market_name"
+        style="@style/T5.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_small"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="@string/m01_name"
+        android:textColor="@color/text_primary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_tiny"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/market_price"
+            style="@style/T5.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m01_price"
+            android:textColor="@color/error"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/market_old_price"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="@string/m01_old_price" />
+    </LinearLayout>
+</LinearLayout>

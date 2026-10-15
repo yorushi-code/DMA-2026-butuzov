@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 48: a 50% Guideline splits the screen; a 1dp View on it is the divider. Each
+     parameter is a label + value pair on its own side, centred in its half; the better
+     value of each row is highlighted green. One flat ConstraintLayout. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/gap">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/cmp_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <View
+            android:id="@+id/cmp_divider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/outline"
+            app:layout_constraintBottom_toBottomOf="@id/cmp_camera_a"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cmp_name_a"
+            style="@style/T5.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m48_a"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cmp_name_b"
+            style="@style/T5.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m48_b"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cmp_photo_a"
+            style="@style/T5.Photo"
+            android:layout_width="96dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="@dimen/gap_small"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_5"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_name_a" />
+
+        <ImageView
+            android:id="@+id/cmp_photo_b"
+            style="@style/T5.Photo"
+            android:layout_width="96dp"
+            android:layout_height="120dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toTopOf="@id/cmp_photo_a" />
+
+        <TextView
+            android:id="@+id/cmp_price_a_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:text="@string/m48_price"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_photo_a" />
+
+        <TextView
+            android:id="@+id/cmp_price_a"
+            style="@style/T5.CompareValue"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/ok_soft"
+            android:textColor="@color/ok"
+            android:textStyle="bold"
+            android:text="@string/m48_price_a"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_price_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_price_b_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m48_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintBaseline_toBaselineOf="@id/cmp_price_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_price_b"
+            style="@style/T5.CompareValue"
+            android:text="@string/m48_price_b"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toBottomOf="@id/cmp_price_b_label" />
+
+        <TextView
+            android:id="@+id/cmp_screen_a_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:text="@string/m48_screen"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_price_a" />
+
+        <TextView
+            android:id="@+id/cmp_screen_a"
+            style="@style/T5.CompareValue"
+            android:text="@string/m48_screen_a"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_screen_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_screen_b_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m48_screen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintBaseline_toBaselineOf="@id/cmp_screen_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_screen_b"
+            style="@style/T5.CompareValue"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/ok_soft"
+            android:textColor="@color/ok"
+            android:textStyle="bold"
+            android:text="@string/m48_screen_b"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toBottomOf="@id/cmp_screen_b_label" />
+
+        <TextView
+            android:id="@+id/cmp_battery_a_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:text="@string/m48_battery"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_screen_a" />
+
+        <TextView
+            android:id="@+id/cmp_battery_a"
+            style="@style/T5.CompareValue"
+            android:text="@string/m48_battery_a"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_battery_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_battery_b_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m48_battery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintBaseline_toBaselineOf="@id/cmp_battery_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_battery_b"
+            style="@style/T5.CompareValue"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/ok_soft"
+            android:textColor="@color/ok"
+            android:textStyle="bold"
+            android:text="@string/m48_battery_b"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toBottomOf="@id/cmp_battery_b_label" />
+
+        <TextView
+            android:id="@+id/cmp_weight_a_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:text="@string/m48_weight"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_battery_a" />
+
+        <TextView
+            android:id="@+id/cmp_weight_a"
+            style="@style/T5.CompareValue"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/ok_soft"
+            android:textColor="@color/ok"
+            android:textStyle="bold"
+            android:text="@string/m48_weight_a"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_weight_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_weight_b_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m48_weight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintBaseline_toBaselineOf="@id/cmp_weight_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_weight_b"
+            style="@style/T5.CompareValue"
+            android:text="@string/m48_weight_b"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toBottomOf="@id/cmp_weight_b_label" />
+
+        <TextView
+            android:id="@+id/cmp_camera_a_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:text="@string/m48_camera"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_weight_a" />
+
+        <TextView
+            android:id="@+id/cmp_camera_a"
+            style="@style/T5.CompareValue"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/ok_soft"
+            android:textColor="@color/ok"
+            android:textStyle="bold"
+            android:text="@string/m48_camera_a"
+            app:layout_constraintEnd_toEndOf="@id/cmp_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_camera_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_camera_b_label"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m48_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintBaseline_toBaselineOf="@id/cmp_camera_a_label" />
+
+        <TextView
+            android:id="@+id/cmp_camera_b"
+            style="@style/T5.CompareValue"
+            android:text="@string/m48_camera_b"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cmp_mid"
+            app:layout_constraintTop_toBottomOf="@id/cmp_camera_b_label" />
+
+        <TextView
+            style="@style/T5.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_large"
+            android:gravity="center"
+            android:text="@string/m48_legend"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cmp_camera_a" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

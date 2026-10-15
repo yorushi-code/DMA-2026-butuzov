@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 34: layer 1 is the caller's photo stretched over the screen and blurred
+     (RenderEffect, Behaviors.callBlur), layer 2 a dark scrim, layer 3 the call UI: a
+     ConstraintLayout with status, name and avatar centred and two round buttons below. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_call">
+
+    <ImageView
+        android:id="@+id/call_backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
+        app:tint="@color/photo_2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/scrim" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/gap_large">
+
+        <TextView
+            android:id="@+id/call_status"
+            style="@style/T5.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m34_status"
+            android:textColor="@color/on_dark_soft"
+            app:layout_constraintBottom_toTopOf="@id/call_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/call_name"
+            style="@style/T5.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m34_name"
+            android:textColor="@color/on_dark"
+            app:layout_constraintBottom_toTopOf="@id/call_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/call_status" />
+
+        <TextView
+            android:id="@+id/call_number"
+            style="@style/T5.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m34_number"
+            android:textColor="@color/on_dark_soft"
+            app:layout_constraintBottom_toTopOf="@id/call_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/call_name" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/call_avatar"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="48dp"
+            android:background="@color/photo_2"
+            android:contentDescription="@string/cd_avatar"
+            android:padding="20dp"
+            android:src="@drawable/ic_person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/call_number"
+            app:shapeAppearance="@style/T5.Shape.Circle"
+            app:strokeColor="@color/on_dark_soft"
+            app:strokeWidth="2dp"
+            app:tint="@color/on_dark" />
+
+        <ImageButton
+            android:id="@+id/call_decline"
+            style="@style/T5.CallButton"
+            android:backgroundTint="@color/error"
+            android:contentDescription="@string/cd_decline"
+            android:rotation="135"
+            app:layout_constraintBottom_toTopOf="@id/call_decline_label"
+            app:layout_constraintEnd_toStartOf="@id/call_accept"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/call_decline_label"
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_small"
+            android:layout_marginBottom="@dimen/gap_large"
+            android:text="@string/m34_decline"
+            android:textColor="@color/on_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/call_decline"
+            app:layout_constraintStart_toStartOf="@id/call_decline" />
+
+        <ImageButton
+            android:id="@+id/call_accept"
+            style="@style/T5.CallButton"
+            android:backgroundTint="@color/ok"
+            android:contentDescription="@string/cd_accept"
+            app:layout_constraintBottom_toBottomOf="@id/call_decline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/call_decline" />
+
+        <TextView
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m34_accept"
+            android:textColor="@color/on_dark"
+            app:layout_constraintBaseline_toBaselineOf="@id/call_decline_label"
+            app:layout_constraintEnd_toEndOf="@id/call_accept"
+            app:layout_constraintStart_toStartOf="@id/call_accept" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 38: a 3-column grid of square photos. Each tile is a FrameLayout whose top
+     layer is a numbered blue circle pinned top|end; it is shown on selected photos and
+     shows the photo's place in the selection order (Behaviors.gallery). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/gallery_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_1"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_1" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_1"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_2"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_2" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_2"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_3"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_3" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_3"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_4"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_4" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_4"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_5"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_5" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_5"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_6"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_6" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_6"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_7"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_1" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_7"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_8"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_2" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_8"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_9"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_3" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_9"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_10"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_4" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_10"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_11"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_5" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_11"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+            <dev.yorushi.dma.task5.widget.SquareFrameLayout
+                android:id="@+id/gallery_12"
+                style="@style/T5.GalleryTile">
+
+                <ImageView
+                    style="@style/T5.Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/photo_6" />
+
+                <TextView
+                    android:id="@+id/gallery_badge_12"
+                    style="@style/T5.SelectBadge" />
+            </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+        </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_bar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/gallery_count"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gap_tiny"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/gallery_send"
+            style="@style/T5.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/m38_send" />
+    </LinearLayout>
+</LinearLayout>

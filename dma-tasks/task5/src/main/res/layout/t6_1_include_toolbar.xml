@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T6.1: screen 1 of 4 with the shared header (also 6.3, 6.5 cart, 6.5 reorder). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_common" />
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/gap"
+        android:text="@string/t6_1_text" />
+</LinearLayout>

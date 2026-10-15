@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/gap">
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/t6_2_note" />
+
+    <dev.yorushi.dma.task5.widget.IconCardView
+        android:id="@+id/icon_card_1"
+        style="@style/T5.IconCard"
+        android:layout_marginTop="@dimen/gap"
+        app:cardIcon="@drawable/ic_cart"
+        app:cardText="@string/t6_2_card_1" />
+
+    <dev.yorushi.dma.task5.widget.IconCardView
+        android:id="@+id/icon_card_2"
+        style="@style/T5.IconCard"
+        app:cardIcon="@drawable/ic_card"
+        app:cardText="@string/t6_2_card_2" />
+
+    <dev.yorushi.dma.task5.widget.IconCardView
+        android:id="@+id/icon_card_3"
+        style="@style/T5.IconCard"
+        app:cardIcon="@drawable/ic_mail"
+        app:cardText="@string/t6_2_card_3" />
+</LinearLayout>

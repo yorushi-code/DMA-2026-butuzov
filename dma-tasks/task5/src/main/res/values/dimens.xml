@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gap">16dp</dimen>
+    <dimen name="gap_small">8dp</dimen>
+    <dimen name="gap_tiny">4dp</dimen>
+    <dimen name="gap_large">24dp</dimen>
+    <dimen name="corner">16dp</dimen>
+    <dimen name="icon">24dp</dimen>
+    <dimen name="touch">48dp</dimen>
+    <dimen name="avatar">56dp</dimen>
+    <dimen name="avatar_large">96dp</dimen>
+    <dimen name="divider">1dp</dimen>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T3.4: cover at the start, heart at the end, title and artist between them
+     (toEndOf the cover, toStartOf the heart), the artist below the title. -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/gap">
+
+    <ImageView
+        android:id="@+id/track_cover"
+        style="@style/T5.Photo"
+        android:layout_width="@dimen/avatar"
+        android:layout_height="@dimen/avatar"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@color/photo_3"
+        android:src="@drawable/ic_music" />
+
+    <ImageButton
+        android:id="@+id/track_favorite"
+        style="@style/T5.IconButton"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/cd_favorite"
+        android:src="@drawable/ic_heart"
+        app:tint="@color/error" />
+
+    <TextView
+        android:id="@+id/track_title"
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/track_cover"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_toStartOf="@id/track_favorite"
+        android:layout_toEndOf="@id/track_cover"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/t3_4_song" />
+
+    <TextView
+        android:id="@+id/track_artist"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/track_title"
+        android:layout_alignStart="@id/track_title"
+        android:layout_toStartOf="@id/track_favorite"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/t3_4_artist" />
+</RelativeLayout>

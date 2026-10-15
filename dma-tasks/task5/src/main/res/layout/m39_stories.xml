@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 39: the story fills the FrameLayout; on top, a row of N progress bars with equal
+     weights (one per story, so the row splits into N equal parts), the author row with
+     the close button, and the reply field at the bottom. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="Overdraw"
+    android:background="@color/media_dark">
+
+    <ImageView
+        style="@style/T5.Photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_call" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/bg_scrim_top" />
+
+    <LinearLayout
+        android:id="@+id/story_bars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="6dp"
+        android:paddingTop="@dimen/gap_small"
+        android:paddingEnd="6dp">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/T5.StorySegment"
+            android:progress="100" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/T5.StorySegment"
+            android:progress="100" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/T5.StorySegment"
+            android:progress="45" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/T5.StorySegment"
+            android:progress="0" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/T5.StorySegment"
+            android:progress="0" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="@dimen/gap_tiny">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/story_avatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@color/photo_1"
+            android:contentDescription="@string/cd_avatar"
+            android:padding="6dp"
+            android:src="@drawable/ic_person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/T5.Shape.Circle"
+            app:tint="@color/on_dark" />
+
+        <TextView
+            android:id="@+id/story_author"
+            style="@style/T5.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gap_small"
+            android:text="@string/m39_author"
+            android:textColor="@color/on_dark"
+            app:layout_constraintBottom_toBottomOf="@id/story_avatar"
+            app:layout_constraintStart_toEndOf="@id/story_avatar"
+            app:layout_constraintTop_toTopOf="@id/story_avatar" />
+
+        <TextView
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gap_small"
+            android:text="@string/m39_time"
+            android:textColor="@color/on_dark_soft"
+            app:layout_constraintBaseline_toBaselineOf="@id/story_author"
+            app:layout_constraintStart_toEndOf="@id/story_author" />
+
+        <ImageButton
+            android:id="@+id/story_close"
+            style="@style/T5.IconButton.Light"
+            android:contentDescription="@string/cd_close"
+            android:src="@drawable/ic_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/story_reply"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/gap"
+        android:background="@drawable/bg_pill"
+        android:backgroundTint="@color/scrim"
+        android:hint="@string/m39_reply"
+        android:importantForAutofill="no"
+        android:inputType="textCapSentences"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textColor="@color/on_dark"
+        android:textColorHint="@color/on_dark_soft" />
+</FrameLayout>

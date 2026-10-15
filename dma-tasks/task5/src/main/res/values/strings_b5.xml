@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m41_where">Куда едем?</string>
+    <string name="m41_route">ул. Ленина, 12 → Аэропорт</string>
+    <string name="m41_economy">Эконом</string>
+    <string name="m41_comfort">Комфорт</string>
+    <string name="m41_business">Бизнес</string>
+    <string name="m41_price_1">640 ₽</string>
+    <string name="m41_price_2">820 ₽</string>
+    <string name="m41_price_3">1 450 ₽</string>
+    <string name="m41_eta_1">3 мин</string>
+    <string name="m41_eta_2">5 мин</string>
+    <string name="m41_eta_3">9 мин</string>
+    <string name="m41_order">Заказать</string>
+    <string name="m41_payment">Карта •• 1147</string>
+
+    <string name="m42_title">Корзина · 6 товаров</string>
+    <string name="m42_item_1">Наушники Sound Pro</string>
+    <string name="m42_item_2">Чехол силиконовый</string>
+    <string name="m42_item_3">Зарядное устройство 65 Вт</string>
+    <string name="m42_item_4">Кабель USB-C, 2 м</string>
+    <string name="m42_item_5">Смарт-часы Pulse 4</string>
+    <string name="m42_item_6">Ремешок для часов</string>
+    <string name="m42_price_1">7 990 ₽</string>
+    <string name="m42_price_2">690 ₽</string>
+    <string name="m42_price_3">2 490 ₽</string>
+    <string name="m42_price_4">590 ₽</string>
+    <string name="m42_price_5">5 190 ₽</string>
+    <string name="m42_price_6">990 ₽</string>
+    <string name="m42_qty">1 шт.</string>
+    <string name="m42_total_label">Итого</string>
+    <string name="m42_total">17 940 ₽</string>
+    <string name="m42_buy">Купить</string>
+
+    <string name="m43_title">Всё под рукой</string>
+    <string name="m43_text">Заказывайте, отслеживайте доставку и платите в одном приложении. Иллюстрация сверху всегда занимает 40% высоты экрана.</string>
+    <string name="m43_start">Начать</string>
+    <string name="m43_skip">Пропустить</string>
+
+    <string name="m44_hint">Наведите камеру на QR-код</string>
+    <string name="m44_flash">Фонарик</string>
+    <string name="m44_gallery">Из галереи</string>
+
+    <string name="m45_title">Здесь пока ничего нет</string>
+    <string name="m45_text">Мы не нашли ни одного заказа. Потяните вниз или нажмите «Обновить», чтобы проверить ещё раз.</string>
+    <string name="m45_refresh">Обновить</string>
+
+    <string name="m46_title">Отличный результат!</string>
+    <string name="m46_score">9 / 10</string>
+    <string name="m46_points">+450 очков · 1 место</string>
+    <string name="m46_second">2</string>
+    <string name="m46_first">1</string>
+    <string name="m46_third">3</string>
+    <string name="m46_share">Поделиться</string>
+    <string name="m46_again">Играть снова</string>
+
+    <string name="m47_label">Сумма списания</string>
+    <string name="m47_amount">12 500,00 ₽</string>
+    <string name="m47_merchant">Оплата в «Электроника Онлайн»</string>
+    <string name="m47_code">Код из SMS</string>
+    <string name="m47_timer">Код действует ещё %1$s</string>
+    <string name="m47_expired">Срок действия кода истёк</string>
+    <string name="m47_resend">Запросить код повторно</string>
+    <string name="m47_confirm">Подтвердить</string>
+
+    <string name="m48_a">Смартфон A</string>
+    <string name="m48_b">Смартфон B</string>
+    <string name="m48_price">Цена</string>
+    <string name="m48_screen">Экран</string>
+    <string name="m48_battery">Батарея</string>
+    <string name="m48_weight">Вес</string>
+    <string name="m48_camera">Камера</string>
+    <string name="m48_price_a">39 990 ₽</string>
+    <string name="m48_price_b">45 490 ₽</string>
+    <string name="m48_screen_a">6,1″ OLED</string>
+    <string name="m48_screen_b">6,7″ OLED</string>
+    <string name="m48_battery_a">4 300 мА·ч</string>
+    <string name="m48_battery_b">5 000 мА·ч</string>
+    <string name="m48_weight_a">172 г</string>
+    <string name="m48_weight_b">205 г</string>
+    <string name="m48_camera_a">50 Мп</string>
+    <string name="m48_camera_b">48 Мп</string>
+    <string name="m48_legend">Лучшее значение в каждой строке подсвечено зелёным.</string>
+
+    <string name="m49_step">Шаг %1$d из %2$d</string>
+    <string name="m49_step_1">Данные страхователя</string>
+    <string name="m49_step_2">Объект страхования</string>
+    <string name="m49_step_3">Условия и сумма</string>
+    <string name="m49_step_4">Проверка и оплата</string>
+    <string name="m49_name">ФИО</string>
+    <string name="m49_birth">Дата рождения</string>
+    <string name="m49_passport">Серия и номер паспорта</string>
+    <string name="m49_phone">Телефон</string>
+    <string name="m49_email">Почта для полиса</string>
+    <string name="m49_address">Адрес регистрации</string>
+    <string name="m49_agree">Согласен на обработку персональных данных</string>
+    <string name="m49_finish">Оформить</string>
+
+    <string name="m50_counter">%1$d / %2$d</string>
+    <string name="m50_title">Беспроводные наушники Sound Pro 2 с активным шумоподавлением</string>
+    <string name="m50_rating">4,8</string>
+    <string name="m50_reviews">312 отзывов</string>
+    <string name="m50_review_author">Мария · 5 октября</string>
+    <string name="m50_review_text">Звук отличный, шумоподавление в метро справляется. Держат заряд почти неделю.</string>
+    <string name="m50_color">Цвет</string>
+    <string name="m50_color_1">Графит</string>
+    <string name="m50_color_2">Серебро</string>
+    <string name="m50_color_3">Синий</string>
+    <string name="m50_size">Размер амбушюр</string>
+    <string name="m50_size_s">S</string>
+    <string name="m50_size_m">M</string>
+    <string name="m50_size_l">L</string>
+    <string name="m50_description">Описание</string>
+    <string name="m50_description_text">Гибридное шумоподавление с шестью микрофонами, драйверы 11 мм, кодеки AAC и LDAC. До 36 часов работы с кейсом, быстрая зарядка: 10 минут дают 4 часа музыки. Защита от брызг IPX4, мультиподключение к двум устройствам.</string>
+    <string name="m50_specs">Характеристики</string>
+    <string name="m50_specs_text">Bluetooth 5.3 · вес наушника 5,2 г · кейс 48 г · USB-C и беспроводная зарядка Qi.</string>
+    <string name="m50_price">8 990 ₽</string>
+    <string name="m50_old_price"><strike>12 990 ₽</strike></string>
+    <string name="m50_discount">−31%</string>
+    <string name="m50_add">Добавить в корзину</string>
+</resources>
