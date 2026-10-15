@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 50, the production screen. Three layers of one FrameLayout:
+       1. the scrolling body: one flat ConstraintLayout (no nested containers besides the
+          two chip groups) with the 16:9 photo slider, title, reviews, colour and size,
+          and the description accordion;
+       2. the top toolbar with share and cart, drawn over the photo, with no background
+          of its own;
+       3. the bottom bar with the price and the "add to cart" button, fixed in place.
+     Overdraw: the root's background is the only full-screen paint; the window background
+     is removed in code (Behaviors.productPage) and the body, toolbar and scroll view
+     draw no background of their own. The slider's pages are single ImageViews. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="Overdraw"
+    android:background="@color/surface">
+
+    <ScrollView
+        android:id="@+id/product_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="88dp"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/product_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/gap">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/product_pager"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/product_counter"
+                style="@style/T5.Badge"
+                android:layout_margin="12dp"
+                android:backgroundTint="@color/scrim"
+                app:layout_constraintBottom_toBottomOf="@id/product_pager"
+                app:layout_constraintEnd_toEndOf="@id/product_pager" />
+
+            <TextView
+                android:id="@+id/product_title"
+                style="@style/T5.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginTop="@dimen/gap"
+                android:layout_marginEnd="@dimen/gap"
+                android:text="@string/m50_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_pager" />
+
+            <TextView
+                android:id="@+id/product_rating"
+                style="@style/T5.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginTop="@dimen/gap_small"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:text="@string/m50_rating"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_star"
+                app:drawableTint="@color/warning"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_title" />
+
+            <TextView
+                android:id="@+id/product_reviews"
+                style="@style/T5.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_small"
+                android:text="@string/m50_reviews"
+                android:textColor="@color/brand"
+                app:layout_constraintBaseline_toBaselineOf="@id/product_rating"
+                app:layout_constraintStart_toEndOf="@id/product_rating" />
+
+            <TextView
+                android:id="@+id/product_review"
+                style="@style/T5.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="@dimen/gap"
+                android:background="@drawable/bg_card_flat"
+                android:padding="12dp"
+                android:text="@string/m50_review_text"
+                android:textColor="@color/text_primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_review_author" />
+
+            <TextView
+                android:id="@+id/product_review_author"
+                style="@style/T5.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginTop="12dp"
+                android:text="@string/m50_review_author"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_rating" />
+
+            <TextView
+                android:id="@+id/product_color_label"
+                style="@style/T5.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginTop="@dimen/gap_large"
+                android:text="@string/m50_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_review" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/product_colors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginEnd="@dimen/gap"
+                app:checkedChip="@id/color_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_color_label"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/color_1"
+                    style="@style/T5.ColorChip"
+                    android:text="@string/m50_color_1"
+                    app:chipIconTint="@color/text_primary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/color_2"
+                    style="@style/T5.ColorChip"
+                    android:text="@string/m50_color_2"
+                    app:chipIconTint="@color/outline" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/color_3"
+                    style="@style/T5.ColorChip"
+                    android:text="@string/m50_color_3"
+                    app:chipIconTint="@color/brand" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/product_size_label"
+                style="@style/T5.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginTop="@dimen/gap"
+                android:text="@string/m50_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_colors" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/product_sizes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_marginEnd="@dimen/gap"
+                app:checkedChip="@id/size_m"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_size_label"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip android:id="@+id/size_s" style="@style/T5.Chip" android:text="@string/m50_size_s" />
+
+                <com.google.android.material.chip.Chip android:id="@+id/size_m" style="@style/T5.Chip" android:text="@string/m50_size_m" />
+
+                <com.google.android.material.chip.Chip android:id="@+id/size_l" style="@style/T5.Chip" android:text="@string/m50_size_l" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/product_description_header"
+                style="@style/T5.Accordion"
+                android:layout_marginTop="@dimen/gap"
+                android:text="@string/m50_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_sizes" />
+
+            <TextView
+                android:id="@+id/product_description"
+                style="@style/T5.AccordionBody"
+                android:text="@string/m50_description_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_description_header" />
+
+            <TextView
+                android:id="@+id/product_specs_header"
+                style="@style/T5.Accordion"
+                android:text="@string/m50_specs"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_description" />
+
+            <TextView
+                android:id="@+id/product_specs"
+                style="@style/T5.AccordionBody"
+                android:text="@string/m50_specs_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_specs_header" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/product_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/gap_small">
+
+        <ImageButton
+            android:id="@+id/product_back"
+            style="@style/T5.OverlayButton"
+            android:contentDescription="@string/cd_back"
+            android:src="@drawable/ic_back" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/product_share"
+            style="@style/T5.OverlayButton"
+            android:contentDescription="@string/cd_share"
+            android:src="@drawable/ic_share" />
+
+        <ImageButton
+            android:id="@+id/product_cart"
+            style="@style/T5.OverlayButton"
+            android:layout_marginStart="@dimen/gap_small"
+            android:contentDescription="@string/cd_cart"
+            android:src="@drawable/ic_cart" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/product_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_bottom_bar"
+        android:paddingStart="@dimen/gap"
+        android:paddingEnd="@dimen/gap">
+
+        <TextView
+            android:id="@+id/product_price"
+            style="@style/T5.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m50_price"
+            app:layout_constraintBottom_toTopOf="@id/product_old_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/product_old_price"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m50_old_price"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_price" />
+
+        <TextView
+            android:id="@+id/product_discount"
+            style="@style/T5.Badge"
+            android:layout_marginStart="6dp"
+            android:text="@string/m50_discount"
+            app:layout_constraintBottom_toBottomOf="@id/product_old_price"
+            app:layout_constraintStart_toEndOf="@id/product_old_price"
+            app:layout_constraintTop_toTopOf="@id/product_old_price" />
+
+        <Button
+            android:id="@+id/product_add"
+            style="@style/T5.Button"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="@dimen/gap"
+            android:text="@string/m50_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/product_discount"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

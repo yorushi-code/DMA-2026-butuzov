@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="t3_1">Чат-сообщение со временем</string>
+    <string name="t3_2">Шапка экрана (TopAppBar)</string>
+    <string name="t3_3">Карточка товара в каталоге</string>
+    <string name="t3_4">Элемент списка музыки</string>
+    <string name="t3_5">Выравнивание по базовой линии</string>
+
+    <string name="t3_1_message">Привет! Документы по проекту отправила тебе на почту, посмотри, когда будет минутка.</string>
+    <string name="t3_1_time">14:32</string>
+    <string name="t3_2_title">Профиль</string>
+    <string name="t3_3_name">Беспроводные наушники Sound Pro с шумоподавлением</string>
+    <string name="t3_3_price">7 990 ₽</string>
+    <string name="t3_4_song">Ночной город</string>
+    <string name="t3_4_artist">Ленинград Электро</string>
+    <string name="t3_5_price">490</string>
+    <string name="t3_5_unit">руб./мес.</string>
+    <string name="t3_5_caption">Тариф «Базовый» · абонентская плата</string>
+</resources>

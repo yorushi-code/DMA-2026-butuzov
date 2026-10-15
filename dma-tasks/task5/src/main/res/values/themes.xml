@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Task5" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/brand</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="android:windowBackground">@color/surface</item>
+        <!-- With targetSdk 35 Android 15 draws edge to edge; the screens are laid out
+             under the action bar, so the enforcement is opted out of (as in task 4). -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
+    </style>
+
+    <!-- Implicit parent of the dotted T5.* styles below. -->
+    <style name="T5" />
+
+    <style name="T5.Title">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="T5.Subtitle">
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="T5.Body">
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="T5.Caption">
+        <item name="android:textAppearance">?attr/textAppearanceBodySmall</item>
+        <item name="android:textColor">@color/text_muted</item>
+    </style>
+
+    <style name="T5.Headline">
+        <item name="android:textAppearance">?attr/textAppearanceHeadlineMedium</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="T5.Label">
+        <item name="android:textAppearance">?attr/textAppearanceLabelLarge</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Small pill: discount, "Explicit", rating, status. -->
+    <style name="T5.Badge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:background">@drawable/bg_pill</item>
+        <item name="android:backgroundTint">@color/error</item>
+        <item name="android:textColor">@color/on_dark</item>
+        <item name="android:textAppearance">?attr/textAppearanceLabelSmall</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 48dp square icon button with a ripple. -->
+    <style name="T5.IconButton">
+        <item name="android:layout_width">@dimen/touch</item>
+        <item name="android:layout_height">@dimen/touch</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="tint">@color/text_primary</item>
+    </style>
+
+    <style name="T5.IconButton.Light">
+        <item name="tint">@color/on_dark</item>
+    </style>
+
+    <!-- Placeholder picture: coloured backdrop with a white glyph in the middle. -->
+    <style name="T5.Photo">
+        <item name="android:scaleType">center</item>
+        <item name="android:background">@color/photo_1</item>
+        <item name="android:src">@drawable/ic_image</item>
+        <item name="tint">@color/on_dark</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <style name="T5.Button" parent="Widget.Material3.Button" />
+
+    <style name="T5.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton" />
+
+    <style name="T5.Button.Tonal" parent="Widget.Material3.Button.TonalButton" />
+
+    <style name="T5.Field" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Section header inside a screen. -->
+    <style name="T5.Section" parent="T5.Subtitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/gap_large</item>
+        <item name="android:layout_marginBottom">@dimen/gap_small</item>
+    </style>
+
+    <style name="T5.Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider</item>
+        <item name="android:background">@color/outline</item>
+    </style>
+
+    <style name="T5.Shape" />
+
+    <style name="T5.Shape.Circle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- T5.1: one round avatar of the stories strip. -->
+    <style name="T5.Story">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:src">@drawable/ic_person</item>
+        <item name="android:contentDescription">@string/cd_avatar</item>
+        <item name="tint">@color/on_dark</item>
+        <item name="shapeAppearance">@style/T5.Shape.Circle</item>
+        <item name="strokeColor">@color/accent</item>
+        <item name="strokeWidth">3dp</item>
+    </style>
+
+    <!-- One plain list row (T5.4 and the long lists). -->
+    <style name="T5.Row" parent="T5.Subtitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/gap</item>
+        <item name="android:paddingEnd">@dimen/gap</item>
+    </style>
+
+    <style name="T5.IconCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:layout_marginTop">@dimen/gap_small</item>
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:paddingStart">@dimen/gap</item>
+        <item name="android:paddingEnd">@dimen/gap</item>
+    </style>
+
+    <style name="T5.CartRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:paddingStart">@dimen/gap</item>
+        <item name="android:paddingEnd">@dimen/gap</item>
+    </style>
+
+    <!-- Item 10: one photo of the hotel's mini carousel. -->
+    <style name="T5.HotelPhoto" parent="T5.Photo">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">96dp</item>
+        <item name="android:layout_marginEnd">@dimen/gap_small</item>
+        <item name="android:background">@drawable/bg_rounded</item>
+    </style>
+
+    <style name="T5.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Item 11: equal-weight quick-sum buttons. -->
+    <style name="T5.QuickSum" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">@dimen/gap_tiny</item>
+        <item name="android:layout_marginEnd">@dimen/gap_tiny</item>
+    </style>
+
+    <!-- Item 13: one line of the password checklist; the tint is set from code. -->
+    <style name="T5.Rule" parent="T5.Body">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="drawableStartCompat">@drawable/ic_check_circle</item>
+        <item name="drawableTint">@color/text_muted</item>
+    </style>
+
+    <style name="T5.SettingRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/gap</item>
+        <item name="android:paddingEnd">@dimen/gap</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <!-- Item 17: labels and fields printed on the card. -->
+    <style name="T5.CardLabel" parent="T5.Caption">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/gap</item>
+        <item name="android:textColor">@color/on_dark_soft</item>
+    </style>
+
+    <style name="T5.CardField">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_rounded</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:importantForAutofill">no</item>
+    </style>
+
+    <!-- Item 19: one square cell of the SMS code. -->
+    <style name="T5.OtpDigit">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:background">@drawable/bg_field_box</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:importantForAutofill">no</item>
+        <item name="android:contentDescription">@string/cd_digit</item>
+    </style>
+
+    <!-- Item 23: a round action button of the wallet. -->
+    <style name="T5.WalletAction">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginTop">@dimen/gap_large</item>
+        <item name="android:background">@drawable/bg_circle</item>
+        <item name="android:backgroundTint">@color/brand_soft</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="tint">@color/brand</item>
+    </style>
+
+    <!-- Item 24: one metric card of the horizontal strip. -->
+    <style name="T5.MetricCard">
+        <item name="android:layout_width">136dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/gap_tiny</item>
+        <item name="android:layout_marginEnd">@dimen/gap_tiny</item>
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/gap</item>
+    </style>
+
+    <!-- Items 26, 29, 38: an equal-weight square tile of a grid row. -->
+    <style name="T5.Tile">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">@dimen/gap_tiny</item>
+        <item name="android:background">@drawable/bg_card</item>
+    </style>
+
+    <!-- Item 28. -->
+    <style name="T5.OrderCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/gap</item>
+        <item name="android:layout_marginEnd">@dimen/gap</item>
+        <item name="android:layout_marginTop">@dimen/gap_small</item>
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:padding">@dimen/gap</item>
+    </style>
+
+    <style name="T5.Thumb" parent="T5.Photo">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginEnd">@dimen/gap_small</item>
+        <item name="android:background">@drawable/bg_rounded</item>
+    </style>
+
+    <!-- Item 30: an allergy tag. -->
+    <style name="T5.Tag" parent="Widget.Material3.Chip.Assist">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/error_soft</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="android:textColor">@color/error</item>
+    </style>
+
+    <style name="T5.ContactRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/gap_small</item>
+        <item name="android:background">@drawable/bg_card_flat</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- Item 32: one chat bubble. -->
+    <style name="T5.Bubble" parent="T5.Body">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Item 33: icon over its counter, white on the video. -->
+    <style name="T5.ReelAction" parent="T5.Label">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/gap</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:textColor">@color/on_dark</item>
+        <item name="drawableTint">@color/on_dark</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <!-- Item 34: the round decline/accept button. -->
+    <style name="T5.CallButton">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:background">@drawable/bg_circle</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/ic_phone</item>
+        <item name="tint">@color/on_dark</item>
+    </style>
+
+    <!-- Item 38. -->
+    <style name="T5.GalleryTile">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="T5.SelectBadge">
+        <item name="android:layout_width">26dp</item>
+        <item name="android:layout_height">26dp</item>
+        <item name="android:layout_gravity">top|end</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:background">@drawable/bg_select_badge</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/on_dark</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- Item 39: one segment of the stories progress row. -->
+    <style name="T5.StorySegment">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">2dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+        <item name="indicatorColor">@color/on_dark</item>
+        <item name="trackColor">@color/on_dark_soft</item>
+        <item name="trackThickness">3dp</item>
+        <item name="trackCornerRadius">2dp</item>
+    </style>
+
+    <!-- Item 41: one selectable tariff card of the taxi sheet. -->
+    <style name="T5.TariffOption" parent="Widget.Material3.CardView.Outlined">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginStart">@dimen/gap_tiny</item>
+        <item name="android:layout_marginEnd">@dimen/gap_tiny</item>
+        <item name="android:checkable">true</item>
+        <item name="checkedIconTint">@color/brand</item>
+        <item name="strokeColor">@color/tariff_stroke</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cardBackgroundColor">@color/tariff_fill</item>
+    </style>
+
+    <!-- Item 42: one line of the cart. -->
+    <style name="T5.CartItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/gap</item>
+        <item name="android:paddingEnd">@dimen/gap</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <!-- Item 46: one step of the pedestal. -->
+    <style name="T5.Podium" parent="T5.Headline">
+        <item name="android:layout_width">88dp</item>
+        <item name="android:background">@drawable/bg_podium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">@dimen/gap_small</item>
+        <item name="android:textColor">@color/on_dark</item>
+    </style>
+
+    <!-- Item 48: a compared value. -->
+    <style name="T5.CompareValue" parent="T5.Subtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+    <!-- Item 50. -->
+    <style name="T5.OverlayButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_circle</item>
+        <item name="android:backgroundTint">@color/surface</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">9dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="tint">@color/text_primary</item>
+    </style>
+
+    <style name="T5.ColorChip" parent="Widget.Material3.Chip.Filter">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipIcon">@drawable/bg_dot</item>
+        <item name="chipIconVisible">true</item>
+        <item name="chipIconSize">14dp</item>
+    </style>
+
+    <style name="T5.Accordion" parent="T5.Subtitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/gap</item>
+        <item name="android:paddingEnd">@dimen/gap</item>
+        <item name="drawableEndCompat">@drawable/ic_expand</item>
+        <item name="drawableTint">@color/text_secondary</item>
+    </style>
+
+    <style name="T5.AccordionBody" parent="T5.Body">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/gap</item>
+        <item name="android:paddingEnd">@dimen/gap</item>
+        <item name="android:paddingBottom">@dimen/gap</item>
+        <item name="android:visibility">gone</item>
+    </style>
+</resources>

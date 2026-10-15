@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="t2_1">Аватар с бейджем «Онлайн»</string>
+    <string name="t2_2">Кнопка с оверлеем блокировки</string>
+    <string name="t2_3">Плавающая кнопка действия</string>
+    <string name="t2_4">Контейнер под фрагмент</string>
+    <string name="t2_5">Видео-превью с иконкой Play</string>
+
+    <string name="t2_1_name">Анна Смирнова</string>
+    <string name="t2_1_status">В сети</string>
+    <string name="cd_online">В сети</string>
+    <string name="t2_2_note">После нажатия кнопка блокируется, а поверх неё появляется индикатор отправки. Через две секунды запрос «завершается».</string>
+    <string name="t2_2_submit">Подтвердить</string>
+    <string name="t2_2_done">Данные отправлены</string>
+    <string name="t2_3_text">FrameLayout рисует детей в порядке объявления: каждый следующий ложится поверх предыдущего. Поэтому кнопка «+» объявлена последней и закреплена в правом нижнем углу через layout_gravity=\"bottom|end\" с отступом 24dp.\n\nТекст под кнопкой при этом занимает весь экран и прокручивается сам по себе: кнопка остаётся на месте, потому что она не часть прокручиваемого содержимого, а отдельный верхний слой.\n\nТак устроены почти все экраны со списком и главным действием: почта, заметки, задачи. Кнопка должна быть заметной и всегда доступной, но не сдвигать содержимое.\n\nНижние 88dp у текста оставлены пустыми (paddingBottom и clipToPadding=false), чтобы последняя строка не пряталась под кнопкой, когда список докручен до конца.</string>
+    <string name="t2_3_added">Нажата кнопка «+»</string>
+    <string name="t2_4_header">Шапка экрана</string>
+    <string name="t2_4_fragment">Это фрагмент PlaceholderFragment, добавленный в @id/fragmentContainerView через FragmentManager.</string>
+    <string name="t2_5_title">Как работает FrameLayout · 4:12</string>
+</resources>

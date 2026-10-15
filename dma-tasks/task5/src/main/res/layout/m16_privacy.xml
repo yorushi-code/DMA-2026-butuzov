@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 16: a section header and four rows. Each row is a small ConstraintLayout:
+     title and explanation stacked on the start side, the switch centred on the end side,
+     so a long explanation never runs under the switch. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/T5.Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/gap"
+        android:paddingTop="@dimen/gap_large"
+        android:paddingEnd="@dimen/gap"
+        android:paddingBottom="@dimen/gap_small"
+        android:text="@string/m16_title"
+        android:textColor="@color/brand" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/privacy_item_1"
+        style="@style/T5.SettingRow">
+
+        <TextView
+            android:id="@+id/privacy_title_1"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/gap"
+            android:text="@string/m16_item_1"
+            app:layout_constraintEnd_toStartOf="@id/privacy_switch_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/privacy_desc_1"
+            style="@style/T5.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/m16_item_1_desc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/privacy_title_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/privacy_title_1" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/privacy_switch_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:contentDescription="@string/m16_item_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        style="@style/T5.Divider"
+        android:layout_marginStart="@dimen/gap" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/privacy_item_2"
+        style="@style/T5.SettingRow">
+
+        <TextView
+            android:id="@+id/privacy_title_2"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/gap"
+            android:text="@string/m16_item_2"
+            app:layout_constraintEnd_toStartOf="@id/privacy_switch_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/privacy_desc_2"
+            style="@style/T5.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/m16_item_2_desc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/privacy_title_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/privacy_title_2" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/privacy_switch_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:contentDescription="@string/m16_item_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        style="@style/T5.Divider"
+        android:layout_marginStart="@dimen/gap" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/privacy_item_3"
+        style="@style/T5.SettingRow">
+
+        <TextView
+            android:id="@+id/privacy_title_3"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/gap"
+            android:text="@string/m16_item_3"
+            app:layout_constraintEnd_toStartOf="@id/privacy_switch_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/privacy_desc_3"
+            style="@style/T5.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/m16_item_3_desc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/privacy_title_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/privacy_title_3" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/privacy_switch_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:contentDescription="@string/m16_item_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        style="@style/T5.Divider"
+        android:layout_marginStart="@dimen/gap" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/privacy_item_4"
+        style="@style/T5.SettingRow">
+
+        <TextView
+            android:id="@+id/privacy_title_4"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/gap"
+            android:text="@string/m16_item_4"
+            app:layout_constraintEnd_toStartOf="@id/privacy_switch_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/privacy_desc_4"
+            style="@style/T5.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/m16_item_4_desc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/privacy_title_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/privacy_title_4" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/privacy_switch_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:contentDescription="@string/m16_item_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        style="@style/T5.Caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/gap"
+        android:text="@string/m16_footer" />
+</LinearLayout>

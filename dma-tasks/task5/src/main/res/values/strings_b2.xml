@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="m11_phone">Номер телефона</string>
+    <string name="m11_prefix">+7</string>
+    <string name="m11_bank">Банк получателя</string>
+    <string name="m11_bank_1">ЯрБанк</string>
+    <string name="m11_bank_2">Северный</string>
+    <string name="m11_bank_3">Точка Плюс</string>
+    <string name="m11_bank_4">Волга-Кредит</string>
+    <string name="m11_bank_5">Альфа-Юг</string>
+    <string name="m11_amount">Сумма, ₽</string>
+    <string name="m11_quick_500">500 ₽</string>
+    <string name="m11_quick_1000">1 000 ₽</string>
+    <string name="m11_quick_5000">5 000 ₽</string>
+    <string name="m11_send">Перевести</string>
+    <string name="m11_fee">Без комиссии до 100 000 ₽ в месяц</string>
+
+    <string name="m12_title">Цена</string>
+    <string name="m12_from">От</string>
+    <string name="m12_to">До</string>
+    <string name="m12_dash">—</string>
+    <string name="m12_reset">Сбросить фильтры</string>
+    <string name="m12_apply">Показать 248 товаров</string>
+    <string name="m12_brand">Бренд</string>
+    <string name="m12_brand_1">Pulse</string>
+    <string name="m12_brand_2">Nord</string>
+    <string name="m12_brand_3">Volna</string>
+    <string name="m12_brand_4">Sever</string>
+
+    <string name="m13_old">Текущий пароль</string>
+    <string name="m13_new">Новый пароль</string>
+    <string name="m13_repeat">Повторите новый пароль</string>
+    <string name="m13_rules">Требования к паролю</string>
+    <string name="m13_rule_length">Не короче 8 символов</string>
+    <string name="m13_rule_digit">Хотя бы одна цифра</string>
+    <string name="m13_rule_case">Строчные и заглавные буквы</string>
+    <string name="m13_rule_match">Пароли совпадают</string>
+    <string name="m13_save">Сменить пароль</string>
+
+    <string name="m14_city">Город</string>
+    <string name="m14_street">Улица</string>
+    <string name="m14_house">Дом</string>
+    <string name="m14_entrance">Под.</string>
+    <string name="m14_floor">Этаж</string>
+    <string name="m14_flat">Кв.</string>
+    <string name="m14_comment">Комментарий курьеру</string>
+    <string name="m14_save">Сохранить адрес</string>
+
+    <string name="m15_title">Как вам заказ?</string>
+    <string name="m15_subtitle">Оценка поможет другим покупателям</string>
+    <string name="m15_comment">Расскажите подробнее</string>
+    <string name="m15_attach">Прикрепить фото</string>
+    <string name="m15_send">Отправить отзыв</string>
+    <string name="cd_rating">Оценка</string>
+
+    <string name="m16_title">Конфиденциальность</string>
+    <string name="m16_item_1">Закрытый профиль</string>
+    <string name="m16_item_1_desc">Публикации видят только одобренные подписчики</string>
+    <string name="m16_item_2">Статус «В сети»</string>
+    <string name="m16_item_2_desc">Друзья видят, когда вы были в приложении</string>
+    <string name="m16_item_3">Отметки на фото</string>
+    <string name="m16_item_3_desc">Разрешить другим людям отмечать вас на снимках</string>
+    <string name="m16_item_4">Персональная реклама</string>
+    <string name="m16_item_4_desc">Подбирать рекламу по вашим интересам</string>
+    <string name="m16_footer">Изменения сохраняются автоматически.</string>
+
+    <string name="m17_number">Номер карты</string>
+    <string name="m17_number_hint">0000 0000 0000 0000</string>
+    <string name="m17_expiry">ММ/ГГ</string>
+    <string name="m17_cvc">CVC</string>
+    <string name="m17_front">Лицевая сторона</string>
+    <string name="m17_note">Обратная сторона лежит в FrameLayout первой и сдвинута вниз и вправо отступами; лицевая объявлена второй и перекрывает её. Поле CVC оказывается на открытой части оборота, у правого края.</string>
+    <string name="m17_pay">Оплатить 2 490 ₽</string>
+
+    <string name="m18_topic">Тема обращения</string>
+    <string name="m18_message">Сообщение</string>
+    <string name="m18_attach">Прикрепить файл</string>
+    <string name="m18_file">screenshot_2026-10-12.png</string>
+    <string name="m18_size">2,4 МБ из 10 МБ</string>
+    <string name="m18_send">Отправить</string>
+    <string name="cd_remove_file">Удалить файл</string>
+    <string-array name="m18_topics">
+        <item>Проблема с заказом</item>
+        <item>Оплата и возврат</item>
+        <item>Доставка</item>
+        <item>Ошибка в приложении</item>
+        <item>Предложение</item>
+    </string-array>
+
+    <string name="m19_title">Введите код</string>
+    <string name="m19_subtitle">Мы отправили SMS с кодом на +7 912 ••• 45 67</string>
+    <string name="m19_resend">Отправить код повторно через 0:59</string>
+    <string name="cd_digit">Цифра кода</string>
+
+    <string name="m20_name">Имя</string>
+    <string name="m20_name_value">Семён Бутузов</string>
+    <string name="m20_username">Имя пользователя</string>
+    <string name="m20_username_value">yorushi</string>
+    <string name="m20_bio">О себе</string>
+    <string name="m20_bio_value">Пишу под Android и Linux, люблю сети.</string>
+    <string name="m20_email">Почта</string>
+    <string name="m20_save">Сохранить</string>
+</resources>

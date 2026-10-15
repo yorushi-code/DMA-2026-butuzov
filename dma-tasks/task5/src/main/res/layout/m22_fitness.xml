@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 22: the ring is centred; the step count and goal are centred on the ring itself
+     (constrained to all four of its sides); calories and kilometres sit on either side,
+     vertically centred on it. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/gap">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/fit_ring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:contentDescription="@string/cd_steps_progress"
+        android:progress="72"
+        app:indicatorColor="@color/ok"
+        app:indicatorSize="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackColor="@color/ok_soft"
+        app:trackCornerRadius="8dp"
+        app:trackThickness="16dp" />
+
+    <TextView
+        android:id="@+id/fit_steps"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m22_steps"
+        app:layout_constraintBottom_toTopOf="@id/fit_goal"
+        app:layout_constraintEnd_toEndOf="@id/fit_ring"
+        app:layout_constraintStart_toStartOf="@id/fit_ring"
+        app:layout_constraintTop_toTopOf="@id/fit_ring"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/fit_goal"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m22_goal"
+        app:layout_constraintBottom_toBottomOf="@id/fit_ring"
+        app:layout_constraintEnd_toEndOf="@id/fit_ring"
+        app:layout_constraintStart_toStartOf="@id/fit_ring"
+        app:layout_constraintTop_toBottomOf="@id/fit_steps" />
+
+    <TextView
+        android:id="@+id/fit_kcal"
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:text="@string/m22_kcal"
+        android:textStyle="bold"
+        app:drawableTint="@color/accent"
+        app:drawableTopCompat="@drawable/ic_fire"
+        app:layout_constraintBottom_toBottomOf="@id/fit_ring"
+        app:layout_constraintEnd_toStartOf="@id/fit_ring"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fit_ring" />
+
+    <TextView
+        android:id="@+id/fit_kcal_label"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m22_kcal_label"
+        app:layout_constraintEnd_toEndOf="@id/fit_kcal"
+        app:layout_constraintStart_toStartOf="@id/fit_kcal"
+        app:layout_constraintTop_toBottomOf="@id/fit_kcal" />
+
+    <TextView
+        android:id="@+id/fit_km"
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:text="@string/m22_km"
+        android:textStyle="bold"
+        app:drawableTint="@color/brand"
+        app:drawableTopCompat="@drawable/ic_place"
+        app:layout_constraintBottom_toBottomOf="@id/fit_ring"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fit_ring"
+        app:layout_constraintTop_toTopOf="@id/fit_ring" />
+
+    <TextView
+        android:id="@+id/fit_km_label"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m22_km_label"
+        app:layout_constraintEnd_toEndOf="@id/fit_km"
+        app:layout_constraintStart_toStartOf="@id/fit_km"
+        app:layout_constraintTop_toBottomOf="@id/fit_km" />
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:gravity="center"
+        android:text="@string/m22_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fit_ring" />
+</androidx.constraintlayout.widget.ConstraintLayout>

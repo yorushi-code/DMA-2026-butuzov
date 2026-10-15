@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand">#3D5AFE</color>
+    <color name="brand_soft">#E8EAFF</color>
+    <color name="accent">#FF6D00</color>
+    <color name="ok">#2E7D32</color>
+    <color name="ok_soft">#E8F5E9</color>
+    <color name="warning">#F9A825</color>
+    <color name="error">#D32F2F</color>
+    <color name="error_soft">#FFEBEE</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_dim">#F3F4F8</color>
+    <color name="outline">#E0E0E0</color>
+    <color name="text_primary">#1B1B1F</color>
+    <color name="text_secondary">#5F6368</color>
+    <color name="text_muted">#9AA0A6</color>
+    <color name="on_dark">#FFFFFF</color>
+    <color name="on_dark_soft">#B3FFFFFF</color>
+    <color name="scrim">#99000000</color>
+    <color name="scrim_light">#4D000000</color>
+    <color name="chat_out">#DCF8C6</color>
+    <color name="taxi_yellow">#FFD600</color>
+    <color name="online">#00C853</color>
+    <color name="split_top">#1E88E5</color>
+    <color name="media_dark">#121212</color>
+    <color name="photo_1">#FF8A65</color>
+    <color name="photo_2">#4DB6AC</color>
+    <color name="photo_3">#9575CD</color>
+    <color name="photo_4">#F06292</color>
+    <color name="photo_5">#64B5F6</color>
+    <color name="photo_6">#AED581</color>
+</resources>

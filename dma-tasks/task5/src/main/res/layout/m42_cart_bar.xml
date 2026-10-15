@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 42: the list scrolls under a panel fixed to the bottom of the FrameLayout. The
+     ScrollView's bottom padding equals the panel's height and clipToPadding="false", so
+     the last item can still be scrolled out from under the panel. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/cart_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/T5.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/gap"
+                android:text="@string/m42_title" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.CartItem">
+
+                <ImageView
+                    android:id="@+id/cart_photo_1"
+                    style="@style/T5.Thumb"
+                    android:layout_marginEnd="0dp"
+                    android:backgroundTint="@color/photo_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cart_name_1"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/m42_item_1"
+                    app:layout_constraintEnd_toStartOf="@id/cart_price_1"
+                    app:layout_constraintStart_toEndOf="@id/cart_photo_1"
+                    app:layout_constraintTop_toTopOf="@id/cart_photo_1" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_qty"
+                    app:layout_constraintStart_toStartOf="@id/cart_name_1"
+                    app:layout_constraintTop_toBottomOf="@id/cart_name_1" />
+
+                <TextView
+                    android:id="@+id/cart_price_1"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_price_1"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/cart_name_1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.CartItem">
+
+                <ImageView
+                    android:id="@+id/cart_photo_2"
+                    style="@style/T5.Thumb"
+                    android:layout_marginEnd="0dp"
+                    android:backgroundTint="@color/photo_2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cart_name_2"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/m42_item_2"
+                    app:layout_constraintEnd_toStartOf="@id/cart_price_2"
+                    app:layout_constraintStart_toEndOf="@id/cart_photo_2"
+                    app:layout_constraintTop_toTopOf="@id/cart_photo_2" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_qty"
+                    app:layout_constraintStart_toStartOf="@id/cart_name_2"
+                    app:layout_constraintTop_toBottomOf="@id/cart_name_2" />
+
+                <TextView
+                    android:id="@+id/cart_price_2"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_price_2"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/cart_name_2"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.CartItem">
+
+                <ImageView
+                    android:id="@+id/cart_photo_3"
+                    style="@style/T5.Thumb"
+                    android:layout_marginEnd="0dp"
+                    android:backgroundTint="@color/photo_3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cart_name_3"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/m42_item_3"
+                    app:layout_constraintEnd_toStartOf="@id/cart_price_3"
+                    app:layout_constraintStart_toEndOf="@id/cart_photo_3"
+                    app:layout_constraintTop_toTopOf="@id/cart_photo_3" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_qty"
+                    app:layout_constraintStart_toStartOf="@id/cart_name_3"
+                    app:layout_constraintTop_toBottomOf="@id/cart_name_3" />
+
+                <TextView
+                    android:id="@+id/cart_price_3"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_price_3"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/cart_name_3"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.CartItem">
+
+                <ImageView
+                    android:id="@+id/cart_photo_4"
+                    style="@style/T5.Thumb"
+                    android:layout_marginEnd="0dp"
+                    android:backgroundTint="@color/photo_4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cart_name_4"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/m42_item_4"
+                    app:layout_constraintEnd_toStartOf="@id/cart_price_4"
+                    app:layout_constraintStart_toEndOf="@id/cart_photo_4"
+                    app:layout_constraintTop_toTopOf="@id/cart_photo_4" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_qty"
+                    app:layout_constraintStart_toStartOf="@id/cart_name_4"
+                    app:layout_constraintTop_toBottomOf="@id/cart_name_4" />
+
+                <TextView
+                    android:id="@+id/cart_price_4"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_price_4"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/cart_name_4"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.CartItem">
+
+                <ImageView
+                    android:id="@+id/cart_photo_5"
+                    style="@style/T5.Thumb"
+                    android:layout_marginEnd="0dp"
+                    android:backgroundTint="@color/photo_5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cart_name_5"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/m42_item_5"
+                    app:layout_constraintEnd_toStartOf="@id/cart_price_5"
+                    app:layout_constraintStart_toEndOf="@id/cart_photo_5"
+                    app:layout_constraintTop_toTopOf="@id/cart_photo_5" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_qty"
+                    app:layout_constraintStart_toStartOf="@id/cart_name_5"
+                    app:layout_constraintTop_toBottomOf="@id/cart_name_5" />
+
+                <TextView
+                    android:id="@+id/cart_price_5"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_price_5"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/cart_name_5"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.CartItem">
+
+                <ImageView
+                    android:id="@+id/cart_photo_6"
+                    style="@style/T5.Thumb"
+                    android:layout_marginEnd="0dp"
+                    android:backgroundTint="@color/photo_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cart_name_6"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/m42_item_6"
+                    app:layout_constraintEnd_toStartOf="@id/cart_price_6"
+                    app:layout_constraintStart_toEndOf="@id/cart_photo_6"
+                    app:layout_constraintTop_toTopOf="@id/cart_photo_6" />
+
+                <TextView
+                    style="@style/T5.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_qty"
+                    app:layout_constraintStart_toStartOf="@id/cart_name_6"
+                    app:layout_constraintTop_toBottomOf="@id/cart_name_6" />
+
+                <TextView
+                    android:id="@+id/cart_price_6"
+                    style="@style/T5.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m42_price_6"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/cart_name_6"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/cart_panel"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_gravity="bottom"
+        android:background="@color/surface"
+        android:elevation="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/gap"
+        android:paddingEnd="@dimen/gap">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m42_total_label" />
+
+            <TextView
+                style="@style/T5.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m42_total" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/cart_buy"
+            style="@style/T5.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:minWidth="160dp"
+            android:text="@string/m42_buy" />
+    </LinearLayout>
+</FrameLayout>

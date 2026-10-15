@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 5: a 2x2 table on one flat ConstraintLayout: a 50% Guideline splits the columns,
+     two dividers mark the rows, each cell is icon + label + value. No nested layouts. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/spec_grid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/gap"
+    android:background="@drawable/bg_card"
+    android:padding="@dimen/gap">
+
+    <TextView
+        android:id="@+id/spec_title"
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m05_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/spec_divider_top"
+        style="@style/T5.Divider"
+        android:layout_width="0dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spec_title" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/spec_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/spec_row1_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="spec_mileage,spec_engine" />
+
+    <View
+        android:id="@+id/spec_divider_mid"
+        style="@style/T5.Divider"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/gap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spec_row1_bottom" />
+
+    <ImageView
+        android:id="@+id/spec_mileage_icon"
+        android:layout_width="@dimen/icon"
+        android:layout_height="@dimen/icon"
+        android:layout_marginTop="@dimen/gap"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_place"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spec_divider_top"
+        app:tint="@color/brand" />
+
+    <TextView
+        android:id="@+id/spec_mileage_label"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/m05_mileage_label"
+        app:layout_constraintEnd_toEndOf="@id/spec_mid"
+        app:layout_constraintStart_toEndOf="@id/spec_mileage_icon"
+        app:layout_constraintTop_toTopOf="@id/spec_mileage_icon" />
+
+    <TextView
+        android:id="@+id/spec_mileage"
+        style="@style/T5.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m05_mileage"
+        app:layout_constraintEnd_toEndOf="@id/spec_mid"
+        app:layout_constraintStart_toStartOf="@id/spec_mileage_label"
+        app:layout_constraintTop_toBottomOf="@id/spec_mileage_label" />
+
+    <ImageView
+        android:id="@+id/spec_engine_icon"
+        android:layout_width="@dimen/icon"
+        android:layout_height="@dimen/icon"
+        android:layout_marginTop="@dimen/gap"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_bolt"
+        app:layout_constraintStart_toStartOf="@id/spec_mid"
+        app:layout_constraintTop_toBottomOf="@id/spec_divider_top"
+        app:tint="@color/brand" />
+
+    <TextView
+        android:id="@+id/spec_engine_label"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/m05_engine_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/spec_engine_icon"
+        app:layout_constraintTop_toTopOf="@id/spec_engine_icon" />
+
+    <TextView
+        android:id="@+id/spec_engine"
+        style="@style/T5.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m05_engine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/spec_engine_label"
+        app:layout_constraintTop_toBottomOf="@id/spec_engine_label" />
+
+    <ImageView
+        android:id="@+id/spec_gearbox_icon"
+        android:layout_width="@dimen/icon"
+        android:layout_height="@dimen/icon"
+        android:layout_marginTop="@dimen/gap"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spec_divider_mid"
+        app:tint="@color/brand" />
+
+    <TextView
+        android:id="@+id/spec_gearbox_label"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/m05_gearbox_label"
+        app:layout_constraintEnd_toEndOf="@id/spec_mid"
+        app:layout_constraintStart_toEndOf="@id/spec_gearbox_icon"
+        app:layout_constraintTop_toTopOf="@id/spec_gearbox_icon" />
+
+    <TextView
+        android:id="@+id/spec_gearbox"
+        style="@style/T5.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m05_gearbox"
+        app:layout_constraintEnd_toEndOf="@id/spec_mid"
+        app:layout_constraintStart_toStartOf="@id/spec_gearbox_label"
+        app:layout_constraintTop_toBottomOf="@id/spec_gearbox_label" />
+
+    <ImageView
+        android:id="@+id/spec_drive_icon"
+        android:layout_width="@dimen/icon"
+        android:layout_height="@dimen/icon"
+        android:layout_marginTop="@dimen/gap"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_car"
+        app:layout_constraintStart_toStartOf="@id/spec_mid"
+        app:layout_constraintTop_toBottomOf="@id/spec_divider_mid"
+        app:tint="@color/brand" />
+
+    <TextView
+        android:id="@+id/spec_drive_label"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/m05_drive_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/spec_drive_icon"
+        app:layout_constraintTop_toTopOf="@id/spec_drive_icon" />
+
+    <TextView
+        android:id="@+id/spec_drive"
+        style="@style/T5.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m05_drive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/spec_drive_label"
+        app:layout_constraintTop_toBottomOf="@id/spec_drive_label" />
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:text="@string/m05_note"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spec_gearbox" />
+</androidx.constraintlayout.widget.ConstraintLayout>

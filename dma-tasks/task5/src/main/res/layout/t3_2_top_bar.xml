@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T3.2: buttons pinned to the parent's start and end, the title centred in the
+     parent (centerInParent), independently of the buttons' widths. -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/top_bar"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="@color/brand_soft"
+    tools:ignore="Overdraw"
+    android:paddingStart="@dimen/gap_tiny"
+    android:paddingEnd="@dimen/gap_tiny">
+
+    <ImageButton
+        android:id="@+id/bar_back"
+        style="@style/T5.IconButton"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/cd_back"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/bar_title"
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/t3_2_title" />
+
+    <ImageButton
+        android:id="@+id/bar_settings"
+        style="@style/T5.IconButton"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/cd_settings"
+        android:src="@drawable/ic_settings" />
+</RelativeLayout>

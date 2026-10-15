@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T1.2: two halves of height 0dp with equal weights split the screen 50/50. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/split_top"
+        style="@style/T5.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/split_top"
+        android:gravity="center"
+        android:text="@string/t1_2_top"
+        android:textColor="@color/on_dark" />
+
+    <TextView
+        android:id="@+id/split_bottom"
+        style="@style/T5.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/t1_2_bottom" />
+</LinearLayout>

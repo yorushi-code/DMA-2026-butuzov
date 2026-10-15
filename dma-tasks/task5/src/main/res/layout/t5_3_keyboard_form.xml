@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T5.3: the form is in a ScrollView (fillViewport keeps it full height when it fits);
+     the activity uses adjustResize, so with the keyboard open the window shrinks and
+     the "Sign in" button can be scrolled to instead of hiding under the keyboard. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/form_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/gap_large">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/gap_large"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/brand_soft"
+            android:importantForAccessibility="no"
+            android:padding="18dp"
+            android:src="@drawable/ic_lock"
+            app:tint="@color/brand" />
+
+        <TextView
+            style="@style/T5.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/gap"
+            android:text="@string/t5_3_title" />
+
+        <TextView
+            style="@style/T5.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_small"
+            android:gravity="center"
+            android:text="@string/t5_3_subtitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/T5.Field"
+            android:layout_marginTop="@dimen/gap_large"
+            android:hint="@string/t5_3_hint_phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/T5.Field"
+            android:layout_marginTop="12dp"
+            android:hint="@string/hint_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/T5.Field"
+            android:layout_marginTop="12dp"
+            android:hint="@string/hint_password"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/form_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/T5.Field"
+            android:layout_marginTop="12dp"
+            android:hint="@string/t5_3_hint_code">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Takes up the slack when the form is shorter than the screen. -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="@dimen/gap_large" />
+
+        <Button
+            style="@style/T5.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/t5_3_forgot" />
+
+        <Button
+            android:id="@+id/form_submit"
+            style="@style/T5.Button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/gap_small"
+            android:text="@string/sign_in" />
+    </LinearLayout>
+</ScrollView>

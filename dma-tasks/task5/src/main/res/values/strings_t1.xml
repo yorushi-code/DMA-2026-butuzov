@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="t1_1">Клавиатура пин-кода</string>
+    <string name="t1_2">Сплит-экран 50/50</string>
+    <string name="t1_3">Поле поиска с кнопкой</string>
+    <string name="t1_4">Центрирование заголовка</string>
+    <string name="t1_5">Форма входа с разделителем</string>
+
+    <string name="t1_1_prompt">Введите пин-код</string>
+    <string name="digit_1">1</string>
+    <string name="digit_2">2</string>
+    <string name="digit_3">3</string>
+    <string name="t1_2_top">Верхняя половина · weight 1</string>
+    <string name="t1_2_bottom">Нижняя половина · weight 1</string>
+    <string name="t1_3_hint">Поиск по каталогу</string>
+    <string name="t1_4_title">Заголовок по центру</string>
+    <string name="t1_4_subtitle">Подзаголовок у правого края</string>
+    <string name="t1_4_note">Оба текста шириной wrap_content: положение задаёт layout_gravity у каждого из них.</string>
+    <string name="t1_5_title">Вход в аккаунт</string>
+</resources>

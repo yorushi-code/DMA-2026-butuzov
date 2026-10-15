@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 3: the gradient card and the illustration are siblings in one ConstraintLayout.
+     The illustration is constrained to the card's top-end corner and moved up with
+     translationY, so it sticks out above the card; the root's top padding gives it room. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingStart="@dimen/gap"
+    android:paddingTop="56dp"
+    android:paddingEnd="@dimen/gap">
+
+    <View
+        android:id="@+id/promo_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_gradient_promo"
+        app:layout_constraintBottom_toBottomOf="@id/promo_pad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/promo_title"
+        style="@style/T5.Headline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/m03_title"
+        android:textColor="@color/on_dark"
+        app:layout_constraintEnd_toStartOf="@id/promo_art"
+        app:layout_constraintStart_toStartOf="@id/promo_card"
+        app:layout_constraintTop_toTopOf="@id/promo_card" />
+
+    <TextView
+        android:id="@+id/promo_text"
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_small"
+        android:text="@string/m03_text"
+        android:textColor="@color/on_dark_soft"
+        app:layout_constraintEnd_toEndOf="@id/promo_title"
+        app:layout_constraintStart_toStartOf="@id/promo_title"
+        app:layout_constraintTop_toBottomOf="@id/promo_title" />
+
+    <Button
+        android:id="@+id/promo_action"
+        style="@style/T5.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:backgroundTint="@color/surface"
+        android:text="@string/m03_action"
+        android:textColor="@color/accent"
+        app:layout_constraintStart_toStartOf="@id/promo_title"
+        app:layout_constraintTop_toBottomOf="@id/promo_text" />
+
+    <!-- Below the button, inside the card, so the card's bottom has some padding. -->
+    <Space
+        android:id="@+id/promo_pad"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/promo_action" />
+
+    <ImageView
+        android:id="@+id/promo_art"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginEnd="-8dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#FFE0B2"
+        android:elevation="8dp"
+        android:importantForAccessibility="no"
+        android:padding="28dp"
+        android:rotation="-12"
+        android:src="@drawable/ic_gift"
+        android:translationY="-44dp"
+        app:layout_constraintEnd_toEndOf="@id/promo_card"
+        app:layout_constraintTop_toTopOf="@id/promo_card"
+        app:tint="@color/accent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

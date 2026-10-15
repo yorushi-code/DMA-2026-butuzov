@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 7: cover, then title + "E" badge in a packed horizontal chain (the title can
+     shrink, the badge stays glued to it), artist below, duration and menu at the end. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/gap"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
+
+    <ImageView
+        android:id="@+id/track_cover"
+        style="@style/T5.Photo"
+        android:layout_width="@dimen/avatar"
+        android:layout_height="@dimen/avatar"
+        android:background="@drawable/bg_rounded"
+        android:backgroundTint="@color/photo_4"
+        android:src="@drawable/ic_music"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/track_title"
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/m07_title"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/track_artist"
+        app:layout_constraintEnd_toStartOf="@id/track_explicit"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/track_cover"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/track_explicit"
+        style="@style/T5.Badge"
+        android:layout_marginStart="6dp"
+        android:backgroundTint="@color/text_muted"
+        android:text="@string/m07_explicit"
+        app:layout_constraintBottom_toBottomOf="@id/track_title"
+        app:layout_constraintEnd_toStartOf="@id/track_duration"
+        app:layout_constraintStart_toEndOf="@id/track_title"
+        app:layout_constraintTop_toTopOf="@id/track_title" />
+
+    <TextView
+        android:id="@+id/track_artist"
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m07_artist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/track_duration"
+        app:layout_constraintStart_toStartOf="@id/track_title"
+        app:layout_constraintTop_toBottomOf="@id/track_title" />
+
+    <TextView
+        android:id="@+id/track_duration"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_small"
+        android:text="@string/m07_duration"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/track_menu"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/track_menu"
+        style="@style/T5.IconButton"
+        android:contentDescription="@string/cd_more"
+        android:src="@drawable/ic_more_vert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 30: the blood group in a coloured circle next to the patient's name; allergies
+     as chips in a ChipGroup, which wraps them onto new lines as needed; emergency
+     contacts as rows with a call button. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/gap">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/med_blood"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/error"
+                android:gravity="center"
+                android:text="@string/m30_blood"
+                android:textColor="@color/on_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/med_blood_label"
+                style="@style/T5.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_tiny"
+                android:text="@string/m30_blood_label"
+                app:layout_constraintEnd_toEndOf="@id/med_blood"
+                app:layout_constraintStart_toStartOf="@id/med_blood"
+                app:layout_constraintTop_toBottomOf="@id/med_blood" />
+
+            <TextView
+                android:id="@+id/med_name"
+                style="@style/T5.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:text="@string/m30_name"
+                app:layout_constraintBottom_toTopOf="@id/med_birth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/med_blood"
+                app:layout_constraintTop_toTopOf="@id/med_blood"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/med_birth"
+                style="@style/T5.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/m30_birth"
+                app:layout_constraintBottom_toBottomOf="@id/med_blood"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/med_name"
+                app:layout_constraintTop_toBottomOf="@id/med_name" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            style="@style/T5.Section"
+            android:text="@string/m30_allergies" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/med_allergies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip style="@style/T5.Tag" android:text="@string/m30_allergy_1" />
+
+            <com.google.android.material.chip.Chip style="@style/T5.Tag" android:text="@string/m30_allergy_2" />
+
+            <com.google.android.material.chip.Chip style="@style/T5.Tag" android:text="@string/m30_allergy_3" />
+
+            <com.google.android.material.chip.Chip style="@style/T5.Tag" android:text="@string/m30_allergy_4" />
+
+            <com.google.android.material.chip.Chip style="@style/T5.Tag" android:text="@string/m30_allergy_5" />
+
+            <com.google.android.material.chip.Chip style="@style/T5.Tag" android:text="@string/m30_allergy_6" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            style="@style/T5.Section"
+            android:text="@string/m30_contacts" />
+
+        <RelativeLayout style="@style/T5.ContactRow">
+
+            <ImageButton
+                android:id="@+id/med_call_1"
+                style="@style/T5.IconButton"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/cd_call"
+                android:src="@drawable/ic_phone"
+                app:tint="@color/ok" />
+
+            <TextView
+                android:id="@+id/med_contact_1"
+                style="@style/T5.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/med_call_1"
+                android:text="@string/m30_contact_1" />
+
+            <TextView
+                style="@style/T5.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/med_contact_1"
+                android:layout_toStartOf="@id/med_call_1"
+                android:text="@string/m30_contact_1_phone" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/T5.ContactRow">
+
+            <ImageButton
+                android:id="@+id/med_call_2"
+                style="@style/T5.IconButton"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/cd_call"
+                android:src="@drawable/ic_phone"
+                app:tint="@color/ok" />
+
+            <TextView
+                android:id="@+id/med_contact_2"
+                style="@style/T5.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/med_call_2"
+                android:text="@string/m30_contact_2" />
+
+            <TextView
+                style="@style/T5.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/med_contact_2"
+                android:layout_toStartOf="@id/med_call_2"
+                android:text="@string/m30_contact_2_phone" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T5.5: the written answer. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nested_answer"
+        style="@style/T5.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.25"
+        android:padding="@dimen/gap"
+        android:text="@string/t5_5_text"
+        android:textColor="@color/text_primary" />
+</ScrollView>

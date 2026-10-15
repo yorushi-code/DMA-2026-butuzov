@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 31: square cover (0dp width, ratio 1:1), a marquee title, the SeekBar with the
+     times under its two ends, and five controls in a spread chain. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/gap_large">
+
+    <ImageView
+        android:id="@+id/player_cover"
+        style="@style/T5.Photo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_gradient_video"
+        android:src="@drawable/ic_music"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/player_title"
+        style="@style/T5.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="@string/m31_title"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_cover" />
+
+    <TextView
+        android:id="@+id/player_artist"
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m31_artist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_title" />
+
+    <SeekBar
+        android:id="@+id/player_seek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:contentDescription="@string/cd_seek"
+        android:max="291"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:progress="84"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_artist" />
+
+    <TextView
+        android:id="@+id/player_elapsed"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m31_elapsed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_seek" />
+
+    <TextView
+        android:id="@+id/player_total"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m31_total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_seek" />
+
+    <ImageButton
+        android:id="@+id/player_shuffle"
+        style="@style/T5.IconButton"
+        android:contentDescription="@string/cd_shuffle"
+        android:src="@drawable/ic_shuffle"
+        app:layout_constraintBottom_toBottomOf="@id/player_play"
+        app:layout_constraintEnd_toStartOf="@id/player_prev"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player_play"
+        app:tint="@color/text_secondary" />
+
+    <ImageButton
+        android:id="@+id/player_prev"
+        style="@style/T5.IconButton"
+        android:contentDescription="@string/cd_prev"
+        android:src="@drawable/ic_skip_prev"
+        app:layout_constraintBottom_toBottomOf="@id/player_play"
+        app:layout_constraintEnd_toStartOf="@id/player_play"
+        app:layout_constraintStart_toEndOf="@id/player_shuffle"
+        app:layout_constraintTop_toTopOf="@id/player_play" />
+
+    <ImageButton
+        android:id="@+id/player_play"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="@dimen/gap"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="@color/brand"
+        android:contentDescription="@string/cd_pause"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_pause"
+        app:layout_constraintEnd_toStartOf="@id/player_next"
+        app:layout_constraintStart_toEndOf="@id/player_prev"
+        app:layout_constraintTop_toBottomOf="@id/player_elapsed"
+        app:tint="@color/on_dark" />
+
+    <ImageButton
+        android:id="@+id/player_next"
+        style="@style/T5.IconButton"
+        android:contentDescription="@string/cd_next"
+        android:src="@drawable/ic_skip_next"
+        app:layout_constraintBottom_toBottomOf="@id/player_play"
+        app:layout_constraintEnd_toStartOf="@id/player_repeat"
+        app:layout_constraintStart_toEndOf="@id/player_play"
+        app:layout_constraintTop_toTopOf="@id/player_play" />
+
+    <ImageButton
+        android:id="@+id/player_repeat"
+        style="@style/T5.IconButton"
+        android:contentDescription="@string/cd_repeat"
+        android:src="@drawable/ic_repeat"
+        app:layout_constraintBottom_toBottomOf="@id/player_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/player_next"
+        app:layout_constraintTop_toTopOf="@id/player_play"
+        app:tint="@color/text_secondary" />
+</androidx.constraintlayout.widget.ConstraintLayout>

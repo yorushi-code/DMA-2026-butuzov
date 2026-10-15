@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 47: the amount in large type at the top; the code field with the countdown
+     under it; the resend button becomes active only when the countdown reaches zero
+     (Behaviors.confirmCountdown); the confirm button is pinned to the bottom. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/gap_large">
+
+    <TextView
+        android:id="@+id/confirm_label"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:text="@string/m47_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/confirm_amount"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m47_amount"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_label" />
+
+    <TextView
+        android:id="@+id/confirm_merchant"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m47_merchant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_amount" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirm_code_layout"
+        style="@style/T5.Field"
+        android:layout_width="0dp"
+        android:layout_marginTop="40dp"
+        android:hint="@string/m47_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_merchant">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirm_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="6" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/confirm_timer"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        app:drawableStartCompat="@drawable/ic_clock"
+        app:drawableTint="@color/text_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_code_layout" />
+
+    <Button
+        android:id="@+id/confirm_resend"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/m47_resend"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_timer" />
+
+    <Button
+        android:id="@+id/confirm_ok"
+        style="@style/T5.Button"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:text="@string/m47_confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

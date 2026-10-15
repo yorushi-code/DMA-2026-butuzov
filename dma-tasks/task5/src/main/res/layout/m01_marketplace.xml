@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 1: two copies of the card in a row with equal weights (include with
+     overridden layout params, as in T6.4). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <include
+        android:id="@+id/market_card_1"
+        layout="@layout/part_marketplace_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/gap_tiny"
+        android:layout_weight="1" />
+
+    <include
+        android:id="@+id/market_card_2"
+        layout="@layout/part_marketplace_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/gap_tiny"
+        android:layout_weight="1" />
+</LinearLayout>

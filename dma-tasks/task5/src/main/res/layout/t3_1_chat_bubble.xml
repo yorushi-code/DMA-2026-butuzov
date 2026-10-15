@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T3.1: the time is aligned to the bottom-right of the message text
+     (alignBottom + toEndOf), not of the bubble. The bubble is the root itself: it wraps
+     its content and keeps 64dp clear on the end side, so no extra parent is needed. -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bubble"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/gap"
+    android:layout_marginTop="@dimen/gap"
+    android:layout_marginEnd="64dp"
+    android:background="@drawable/bg_bubble_in"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/bubble_text"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="240dp"
+        android:text="@string/t3_1_message"
+        android:textColor="@color/text_primary" />
+
+    <TextView
+        android:id="@+id/bubble_time"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/bubble_text"
+        android:layout_marginStart="@dimen/gap_small"
+        android:layout_toEndOf="@id/bubble_text"
+        android:text="@string/t3_1_time" />
+</RelativeLayout>
