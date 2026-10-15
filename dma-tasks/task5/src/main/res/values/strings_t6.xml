@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="t6_1">Единая шапка (include)</string>
+    <string name="t6_2">Составная карточка на merge</string>
+    <string name="t6_3">Ленивый экран ошибки (ViewStub)</string>
+    <string name="t6_4">Переопределение параметров include</string>
+    <string name="t6_5_cart">Футер корзины · корзина</string>
+    <string name="t6_5_reorder">Футер корзины · повторный заказ</string>
+
+    <string name="t6_1_text">Шапка с кнопкой «Назад» и заголовком описана один раз, в toolbar_common.xml, и подключена через include в четыре экрана: этот, 6.3 и оба экрана 6.5. Кнопка «Назад» работает везде одинаково: ScreenActivity находит её по id после setContentView.</string>
+    <string name="t6_2_note">Каждая карточка — один IconCardView (наследник LinearLayout). Его разметка view_icon_card.xml начинается с тега merge, поэтому иконка и текст становятся прямыми детьми карточки, без лишнего промежуточного контейнера.</string>
+    <string name="t6_2_card_1">Мои заказы</string>
+    <string name="t6_2_card_2">Способы оплаты</string>
+    <string name="t6_2_card_3">Уведомления</string>
+    <string name="t6_3_text">Экран ошибки сети лежит в ViewStub: пока он не нужен, это пустой view нулевого размера, а его разметка даже не загружается. Кнопка ниже имитирует пропажу сети и разворачивает заглушку.</string>
+    <string name="t6_3_simulate">Имитировать отсутствие сети</string>
+    <string name="t6_3_error_title">Нет подключения к интернету</string>
+    <string name="t6_3_error_text">Проверьте Wi-Fi или мобильную сеть и попробуйте ещё раз.</string>
+    <string name="t6_3_retry">Повторить</string>
+    <string name="t6_4_note">Один и тот же макет part_info_card.xml подключён дважды. Во втором include переопределены layout_width (wrap_content вместо match_parent) и layout_margin (40dp вместо 16dp).</string>
+    <string name="t6_4_card_title">Бесплатная доставка</string>
+    <string name="t6_4_card_text">При заказе от 1 500 ₽</string>
+    <string name="t6_5_total_label">Итого</string>
+    <string name="t6_5_total">4 870 ₽</string>
+    <string name="t6_5_pay">Оплатить</string>
+    <string name="t6_5_reorder_note">Заказ от 12 сентября. Состав и сумма такие же, футер с оплатой — тот же part_cart_footer.xml, что и в корзине.</string>
+    <string name="t6_5_item_1">Молоко 3,2%, 1 л</string>
+    <string name="t6_5_item_2">Хлеб бородинский</string>
+    <string name="t6_5_item_3">Сыр российский, 300 г</string>
+    <string name="t6_5_item_4">Кофе в зёрнах, 1 кг</string>
+    <string name="t6_5_price_1">119 ₽</string>
+    <string name="t6_5_price_2">72 ₽</string>
+    <string name="t6_5_price_3">389 ₽</string>
+    <string name="t6_5_price_4">4 290 ₽</string>
+</resources>

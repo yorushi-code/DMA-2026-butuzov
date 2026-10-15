@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <EditText android:id="@+id/etLogin" style="@style/Task4.Field" android:hint="@string/p21_hint_login" android:inputType="text" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etPassword" style="@style/Task4.Field" android:hint="@string/p20_hint" android:inputType="textPassword" android:importantForAutofill="no" />
+        <Button android:id="@+id/btnLogin" style="@style/Task4.Button" android:text="@string/p21_login" />
+        <TextView android:id="@+id/tvError" style="@style/Task4.Result" android:textColor="@color/error"/>
+        <TextView style="@style/Task4.Label" android:text="@string/p21_demo" />
+    </LinearLayout>
+</ScrollView>

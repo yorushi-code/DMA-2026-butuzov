@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <EditText android:id="@+id/etAmount" style="@style/Task4.Field" android:hint="@string/p26_hint_amount" android:inputType="numberDecimal" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etRate" style="@style/Task4.Field" android:hint="@string/p26_hint_rate" android:inputType="numberDecimal" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etMonths" style="@style/Task4.Field" android:hint="@string/p26_hint_months" android:inputType="number" android:importantForAutofill="no" />
+        <Button android:id="@+id/btnCalc" style="@style/Task4.Button" android:text="@string/calculate" />
+        <TextView android:id="@+id/tvPayment" style="@style/Task4.Result" />
+        <Button android:id="@+id/btnSchedule" style="@style/Task4.Button" android:text="@string/p26_show_schedule" android:enabled="false"/>
+    </LinearLayout>
+</ScrollView>

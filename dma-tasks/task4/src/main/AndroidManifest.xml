@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Task4">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Top-level screens first, then the second screens they open. -->
+        <activity android:name=".theme.LayoutActivity" android:exported="false" android:label="@string/t3_title" />
+        <activity android:name=".theme.GreetingActivity" android:exported="false" android:label="@string/t4_title" />
+        <activity android:name=".theme.ResourcesActivity" android:exported="false" android:label="@string/t5_title" />
+        <activity android:name=".theme.IntentStartActivity" android:exported="false" android:label="@string/t6_title" />
+        <activity android:name=".theme.IntentSecondActivity" android:exported="false" android:label="@string/t6_second_title" />
+        <activity android:name=".theme.AboutActivity" android:exported="false" android:label="@string/t6_about_title" />
+        <activity android:name=".project.ClickerActivity" android:exported="false" android:label="@string/pr1_title" />
+        <activity android:name=".project.TipActivity" android:exported="false" android:label="@string/pr2_title" />
+        <activity android:name=".project.CardFormActivity" android:exported="false" android:label="@string/pr3_title" />
+        <activity android:name=".project.CardActivity" android:exported="false" android:label="@string/pr3_card_title" />
+        <activity android:name=".practice.TrafficLightActivity" android:exported="false" android:label="@string/p01_title" />
+        <activity android:name=".practice.DiceActivity" android:exported="false" android:label="@string/p02_title" />
+        <activity android:name=".practice.QuizOneActivity" android:exported="false" android:label="@string/p03_title" />
+        <activity android:name=".practice.SecretToggleActivity" android:exported="false" android:label="@string/p04_title" />
+        <activity android:name=".practice.ReverseActivity" android:exported="false" android:label="@string/p05_title" />
+        <activity android:name=".practice.DogAgeActivity" android:exported="false" android:label="@string/p06_title" />
+        <activity android:name=".practice.CharCountActivity" android:exported="false" android:label="@string/p07_title" />
+        <activity android:name=".practice.FlashlightActivity" android:exported="false" android:label="@string/p08_title" />
+        <activity android:name=".practice.CmToInchActivity" android:exported="false" android:label="@string/p09_title" />
+        <activity android:name=".practice.ParityActivity" android:exported="false" android:label="@string/p10_title" />
+        <activity android:name=".practice.BmiActivity" android:exported="false" android:label="@string/p11_title" />
+        <activity android:name=".practice.FuelActivity" android:exported="false" android:label="@string/p12_title" />
+        <activity android:name=".practice.TemperatureActivity" android:exported="false" android:label="@string/p13_title" />
+        <activity android:name=".practice.CalculatorActivity" android:exported="false" android:label="@string/p14_title" />
+        <activity android:name=".practice.DiscountActivity" android:exported="false" android:label="@string/p15_title" />
+        <activity android:name=".practice.CurrencyActivity" android:exported="false" android:label="@string/p16_title" />
+        <activity android:name=".practice.PinActivity" android:exported="false" android:label="@string/p17_title" />
+        <activity android:name=".practice.CapitalsQuizActivity" android:exported="false" android:label="@string/p18_title" />
+        <activity android:name=".practice.TravelTimeActivity" android:exported="false" android:label="@string/p19_title" />
+        <activity android:name=".practice.PasswordActivity" android:exported="false" android:label="@string/p20_title" />
+        <activity android:name=".practice.LoginActivity" android:exported="false" android:label="@string/p21_title" />
+        <activity android:name=".practice.CabinetActivity" android:exported="false" android:label="@string/p21_cabinet_title" />
+        <activity android:name=".practice.PizzaActivity" android:exported="false" android:label="@string/p22_title" />
+        <activity android:name=".practice.ReceiptActivity" android:exported="false" android:label="@string/p22_receipt_title" />
+        <activity android:name=".practice.QuizFirstActivity" android:exported="false" android:label="@string/p23_title" />
+        <activity android:name=".practice.QuizSecondActivity" android:exported="false" android:label="@string/p23_second_title" />
+        <activity android:name=".practice.MasterFormActivity" android:exported="false" android:label="@string/p24_title" />
+        <activity android:name=".practice.MasterCardActivity" android:exported="false" android:label="@string/p24_card_title" />
+        <activity android:name=".practice.NoteEditActivity" android:exported="false" android:label="@string/p25_title" />
+        <activity android:name=".practice.NoteReadActivity" android:exported="false" android:label="@string/p25_read_title" />
+        <activity android:name=".practice.LoanActivity" android:exported="false" android:label="@string/p26_title" />
+        <activity android:name=".practice.LoanScheduleActivity" android:exported="false" android:label="@string/p26_schedule_title" />
+        <activity android:name=".practice.TicketFormActivity" android:exported="false" android:label="@string/p27_title" />
+        <activity android:name=".practice.TicketActivity" android:exported="false" android:label="@string/p27_ticket_title" />
+        <activity android:name=".practice.StepsFormActivity" android:exported="false" android:label="@string/p28_title" />
+        <activity android:name=".practice.StepsProgressActivity" android:exported="false" android:label="@string/p28_progress_title" />
+        <activity android:name=".practice.GlossaryActivity" android:exported="false" android:label="@string/p29_title" />
+        <activity android:name=".practice.TermActivity" android:exported="false" android:label="@string/p29_term_title" />
+        <activity android:name=".practice.PortfolioActivity" android:exported="false" android:label="@string/p30_title" />
+        <activity android:name=".practice.PortfolioDetailActivity" android:exported="false" android:label="@string/p30_detail_title" />
+    </application>
+</manifest>

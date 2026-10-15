@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp" android:background="#F5F5F5" android:gravity="center">
+
+        <TextView style="@style/Task4.Title" android:text="@string/pr1_hint" android:gravity="center"/>
+        <TextView android:id="@+id/tvCounter" style="@style/Task4.Big" android:text="@string/zero" />
+        <Button android:id="@+id/btnClickMe" style="@style/Task4.Button" android:text="@string/pr1_click" />
+        <Button android:id="@+id/btnReset" style="@style/Task4.Button" android:text="@string/pr1_reset" />
+    </LinearLayout>

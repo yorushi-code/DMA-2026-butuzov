@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 21: the three counters form a horizontal chain right of the avatar with equal
+     weights (width 0dp, horizontal_weight 1), so they always split the space evenly.
+     Each label is pinned under its number. One flat ConstraintLayout. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/gap">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profile_avatar"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:background="@color/photo_4"
+        android:contentDescription="@string/cd_avatar"
+        android:padding="14dp"
+        android:src="@drawable/ic_person"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/T5.Shape.Circle"
+        app:tint="@color/on_dark" />
+
+    <TextView
+        android:id="@+id/count_posts"
+        style="@style/T5.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/m21_posts_count"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/count_followers"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/profile_avatar"
+        app:layout_constraintTop_toTopOf="@id/profile_avatar"
+        app:layout_constraintBottom_toTopOf="@id/label_posts"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/label_posts"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/m21_posts"
+        app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
+        app:layout_constraintEnd_toEndOf="@id/count_posts"
+        app:layout_constraintStart_toStartOf="@id/count_posts"
+        app:layout_constraintTop_toBottomOf="@id/count_posts" />
+
+    <TextView
+        android:id="@+id/count_followers"
+        style="@style/T5.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/m21_followers_count"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/count_following"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/count_posts"
+        app:layout_constraintTop_toTopOf="@id/profile_avatar"
+        app:layout_constraintBottom_toTopOf="@id/label_followers"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/label_followers"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/m21_followers"
+        app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
+        app:layout_constraintEnd_toEndOf="@id/count_followers"
+        app:layout_constraintStart_toStartOf="@id/count_followers"
+        app:layout_constraintTop_toBottomOf="@id/count_followers" />
+
+    <TextView
+        android:id="@+id/count_following"
+        style="@style/T5.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/m21_following_count"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/count_followers"
+        app:layout_constraintTop_toTopOf="@id/profile_avatar"
+        app:layout_constraintBottom_toTopOf="@id/label_following"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/label_following"
+        style="@style/T5.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/m21_following"
+        app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
+        app:layout_constraintEnd_toEndOf="@id/count_following"
+        app:layout_constraintStart_toStartOf="@id/count_following"
+        app:layout_constraintTop_toBottomOf="@id/count_following" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        style="@style/T5.Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/m21_name"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_avatar" />
+
+    <TextView
+        android:id="@+id/profile_bio"
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/m21_bio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_name" />
+
+    <Button
+        android:id="@+id/profile_edit"
+        style="@style/T5.Button.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/m21_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_bio" />
+</androidx.constraintlayout.widget.ConstraintLayout>

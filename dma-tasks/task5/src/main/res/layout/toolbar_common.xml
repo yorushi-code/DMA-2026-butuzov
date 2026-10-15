@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T6.1: the shared header. ScreenActivity wires @id/toolbar_back to finish() and puts
+     the item's title into @id/toolbar_title on every screen that includes this file. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_common"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@color/brand_soft"
+    tools:ignore="Overdraw"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/gap_tiny"
+    android:paddingEnd="@dimen/gap">
+
+    <ImageButton
+        android:id="@+id/toolbar_back"
+        style="@style/T5.IconButton"
+        android:contentDescription="@string/cd_back"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        style="@style/T5.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_tiny"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1" />
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 46: the result screen is a ConstraintLayout (title, trophy over a three-step
+     pedestal, score, two equal buttons); ConfettiView is a second layer of the root
+     FrameLayout, drawn over everything but not clickable. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/gap_large">
+
+        <TextView
+            android:id="@+id/quiz_title"
+            style="@style/T5.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m46_title"
+            app:layout_constraintBottom_toTopOf="@id/quiz_trophy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:id="@+id/quiz_trophy"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="@dimen/gap_large"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_trophy"
+            app:layout_constraintBottom_toTopOf="@id/quiz_first"
+            app:layout_constraintEnd_toEndOf="@id/quiz_first"
+            app:layout_constraintStart_toStartOf="@id/quiz_first"
+            app:layout_constraintTop_toBottomOf="@id/quiz_title"
+            app:tint="@color/warning" />
+
+        <TextView
+            android:id="@+id/quiz_second"
+            style="@style/T5.Podium"
+            android:layout_height="72dp"
+            android:backgroundTint="#B0BEC5"
+            android:text="@string/m46_second"
+            app:layout_constraintBottom_toBottomOf="@id/quiz_first"
+            app:layout_constraintEnd_toStartOf="@id/quiz_first"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/quiz_first"
+            style="@style/T5.Podium"
+            android:layout_height="112dp"
+            android:backgroundTint="@color/warning"
+            android:text="@string/m46_first"
+            app:layout_constraintBottom_toTopOf="@id/quiz_score"
+            app:layout_constraintEnd_toStartOf="@id/quiz_third"
+            app:layout_constraintStart_toEndOf="@id/quiz_second"
+            app:layout_constraintTop_toBottomOf="@id/quiz_trophy" />
+
+        <TextView
+            android:id="@+id/quiz_third"
+            style="@style/T5.Podium"
+            android:layout_height="52dp"
+            android:backgroundTint="#BCAAA4"
+            android:text="@string/m46_third"
+            app:layout_constraintBottom_toBottomOf="@id/quiz_first"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/quiz_first" />
+
+        <TextView
+            android:id="@+id/quiz_score"
+            style="@style/T5.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_large"
+            android:text="@string/m46_score"
+            android:textSize="44sp"
+            app:layout_constraintBottom_toTopOf="@id/quiz_points"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_first" />
+
+        <TextView
+            android:id="@+id/quiz_points"
+            style="@style/T5.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m46_points"
+            android:textColor="@color/ok"
+            app:layout_constraintBottom_toTopOf="@id/quiz_share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_score" />
+
+        <Button
+            android:id="@+id/quiz_share"
+            style="@style/T5.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="@dimen/gap_small"
+            android:text="@string/m46_share"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/quiz_again"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_points" />
+
+        <Button
+            android:id="@+id/quiz_again"
+            style="@style/T5.Button"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:text="@string/m46_again"
+            app:layout_constraintBaseline_toBaselineOf="@id/quiz_share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/quiz_share" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <dev.yorushi.dma.task5.widget.ConfettiView
+        android:id="@+id/quiz_confetti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

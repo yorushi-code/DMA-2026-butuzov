@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="t4_1">Баннер 16:9</string>
+    <string name="t4_2">Упакованная цепочка</string>
+    <string name="t4_3">Ограничитель (Barrier)</string>
+    <string name="t4_4">Процентное позиционирование</string>
+    <string name="t4_5">Групповое управление видимостью</string>
+
+    <string name="t4_1_banner">Баннер 16:9 · ширина 0dp, высота считается из ширины</string>
+    <string name="t4_1_note">Высота баннера нигде не задана: dimensionRatio=\"16:9\" пересчитывает её при каждом измерении, поэтому на любом экране и при повороте пропорция сохраняется.</string>
+    <string name="t4_2_title">Добро пожаловать</string>
+    <string name="t4_2_subtitle">Заголовок и подзаголовок связаны в вертикальную packed-цепочку и вместе смещены к верхней трети (bias 0.2).</string>
+    <string name="t4_3_name">Константин Ковалевский</string>
+    <string name="t4_3_role">Дизайнер</string>
+    <string name="t4_3_name_short">Ия Ли</string>
+    <string name="t4_3_role_long">Ведущий инженер по качеству</string>
+    <string name="t4_3_action">Написать</string>
+    <string name="t4_3_note">Кнопка привязана к барьеру, который стоит справа от более длинной из двух надписей. Во втором примере длиннее должность, и барьер вместе с кнопкой подстраивается под неё.</string>
+    <string name="t4_4_note">Две вертикальные Guideline стоят на 15% и 85% ширины экрана. Кнопка растянута между ними (ширина 0dp), поэтому на любом экране занимает ровно средние 70%.</string>
+    <string name="t4_5_toggle">Скрыть группу</string>
+    <string name="t4_5_toggle_show">Показать группу</string>
+    <string name="t4_5_note">Три элемента ниже входят в один androidx.constraintlayout.widget.Group. Кнопка меняет видимость всей группы одной строкой: group.setVisibility(…).</string>
+    <string name="t4_5_item_1">Элемент группы 1 · заголовок</string>
+    <string name="t4_5_item_2">Элемент группы 2 · описание</string>
+</resources>

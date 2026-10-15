@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T5.1: a horizontal LinearLayout wider than the screen inside a HorizontalScrollView. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/gap">
+
+    <TextView
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:text="@string/t5_1_header" />
+
+    <HorizontalScrollView
+        android:id="@+id/stories_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/stories_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_1" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_2" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_3" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_4" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_5" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_6" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_1" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                style="@style/T5.Story"
+                android:background="@color/photo_3" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/gap"
+        android:text="@string/t5_1_note" />
+</LinearLayout>

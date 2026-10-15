@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 18: an exposed dropdown for the topic, the message, and an attachment row
+     (icon, name, size bar, remove) that the attach button reveals. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/gap">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/feedback_topic_layout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/m18_topic">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/feedback_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            app:simpleItems="@array/m18_topics" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/T5.Field"
+        android:layout_marginTop="12dp"
+        android:hint="@string/m18_message">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/feedback_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minLines="5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/feedback_attach"
+        style="@style/T5.Button.Outlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_small"
+        android:text="@string/m18_attach"
+        app:icon="@drawable/ic_attach" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/feedback_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_small"
+        android:background="@drawable/bg_card_flat"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/feedback_file_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/brand_soft"
+            android:importantForAccessibility="no"
+            android:padding="8dp"
+            android:src="@drawable/ic_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/brand" />
+
+        <TextView
+            android:id="@+id/feedback_file_name"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="middle"
+            android:maxLines="1"
+            android:text="@string/m18_file"
+            app:layout_constraintEnd_toStartOf="@id/feedback_file_remove"
+            app:layout_constraintStart_toEndOf="@id/feedback_file_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/feedback_file_size_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:progress="24"
+            app:layout_constraintEnd_toEndOf="@id/feedback_file_name"
+            app:layout_constraintStart_toStartOf="@id/feedback_file_name"
+            app:layout_constraintTop_toBottomOf="@id/feedback_file_name"
+            app:trackCornerRadius="2dp" />
+
+        <TextView
+            android:id="@+id/feedback_file_size"
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/m18_size"
+            app:layout_constraintStart_toStartOf="@id/feedback_file_name"
+            app:layout_constraintTop_toBottomOf="@id/feedback_file_size_bar" />
+
+        <ImageButton
+            android:id="@+id/feedback_file_remove"
+            style="@style/T5.IconButton"
+            android:contentDescription="@string/cd_remove_file"
+            android:src="@drawable/ic_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        style="@style/T5.Button"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/m18_send" />
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <TextView style="@style/Task4.Title" android:text="@string/p22_size" />
+        <RadioGroup
+            android:id="@+id/rgSize"
+            style="@style/Task4.Field"
+            android:checkedButton="@id/rbMedium">
+
+            <RadioButton android:id="@+id/rbSmall" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="@string/p22_small" />
+            <RadioButton android:id="@+id/rbMedium" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="@string/p22_medium" />
+            <RadioButton android:id="@+id/rbLarge" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="@string/p22_large" />
+        </RadioGroup>
+        <EditText android:id="@+id/etCount" style="@style/Task4.Field" android:hint="@string/p22_hint_count" android:inputType="number" android:importantForAutofill="no" android:text="@string/p22_one"/>
+        <EditText android:id="@+id/etAddress" style="@style/Task4.Field" android:hint="@string/p22_hint_address" android:inputType="textPostalAddress" android:importantForAutofill="no" />
+        <Button android:id="@+id/btnOrder" style="@style/Task4.Button" android:text="@string/p22_order" />
+    </LinearLayout>
+</ScrollView>

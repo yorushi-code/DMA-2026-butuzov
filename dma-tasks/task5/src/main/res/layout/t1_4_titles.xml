@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T1.4: in a vertical LinearLayout each child picks its own horizontal position. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/gap">
+
+    <TextView
+        android:id="@+id/title_center"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/t1_4_title" />
+
+    <TextView
+        android:id="@+id/subtitle_end"
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/gap_small"
+        android:text="@string/t1_4_subtitle"
+        android:textColor="@color/brand" />
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:text="@string/t1_4_note" />
+</LinearLayout>

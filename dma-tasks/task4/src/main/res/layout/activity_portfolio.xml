@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <ImageView android:layout_width="120dp" android:layout_height="120dp" android:layout_gravity="center_horizontal" android:src="@drawable/ic_avatar" android:contentDescription="@string/p30_photo" />
+        <TextView style="@style/Task4.Title" android:text="@string/t6_author" android:gravity="center"/>
+        <Button android:id="@+id/btnAbout" style="@style/Task4.Button" android:text="@string/p30_about" />
+        <Button android:id="@+id/btnSkills" style="@style/Task4.Button" android:text="@string/p30_skills" />
+        <Button android:id="@+id/btnContacts" style="@style/Task4.Button" android:text="@string/p30_contacts" />
+    </LinearLayout>
+</ScrollView>

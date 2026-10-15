@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T6.5: total and pay button, shared by the cart and the repeat-order screens. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cart_footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_bar"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/gap">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/T5.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t6_5_total_label" />
+
+        <TextView
+            android:id="@+id/cart_total"
+            style="@style/T5.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t6_5_total"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cart_pay"
+        style="@style/T5.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:minWidth="160dp"
+        android:text="@string/t6_5_pay" />
+</LinearLayout>

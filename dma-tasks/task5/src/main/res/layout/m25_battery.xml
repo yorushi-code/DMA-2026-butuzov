@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 25: a horizontal "thermometer": the fill is a View whose width is a percentage
+     of the outline (layout_constraintWidth_percent = charge), coloured by level; then a
+     list of apps, each row a small ConstraintLayout with a usage bar. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/gap">
+
+            <TextView
+                android:id="@+id/battery_level"
+                style="@style/T5.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m25_level"
+                android:textSize="40sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/battery_left"
+                style="@style/T5.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m25_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/battery_level" />
+
+            <!-- The outline is a container of its own: a percent width is a share of the
+                 parent, so the fill must be a child of the outline to be 68% of it. -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/battery_outline"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/gap"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/bg_field_box"
+                android:padding="5dp"
+                app:layout_constraintEnd_toStartOf="@id/battery_tip"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/battery_left">
+
+                <View
+                    android:id="@+id/battery_fill"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_rounded"
+                    android:backgroundTint="@color/ok"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent="0.68" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/battery_tip"
+                android:layout_width="6dp"
+                android:layout_height="16dp"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/outline"
+                app:layout_constraintBottom_toBottomOf="@id/battery_outline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/battery_outline" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_small"
+                android:text="@string/m25_legend"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/battery_outline" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            style="@style/T5.Section"
+            android:layout_marginStart="@dimen/gap"
+            android:layout_marginTop="@dimen/gap_small"
+            android:text="@string/m25_apps" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.SettingRow">
+
+        <ImageView
+            android:id="@+id/app_icon_1"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_4"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name_1"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/m25_app_1"
+            app:layout_constraintEnd_toStartOf="@id/app_pct_1"
+            app:layout_constraintStart_toEndOf="@id/app_icon_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_pct_1"
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m25_pct_1"
+            app:layout_constraintBaseline_toBaselineOf="@id/app_name_1"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:progress="31"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/app_name_1"
+            app:layout_constraintTop_toBottomOf="@id/app_name_1"
+            app:trackCornerRadius="2dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.SettingRow">
+
+        <ImageView
+            android:id="@+id/app_icon_2"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_5"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name_2"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/m25_app_2"
+            app:layout_constraintEnd_toStartOf="@id/app_pct_2"
+            app:layout_constraintStart_toEndOf="@id/app_icon_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_pct_2"
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m25_pct_2"
+            app:layout_constraintBaseline_toBaselineOf="@id/app_name_2"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:progress="22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/app_name_2"
+            app:layout_constraintTop_toBottomOf="@id/app_name_2"
+            app:trackCornerRadius="2dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.SettingRow">
+
+        <ImageView
+            android:id="@+id/app_icon_3"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_2"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name_3"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/m25_app_3"
+            app:layout_constraintEnd_toStartOf="@id/app_pct_3"
+            app:layout_constraintStart_toEndOf="@id/app_icon_3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_pct_3"
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m25_pct_3"
+            app:layout_constraintBaseline_toBaselineOf="@id/app_name_3"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:progress="14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/app_name_3"
+            app:layout_constraintTop_toBottomOf="@id/app_name_3"
+            app:trackCornerRadius="2dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.SettingRow">
+
+        <ImageView
+            android:id="@+id/app_icon_4"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_1"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name_4"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/m25_app_4"
+            app:layout_constraintEnd_toStartOf="@id/app_pct_4"
+            app:layout_constraintStart_toEndOf="@id/app_icon_4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_pct_4"
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m25_pct_4"
+            app:layout_constraintBaseline_toBaselineOf="@id/app_name_4"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:progress="9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/app_name_4"
+            app:layout_constraintTop_toBottomOf="@id/app_name_4"
+            app:trackCornerRadius="2dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/T5.SettingRow">
+
+        <ImageView
+            android:id="@+id/app_icon_5"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/photo_3"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name_5"
+            style="@style/T5.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/m25_app_5"
+            app:layout_constraintEnd_toStartOf="@id/app_pct_5"
+            app:layout_constraintStart_toEndOf="@id/app_icon_5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_pct_5"
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m25_pct_5"
+            app:layout_constraintBaseline_toBaselineOf="@id/app_name_5"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:progress="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/app_name_5"
+            app:layout_constraintTop_toBottomOf="@id/app_name_5"
+            app:trackCornerRadius="2dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

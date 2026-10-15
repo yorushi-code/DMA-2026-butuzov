@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T2.1: the photo and the status dot share a FrameLayout; the dot, declared last,
+     is drawn on top and pinned to the bottom-right corner by layout_gravity. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/gap">
+
+    <FrameLayout
+        android:id="@+id/avatar_frame"
+        android:layout_width="@dimen/avatar_large"
+        android:layout_height="@dimen/avatar_large">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/photo_5"
+            android:contentDescription="@string/cd_avatar"
+            android:padding="12dp"
+            android:src="@drawable/ic_person"
+            app:shapeAppearance="@style/T5.Shape.Circle"
+            app:tint="@color/on_dark" />
+
+        <View
+            android:id="@+id/online_dot"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="2dp"
+            android:background="@drawable/bg_online_dot"
+            android:contentDescription="@string/cd_online" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/T5.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t2_1_name" />
+
+        <TextView
+            style="@style/T5.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t2_1_status"
+            android:textColor="@color/ok" />
+    </LinearLayout>
+</LinearLayout>

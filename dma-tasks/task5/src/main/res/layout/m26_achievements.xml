@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 26: a 3x3 grid: three rows of three equal-weight square tiles. Each tile is a
+     FrameLayout; on a locked badge the icon and caption are translucent and a lock is
+     drawn over them as the top layer. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_tiny"
+        android:text="@string/m26_title" />
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_tiny"
+        android:layout_marginBottom="@dimen/gap_small"
+        android:text="@string/m26_progress" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_1"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_check_circle"
+                app:tint="@color/ok" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_1"
+                android:textColor="@color/text_primary" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_2"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_fire"
+                app:tint="@color/accent" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_2"
+                android:textColor="@color/text_primary" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_3"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_trophy"
+                app:tint="@color/warning" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_3"
+                android:textColor="@color/text_primary" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_4"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_clock"
+                app:tint="@color/brand" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_4"
+                android:textColor="@color/text_primary" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_5"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_heart"
+                app:tint="@color/error" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_5"
+                android:textColor="@color/text_primary" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_6"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:alpha="0.35"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_place"
+                app:tint="@color/ok" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:alpha="0.35"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_6"
+                android:textColor="@color/text_primary" />
+
+            <ImageView
+                android:id="@+id/badge_lock_6"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/text_primary"
+                android:contentDescription="@string/cd_locked"
+                android:padding="6dp"
+                android:src="@drawable/ic_lock"
+                app:tint="@color/on_dark" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_7"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:alpha="0.35"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_star"
+                app:tint="@color/warning" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:alpha="0.35"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_7"
+                android:textColor="@color/text_primary" />
+
+            <ImageView
+                android:id="@+id/badge_lock_7"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/text_primary"
+                android:contentDescription="@string/cd_locked"
+                android:padding="6dp"
+                android:src="@drawable/ic_lock"
+                app:tint="@color/on_dark" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_8"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:alpha="0.35"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_shield"
+                app:tint="@color/brand" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:alpha="0.35"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_8"
+                android:textColor="@color/text_primary" />
+
+            <ImageView
+                android:id="@+id/badge_lock_8"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/text_primary"
+                android:contentDescription="@string/cd_locked"
+                android:padding="6dp"
+                android:src="@drawable/ic_lock"
+                app:tint="@color/on_dark" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+
+        <dev.yorushi.dma.task5.widget.SquareFrameLayout
+            android:id="@+id/badge_9"
+            style="@style/T5.Tile">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:alpha="0.35"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_bulb"
+                app:tint="@color/accent" />
+
+            <TextView
+                style="@style/T5.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:alpha="0.35"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/m26_9"
+                android:textColor="@color/text_primary" />
+
+            <ImageView
+                android:id="@+id/badge_lock_9"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/text_primary"
+                android:contentDescription="@string/cd_locked"
+                android:padding="6dp"
+                android:src="@drawable/ic_lock"
+                app:tint="@color/on_dark" />
+        </dev.yorushi.dma.task5.widget.SquareFrameLayout>
+    </LinearLayout>
+</LinearLayout>

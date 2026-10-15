@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <TextView android:id="@+id/tvProgress" style="@style/Task4.Label" android:text="" />
+        <TextView android:id="@+id/tvCountry" style="@style/Task4.Title" android:text="" />
+        <Button android:id="@+id/btnOption1" style="@style/Task4.Button" android:text="@string/empty" />
+        <Button android:id="@+id/btnOption2" style="@style/Task4.Button" android:text="@string/empty" />
+        <Button android:id="@+id/btnOption3" style="@style/Task4.Button" android:text="@string/empty" />
+        <TextView android:id="@+id/tvFeedback" style="@style/Task4.Result" />
+        <TextView android:id="@+id/tvScore" style="@style/Task4.Result" />
+        <Button android:id="@+id/btnRestart" style="@style/Task4.Button" android:text="@string/p18_restart" android:visibility="gone"/>
+    </LinearLayout>
+</ScrollView>

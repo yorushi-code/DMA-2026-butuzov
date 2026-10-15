@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <EditText android:id="@+id/etWeight" style="@style/Task4.Field" android:hint="@string/p11_hint_weight" android:inputType="numberDecimal" android:importantForAutofill="no" />
+        <EditText android:id="@+id/etHeight" style="@style/Task4.Field" android:hint="@string/p11_hint_height" android:inputType="numberDecimal" android:importantForAutofill="no" />
+        <Button android:id="@+id/btnCalc" style="@style/Task4.Button" android:text="@string/calculate" />
+        <TextView android:id="@+id/tvResult" style="@style/Task4.Result" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 12: the RangeSlider and, under it, "from" and "to" fields in one row with equal
+     weights; Behaviors.priceFilter keeps the slider and the fields in sync. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/gap">
+
+    <TextView
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m12_title" />
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/filter_range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_small"
+        android:contentDescription="@string/m12_title"
+        android:stepSize="500"
+        android:valueFrom="0"
+        android:valueTo="50000"
+        app:labelBehavior="gone"
+        app:tickVisible="false"
+        app:values="@array/m12_default_range" />
+
+    <LinearLayout
+        android:id="@+id/filter_fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_from_layout"
+            style="@style/T5.Field"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="@string/m12_from"
+            app:suffixText="@string/rub">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/T5.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/m12_dash" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_to_layout"
+            style="@style/T5.Field"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="@string/m12_to"
+            app:suffixText="@string/rub">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <TextView
+        style="@style/T5.Section"
+        android:text="@string/m12_brand" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/filter_brands"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.Chip android:id="@+id/brand_1" style="@style/T5.Chip" android:checked="true" android:text="@string/m12_brand_1" />
+
+        <com.google.android.material.chip.Chip android:id="@+id/brand_2" style="@style/T5.Chip" android:text="@string/m12_brand_2" />
+
+        <com.google.android.material.chip.Chip android:id="@+id/brand_3" style="@style/T5.Chip" android:checked="true" android:text="@string/m12_brand_3" />
+
+        <com.google.android.material.chip.Chip android:id="@+id/brand_4" style="@style/T5.Chip" android:text="@string/m12_brand_4" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/filter_reset"
+        style="@style/T5.Button.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/m12_reset" />
+
+    <Button
+        style="@style/T5.Button"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/m12_apply" />
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- T6.2: attributes of the compound card. -->
+    <declare-styleable name="IconCardView">
+        <attr name="cardIcon" format="reference" />
+        <attr name="cardText" format="string" />
+    </declare-styleable>
+</resources>

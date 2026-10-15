@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stand-in for a map SDK view (item 41): blocks, roads, a river and a route. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="640dp"
+    android:viewportWidth="360"
+    android:viewportHeight="640">
+    <path android:fillColor="#E8EDE3" android:pathData="M0,0h360v640h-360z" />
+    <path android:fillColor="#D6E9C6" android:pathData="M210,60h120v110h-120z M30,420h110v90h-110z" />
+    <path android:fillColor="#BBDEFB" android:pathData="M0,250 C90,230 160,300 360,270 L360,310 C170,340 90,270 0,290z" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="14" android:pathData="M0,200 H360 M0,380 H360 M0,560 H360 M90,0 V640 M270,0 V640" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="8" android:pathData="M0,110 H360 M0,470 H360 M180,0 V640" />
+    <path android:strokeColor="#FFE082" android:strokeWidth="6" android:pathData="M90,0 V640" />
+    <path android:strokeColor="#3D5AFE" android:strokeWidth="5" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M180,150 V200 H270 V380 H180 V470" />
+    <path android:fillColor="#3D5AFE" android:pathData="M180,140 m-10,0 a10,10 0,1 1,20 0 a10,10 0,1 1,-20 0" />
+    <path android:fillColor="#FF6D00" android:pathData="M180,470 m-10,0 a10,10 0,1 1,20 0 a10,10 0,1 1,-20 0" />
+</vector>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 43: the illustration's height is 40% of the screen (height 0dp +
+     layout_constraintHeight_percent 0.4); title and text are centred in the space
+     between it and the dots; the dots and the button are pinned to the bottom. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/onboarding_art"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/brand_soft"
+        android:importantForAccessibility="no"
+        android:scaleType="center"
+        android:src="@drawable/art_onboarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/onboarding_skip"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/touch"
+        android:gravity="center"
+        android:paddingStart="@dimen/gap"
+        android:paddingEnd="@dimen/gap"
+        android:text="@string/m43_skip"
+        android:textColor="@color/brand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/onboarding_title"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m43_title"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_art"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/onboarding_text"
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:text="@string/m43_text"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_dots"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_title" />
+
+    <LinearLayout
+        android:id="@+id/onboarding_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/gap_large"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="24dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/brand" />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_dot"
+            android:backgroundTint="@color/outline" />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/bg_dot"
+            android:backgroundTint="@color/outline" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/onboarding_start"
+        style="@style/T5.Button"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_margin="@dimen/gap_large"
+        android:text="@string/m43_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

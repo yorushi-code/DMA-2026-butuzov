@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T2.4: a header, and under it an empty FrameLayout that takes all the remaining height
+     (0dp + weight 1) and hosts fragments. Behaviors.fragmentContainer puts one in it. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/T5.Title"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/brand_soft"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/gap"
+        android:paddingEnd="@dimen/gap"
+        android:text="@string/t2_4_header" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

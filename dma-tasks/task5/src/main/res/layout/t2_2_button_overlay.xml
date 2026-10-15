@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T2.2: the ProgressBar is a second layer of the button's FrameLayout. While a request
+     runs the button is disabled and the spinner is shown over it (Behaviors.submitOverlay). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/gap">
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/t2_2_note" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large">
+
+        <Button
+            android:id="@+id/submit"
+            style="@style/T5.Button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/t2_2_submit" />
+
+        <ProgressBar
+            android:id="@+id/submit_progress"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:elevation="8dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/submit_result"
+        style="@style/T5.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:gravity="center"
+        android:textColor="@color/ok" />
+</LinearLayout>

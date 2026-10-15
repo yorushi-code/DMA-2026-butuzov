@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 4: the card is the ConstraintLayout's only box: width 0dp, height from the
+     85:54 ratio. Number in the centre, payment logo in the bottom-end corner. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/gap">
+
+    <View
+        android:id="@+id/bank_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_gradient_card"
+        app:layout_constraintDimensionRatio="85:54"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bank_name"
+        style="@style/T5.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/m04_bank"
+        android:textColor="@color/on_dark"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/bank_card"
+        app:layout_constraintTop_toTopOf="@id/bank_card" />
+
+    <View
+        android:id="@+id/bank_chip"
+        android:layout_width="44dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/bg_rounded"
+        android:backgroundTint="#FFD180"
+        app:layout_constraintBottom_toTopOf="@id/bank_number"
+        app:layout_constraintStart_toStartOf="@id/bank_card"
+        app:layout_constraintTop_toBottomOf="@id/bank_name" />
+
+    <TextView
+        android:id="@+id/bank_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="@string/m04_number"
+        android:textColor="@color/on_dark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/bank_card"
+        app:layout_constraintEnd_toEndOf="@id/bank_card"
+        app:layout_constraintStart_toStartOf="@id/bank_card"
+        app:layout_constraintTop_toTopOf="@id/bank_card" />
+
+    <TextView
+        android:id="@+id/bank_holder"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/m04_holder"
+        android:textColor="@color/on_dark_soft"
+        app:layout_constraintBottom_toBottomOf="@id/bank_card"
+        app:layout_constraintStart_toStartOf="@id/bank_card" />
+
+    <TextView
+        android:id="@+id/bank_expiry"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:text="@string/m04_expiry"
+        android:textColor="@color/on_dark_soft"
+        app:layout_constraintBaseline_toBaselineOf="@id/bank_holder"
+        app:layout_constraintStart_toEndOf="@id/bank_holder" />
+
+    <!-- Payment-system logo: two overlapping circles. -->
+    <View
+        android:id="@+id/bank_logo_left"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#E53935"
+        app:layout_constraintBottom_toBottomOf="@id/bank_logo_right"
+        app:layout_constraintEnd_toEndOf="@id/bank_logo_right" />
+
+    <View
+        android:id="@+id/bank_logo_right"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="20dp"
+        android:alpha="0.85"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#FFB300"
+        app:layout_constraintBottom_toBottomOf="@id/bank_card"
+        app:layout_constraintEnd_toEndOf="@id/bank_card" />
+
+    <TextView
+        style="@style/T5.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_large"
+        android:text="@string/m04_note"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bank_card" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 9: the framed card starts 12dp lower than the FrameLayout; the "HIT" label is
+     the frame's top layer, centred on the card's top border. Its background is the
+     screen colour, so it cuts the border line where it sits. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/gap">
+
+    <LinearLayout
+        android:id="@+id/sub_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_frame_hit"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/gap_large">
+
+        <TextView
+            style="@style/T5.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_small"
+            android:text="@string/m09_title" />
+
+        <TextView
+            style="@style/T5.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_small"
+            android:text="@string/m09_price" />
+
+        <TextView
+            style="@style/T5.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m09_old_price" />
+
+        <TextView
+            style="@style/T5.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_small"
+            android:text="@string/m09_per_month"
+            android:textColor="@color/ok" />
+
+        <TextView
+            style="@style/T5.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:gravity="center"
+            android:text="@string/m09_feature" />
+
+        <Button
+            style="@style/T5.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:backgroundTint="@color/accent"
+            android:text="@string/m09_action" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sub_hit"
+        style="@style/T5.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@color/surface"
+        android:gravity="center"
+        android:letterSpacing="0.1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/m09_hit"
+        android:textColor="@color/accent"
+        android:textStyle="bold" />
+</FrameLayout>

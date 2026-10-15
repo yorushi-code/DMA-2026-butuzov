@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 6: departure on the start side, arrival on the end side; between the two times
+     a dashed line (0dp between them) with the plane icon centred above it. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/gap"
+    android:background="@drawable/bg_card"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/flight_date"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m06_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/flight_price"
+        style="@style/T5.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m06_price"
+        android:textColor="@color/brand"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/flight_departure"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:text="@string/m06_departure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flight_price" />
+
+    <TextView
+        android:id="@+id/flight_arrival"
+        style="@style/T5.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m06_arrival"
+        app:layout_constraintBaseline_toBaselineOf="@id/flight_departure"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/flight_line"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/bg_dashed_line"
+        android:layerType="software"
+        app:layout_constraintBottom_toBottomOf="@id/flight_departure"
+        app:layout_constraintEnd_toStartOf="@id/flight_arrival"
+        app:layout_constraintStart_toEndOf="@id/flight_departure"
+        app:layout_constraintTop_toTopOf="@id/flight_departure" />
+
+    <ImageView
+        android:id="@+id/flight_plane"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@color/surface"
+        android:contentDescription="@string/cd_flight"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:rotation="90"
+        android:src="@drawable/ic_flight"
+        app:layout_constraintBottom_toTopOf="@id/flight_line"
+        app:layout_constraintEnd_toEndOf="@id/flight_line"
+        app:layout_constraintStart_toStartOf="@id/flight_line"
+        app:tint="@color/brand" />
+
+    <TextView
+        android:id="@+id/flight_duration"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/m06_duration"
+        app:layout_constraintEnd_toEndOf="@id/flight_line"
+        app:layout_constraintStart_toStartOf="@id/flight_line"
+        app:layout_constraintTop_toBottomOf="@id/flight_line" />
+
+    <TextView
+        android:id="@+id/flight_from"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_tiny"
+        android:text="@string/m06_from_city"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flight_departure" />
+
+    <TextView
+        android:id="@+id/flight_to"
+        style="@style/T5.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m06_to_city"
+        app:layout_constraintBaseline_toBaselineOf="@id/flight_from"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/flight_from_code"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m06_from_code"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flight_from" />
+
+    <TextView
+        android:id="@+id/flight_to_code"
+        style="@style/T5.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m06_to_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flight_to" />
+</androidx.constraintlayout.widget.ConstraintLayout>

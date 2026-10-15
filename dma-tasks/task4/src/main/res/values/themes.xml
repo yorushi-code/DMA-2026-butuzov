@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Light only: several screens use fixed light backgrounds from the exercises. -->
+    <style name="Theme.Task4" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/brand_blue</item>
+        <item name="colorSecondary">@color/brand_green</item>
+        <!-- The tutorial's screens are laid out under an action bar; with
+             targetSdk 35 Android 15 would draw them edge to edge, under the
+             status bar, so the enforcement is opted out of. -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
+    </style>
+
+    <!-- Implicit parent of the dotted Task4.* styles below. -->
+    <style name="Task4" />
+
+    <style name="Task4.Field">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+
+    <style name="Task4.Button" parent="Widget.Material3.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+
+    <!-- Shares a row with its siblings (theme 3's orientation switch). -->
+    <style name="Task4.RowButton" parent="Widget.Material3.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <!-- T3.5: red text needs a background it can be read on. -->
+    <style name="Task4.RowButton.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="Task4.OpButton" parent="Widget.Material3.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Task4.Label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+    </style>
+
+    <style name="Task4.Title" parent="Task4.Label">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+    </style>
+
+    <style name="Task4.Result" parent="Task4.Label">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+    </style>
+
+    <style name="Task4.Big" parent="Task4.Label">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">64sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Task4.Reading" parent="Task4.Label">
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="Task4.Mono" parent="Task4.Label">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Task4.CardTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/card_text</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Task4.CardLine" parent="Task4.CardTitle">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+</resources>
