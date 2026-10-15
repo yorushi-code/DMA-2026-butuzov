@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ScrollView;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -517,6 +519,192 @@ public class LayoutTest {
             near("nav at the bottom", Screens.root(a).getHeight(), a.findViewById(R.id.ins_nav).getBottom());
             near("header at the top", 0, a.findViewById(R.id.ins_header).getTop());
             near("equal buttons", a.findViewById(R.id.ins_back).getWidth(), a.findViewById(R.id.ins_next).getWidth());
+        });
+    }
+
+    // ---- Remaining items: one check each of what the item asks for -------------------
+
+    @Test
+    public void t3_4_textBetweenCoverAndHeart() {
+        Screens.check(R.layout.t3_4_music_item, a -> {
+            View cover = a.findViewById(R.id.track_cover);
+            View heart = a.findViewById(R.id.track_favorite);
+            View title = a.findViewById(R.id.track_title);
+            View artist = a.findViewById(R.id.track_artist);
+            assertTrue("after the cover", title.getLeft() >= cover.getRight());
+            assertTrue("before the heart", title.getRight() <= heart.getLeft());
+            near("artist under the title", title.getBottom(), artist.getTop());
+            near("heart at the end", ((View) heart.getParent()).getWidth() - Screens.dp(heart, 16), heart.getRight());
+        });
+    }
+
+    @Test
+    public void t5_3_windowResizesForTheKeyboard() {
+        Screens.check(R.layout.t5_3_keyboard_form, a -> {
+            int mode = a.getWindow().getAttributes().softInputMode & WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST;
+            assertEquals(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE, mode);
+            assertTrue(((ScrollView) a.findViewById(R.id.form_scroll)).isFillViewport());
+        });
+    }
+
+    @Test
+    public void t5_5_answerIsThereAndScrolls() {
+        Screens.check(R.layout.t5_5_nested_lists, a -> {
+            TextView answer = a.findViewById(R.id.nested_answer);
+            assertTrue(answer.getText().toString().contains("RecyclerView"));
+            assertTrue(((View) answer.getParent()).canScrollVertically(1));
+        });
+    }
+
+    @Test
+    public void m02_logoStartHeartTopEnd() {
+        Screens.check(R.layout.m02_restaurant, a -> {
+            View card = Screens.root(a);
+            View heart = a.findViewById(R.id.rest_favorite);
+            near("heart at the end", card.getWidth() - card.getPaddingEnd(), heart.getRight());
+            near("heart at the top", card.getPaddingTop(), heart.getTop());
+            near("logo at the start", card.getPaddingStart(), a.findViewById(R.id.rest_logo).getLeft());
+            assertTrue("stars after the time", a.findViewById(R.id.rest_stars).getLeft() >= a.findViewById(R.id.rest_time).getRight());
+        });
+    }
+
+    @Test
+    public void m06_planeCentredOverTheDashedLine() {
+        Screens.check(R.layout.m06_flight_ticket, a -> {
+            View line = a.findViewById(R.id.flight_line);
+            View plane = a.findViewById(R.id.flight_plane);
+            assertTrue("line between the times", line.getLeft() >= a.findViewById(R.id.flight_departure).getRight()
+                    && line.getRight() <= a.findViewById(R.id.flight_arrival).getLeft());
+            near("plane centred", line.getLeft() + line.getWidth() / 2, plane.getLeft() + plane.getWidth() / 2);
+            near("plane above the line", line.getTop(), plane.getBottom());
+        });
+    }
+
+    @Test
+    public void m07_badgeGluedToTheTitle() {
+        Screens.check(R.layout.m07_track, a -> {
+            View title = a.findViewById(R.id.track_title);
+            View badge = a.findViewById(R.id.track_explicit);
+            near("right after the title", title.getRight() + Screens.dp(badge, 6), badge.getLeft());
+            near("menu at the end", Screens.root(a).getWidth(), a.findViewById(R.id.track_menu).getRight());
+        });
+    }
+
+    @Test
+    public void m10_threePhotosInACarousel() {
+        Screens.check(R.layout.m10_hotel, a -> {
+            ViewGroup strip = (ViewGroup) ((ViewGroup) a.findViewById(R.id.hotel_photos)).getChildAt(0);
+            assertEquals(3, strip.getChildCount());
+            View book = a.findViewById(R.id.hotel_book);
+            View block = (View) book.getParent();
+            near("book button at the end", block.getWidth() - block.getPaddingEnd(), book.getRight());
+        });
+    }
+
+    @Test
+    public void m15_starsCentredBigComment() {
+        Screens.check(R.layout.m15_review, a -> {
+            View stars = a.findViewById(R.id.review_stars);
+            near("centred", Screens.root(a).getWidth() / 2, stars.getLeft() + stars.getWidth() / 2);
+            assertTrue("multi-line field", a.findViewById(R.id.review_comment).getHeight() > Screens.dp(stars, 100));
+        });
+    }
+
+    @Test
+    public void m16_switchesNeverCoverTheText() {
+        Screens.check(R.layout.m16_privacy, a -> {
+            int[][] rows = {
+                {R.id.privacy_item_1, R.id.privacy_desc_1, R.id.privacy_switch_1},
+                {R.id.privacy_item_4, R.id.privacy_desc_4, R.id.privacy_switch_4},
+            };
+            for (int[] r : rows) {
+                View row = a.findViewById(r[0]);
+                View desc = a.findViewById(r[1]);
+                View sw = a.findViewById(r[2]);
+                assertTrue("text left of the switch", desc.getRight() <= sw.getLeft());
+                near("switch centred in the row", row.getHeight() / 2, sw.getTop() + sw.getHeight() / 2);
+            }
+        });
+    }
+
+    @Test
+    public void m17_cvcOnTheUncoveredBack() {
+        Screens.check(R.layout.m17_card_input, a -> {
+            View front = a.findViewById(R.id.card_front);
+            View back = a.findViewById(R.id.card_back);
+            int[] cvc = Screens.onScreen(a.findViewById(R.id.card_cvc));
+            int[] f = Screens.onScreen(front);
+            assertTrue("back starts lower", back.getTop() > front.getTop());
+            assertTrue("the sides overlap", back.getTop() < front.getBottom());
+            assertTrue("CVC below the front", cvc[1] >= f[1] + front.getHeight());
+        });
+    }
+
+    @Test
+    public void m20_cameraOnThePhotosCorner() {
+        Screens.check(R.layout.m20_profile_edit, a -> {
+            View frame = a.findViewById(R.id.profile_photo_frame);
+            View camera = a.findViewById(R.id.profile_camera);
+            near("bottom", frame.getHeight(), camera.getBottom());
+            near("end", frame.getWidth(), camera.getRight());
+        });
+    }
+
+    @Test
+    public void m24_chartAndScrollableMetrics() {
+        Screens.check(R.layout.m24_analytics, a -> {
+            View chart = a.findViewById(R.id.sales_chart);
+            near("200dp chart", Screens.dp(chart, 200), chart.getHeight());
+            ViewGroup metrics = a.findViewById(R.id.metrics_scroll);
+            assertTrue("metrics wider than the screen", metrics.getChildAt(0).getWidth() > metrics.getWidth());
+        });
+    }
+
+    @Test
+    public void m27_ratingHangsOffThePhoto() {
+        Screens.check(R.layout.m27_driver, a -> {
+            int[] photo = Screens.onScreen(a.findViewById(R.id.driver_photo));
+            int photoBottom = photo[1] + a.findViewById(R.id.driver_photo).getHeight();
+            int[] badge = Screens.onScreen(a.findViewById(R.id.driver_rating));
+            int badgeBottom = badge[1] + a.findViewById(R.id.driver_rating).getHeight();
+            assertTrue("straddles the photo's bottom edge", badge[1] < photoBottom && badgeBottom > photoBottom);
+            near("equal buttons", a.findViewById(R.id.driver_call).getWidth(), a.findViewById(R.id.driver_sos).getWidth());
+        });
+    }
+
+    @Test
+    public void m28_statusOnTheDatesLine() {
+        Screens.check(R.layout.m28_orders, a -> {
+            TextView date = a.findViewById(R.id.order_date_1);
+            TextView status = a.findViewById(R.id.order_status_1);
+            near("baseline", date.getTop() + date.getBaseline(), status.getTop() + status.getBaseline());
+            ViewGroup thumbs = a.findViewById(R.id.order_thumbs_1);
+            assertEquals("thumbnails in one row", thumbs.getChildAt(0).getTop(), thumbs.getChildAt(3).getTop());
+        });
+    }
+
+    @Test
+    public void m34_avatarCentredButtonsBelow() {
+        Screens.check(R.layout.m34_call, a -> {
+            View avatar = a.findViewById(R.id.call_avatar);
+            View parent = (View) avatar.getParent();
+            near("avatar centred", parent.getWidth() / 2, avatar.getLeft() + avatar.getWidth() / 2);
+            View decline = a.findViewById(R.id.call_decline);
+            View accept = a.findViewById(R.id.call_accept);
+            near("buttons on one line", decline.getTop(), accept.getTop());
+            assertTrue("decline left, accept right", decline.getRight() < accept.getLeft());
+            assertTrue("below the avatar", decline.getTop() > avatar.getBottom());
+        });
+    }
+
+    @Test
+    public void m46_confettiIsATopLayerThatLetsTouchesThrough() {
+        Screens.check(R.layout.m46_quiz_result, a -> {
+            ViewGroup root = (ViewGroup) Screens.root(a);
+            View confetti = a.findViewById(R.id.quiz_confetti);
+            assertEquals("drawn last, on top", confetti, root.getChildAt(root.getChildCount() - 1));
+            assertFalse(confetti.isClickable());
+            near("equal buttons", a.findViewById(R.id.quiz_share).getWidth(), a.findViewById(R.id.quiz_again).getWidth());
         });
     }
 

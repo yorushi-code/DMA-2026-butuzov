@@ -24,6 +24,7 @@
         android:valueFrom="0"
         android:valueTo="50000"
         app:labelBehavior="gone"
+        app:tickVisible="false"
         app:values="@array/m12_default_range" />
 
     <LinearLayout

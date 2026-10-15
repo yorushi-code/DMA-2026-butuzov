@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Item 41: the chosen tariff gets a brand-coloured frame. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/brand" android:state_checked="true" />
+    <item android:color="@color/outline" />
+</selector>

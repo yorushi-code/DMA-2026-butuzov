@@ -30,7 +30,7 @@ public class SmokeTest {
         for (int i = 0; i < Catalog.ENTRIES.size(); i++) {
             Catalog.Entry entry = Catalog.ENTRIES.get(i);
             try (ActivityScenario<ScreenActivity> scenario = ActivityScenario.launch(ScreenActivity.intent(context, i))) {
-                assertEquals(entry.label, Lifecycle.State.RESUMED, scenario.getState());
+                assertEquals(entry.label, Lifecycle.State.RESUMED, Screens.settle(scenario));
                 int index = i;
                 scenario.onActivity(a -> {
                     assertNotNull(entry.label, Screens.root(a));

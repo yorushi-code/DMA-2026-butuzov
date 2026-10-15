@@ -375,6 +375,9 @@
         <item name="android:layout_marginEnd">@dimen/gap_tiny</item>
         <item name="android:checkable">true</item>
         <item name="checkedIconTint">@color/brand</item>
+        <item name="strokeColor">@color/tariff_stroke</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cardBackgroundColor">@color/tariff_fill</item>
     </style>
 
     <!-- Item 42: one line of the cart. -->

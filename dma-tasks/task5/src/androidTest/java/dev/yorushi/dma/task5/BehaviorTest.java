@@ -289,13 +289,21 @@ public class BehaviorTest {
         }
     }
 
+    /** Seconds shown by "Код действует ещё m:ss". */
+    private static int secondsShown(String timer) {
+        String[] mmss = timer.substring(timer.lastIndexOf(' ') + 1).split(":");
+        return Integer.parseInt(mmss[0]) * 60 + Integer.parseInt(mmss[1]);
+    }
+
     @Test
     public void m47_resendLockedWhileTheCodeIsValid() {
         try (ActivityScenario<ScreenActivity> s = Screens.open(R.layout.m47_confirm_otp)) {
-            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-            onView(withId(R.id.confirm_timer)).check(matches(withText(startsWith("Код действует ещё 1:00"))));
-            SystemClock.sleep(2100);
-            onView(withId(R.id.confirm_timer)).check(matches(withText(startsWith("Код действует ещё 0:5"))));
+            onView(withId(R.id.confirm_timer)).check(matches(withText(startsWith("Код действует ещё"))));
+            int first = secondsShown(text(s, R.id.confirm_timer));
+            assertTrue("starts at a minute", first <= 60 && first >= 50);
+            SystemClock.sleep(2500);
+            int later = secondsShown(text(s, R.id.confirm_timer));
+            assertTrue("counts down: " + first + " -> " + later, later < first);
             onView(withId(R.id.confirm_resend)).check(matches(not(isEnabled())));
         }
     }

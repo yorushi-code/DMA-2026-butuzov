@@ -40,7 +40,7 @@
     <string name="m14_city">Город</string>
     <string name="m14_street">Улица</string>
     <string name="m14_house">Дом</string>
-    <string name="m14_entrance">Подъезд</string>
+    <string name="m14_entrance">Под.</string>
     <string name="m14_floor">Этаж</string>
     <string name="m14_flat">Кв.</string>
     <string name="m14_comment">Комментарий курьеру</string>

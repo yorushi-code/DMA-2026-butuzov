@@ -36,6 +36,22 @@ final class Screens {
         }
     }
 
+    /**
+     * The state the activity settles in. On a loaded emulator a system window (keyguard,
+     * "not responding" dialog) can pause a freshly resumed activity for a moment, so give
+     * it up to five seconds to come back before judging.
+     */
+    static androidx.lifecycle.Lifecycle.State settle(ActivityScenario<?> scenario) {
+        long until = android.os.SystemClock.uptimeMillis() + 5000;
+        while (scenario.getState() != androidx.lifecycle.Lifecycle.State.RESUMED
+                && android.os.SystemClock.uptimeMillis() < until) {
+            awake = false;
+            wake();
+            android.os.SystemClock.sleep(250);
+        }
+        return scenario.getState();
+    }
+
     static ActivityScenario<ScreenActivity> open(int layout) {
         wake();
         Context context = ApplicationProvider.getApplicationContext();

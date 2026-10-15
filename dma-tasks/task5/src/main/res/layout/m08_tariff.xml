@@ -57,6 +57,7 @@
         android:valueFrom="100"
         android:valueTo="2000"
         app:labelBehavior="gone"
+        app:tickVisible="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tariff_minutes_label" />
@@ -88,6 +89,7 @@
         android:valueFrom="5"
         android:valueTo="100"
         app:labelBehavior="gone"
+        app:tickVisible="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tariff_gb_label" />

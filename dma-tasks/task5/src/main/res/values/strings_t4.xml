@@ -10,7 +10,7 @@
     <string name="t4_1_note">Высота баннера нигде не задана: dimensionRatio=\"16:9\" пересчитывает её при каждом измерении, поэтому на любом экране и при повороте пропорция сохраняется.</string>
     <string name="t4_2_title">Добро пожаловать</string>
     <string name="t4_2_subtitle">Заголовок и подзаголовок связаны в вертикальную packed-цепочку и вместе смещены к верхней трети (bias 0.2).</string>
-    <string name="t4_3_name">Константин Константинопольский</string>
+    <string name="t4_3_name">Константин Ковалевский</string>
     <string name="t4_3_role">Дизайнер</string>
     <string name="t4_3_name_short">Ия Ли</string>
     <string name="t4_3_role_long">Ведущий инженер по качеству</string>
